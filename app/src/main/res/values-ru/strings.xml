@@ -1,0 +1,44 @@
+<resources>
+
+    <string name="app_name">FollowMe</string>
+    <string name="title_activity_settings">Настройки</string>
+
+    <string name="pref_header_general">Общие</string>
+    <string name="pref_title_social_recommendations">Искуственные данные локации</string>
+    <string name="pref_description_social_recommendations">Будет эмулировать движение по маршруту</string>
+    <string name="pref_header_notifications">Настройки на будущее</string>
+    <string name="pref_title_new_message_notifications">Тестовое сообщение</string>
+    <string name="pref_title_ringtone">Тестовое значение 1</string>
+    <string name="pref_ringtone_silent">Тихо</string>
+    <string name="pref_title_vibrate">Тестовое значение 2</string>
+    <string name="send_my_map">Отправить карту</string>
+    <string name="caption_send_map">Нажми меня как кнопку</string>
+    <string name="settings_language_caption">Язык</string>
+
+    <string name="audio_track_notification_caption">Сейчас на точке:</string>
+    <string name="audio_choose_tack">Кликните на точку для воспроизведения</string>
+
+    <string name="cost_free">Бесплатно</string>
+
+    <string name="kilometers">км</string>
+    <string name="hours">ч</string>
+    <string name="minutes">мин</string>
+    <string name="euro">€</string>
+    <string name="excursion_load">Загрузить</string>
+    <string name="excursion_open">Открыть</string>
+    <string name="excursion_delete">Удалить</string>
+
+    <string name="file_not_found">Файл не найден!</string>
+    <string name="download_error">Ошибка при загрузке</string>
+    <string name="check_internet_connection">Проверьте ваше интернет соединение</string>
+    <string name="downloading_excursion">Загрузка экскурсии</string>
+    <string name="delete_confirmation">Вы уверены что хотите удалить эту экскурсию?</string>
+    <string name="trash_bin">Удалить экскурсию</string>
+
+    <string name="stockholm_excursions">Экскурсии Стокгольма</string>
+    <string name="enable_gps_message">Для полноценного использования приложению необходим GPS. Включить его?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="buy">Купить</string>
+
+</resources>

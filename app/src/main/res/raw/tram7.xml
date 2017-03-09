@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<route>
+	<geoPoints>
+		<geoPoint number="1" position="59.33272155,18.07052493"/>
+		<geoPoint number="2" position="59.33277080,18.07146370"/>
+		<geoPoint number="3" position="59.33285562,18.07201087"/>
+		<geoPoint number="4" position="59.33293497,18.07255805"/>
+		<geoPoint number="5" position="59.33295959,18.07344317"/>
+		<geoPoint number="6" position="59.33293223,18.07373822"/>
+		<geoPoint number="7" position="59.33296507,18.07517588"/>
+		<geoPoint number="8" position="59.33294865,18.07540655"/>
+		<geoPoint number="9" position="59.33285836,18.07598591"/>
+		<geoPoint number="10" position="59.33281458,18.07617366"/>
+		<geoPoint number="11" position="59.33253276,18.07723045"/>
+		<geoPoint number="12" position="59.33241784,18.07764888"/>
+		<geoPoint number="13" position="59.33231934,18.07812095"/>
+		<geoPoint number="14" position="59.33218800,18.07858229"/>
+		<geoPoint number="15" position="59.33195816,18.07941914"/>
+		<geoPoint number="16" position="59.33177210,18.08010578"/>
+		<geoPoint number="17" position="59.33152037,18.08101773"/>
+		<geoPoint number="18" position="59.33143281,18.08136106"/>
+		<geoPoint number="19" position="59.33141092,18.08154345"/>
+		<geoPoint number="20" position="59.33141092,18.08185458"/>
+		<geoPoint number="21" position="59.33141092,18.08255196"/>
+		<geoPoint number="22" position="59.33143828,18.08330297"/>
+		<geoPoint number="23" position="59.33143828,18.08394670"/>
+		<geoPoint number="24" position="59.33149848,18.08619976"/>
+		<geoPoint number="25" position="59.33158057,18.08937550"/>
+		<geoPoint number="26" position="59.33164076,18.09145689"/>
+		<geoPoint number="27" position="59.33171738,18.09193969"/>
+		<geoPoint number="28" position="59.33175021,18.09301257"/>
+		<geoPoint number="29" position="59.33169549,18.09333444"/>
+		<geoPoint number="30" position="59.33157509,18.09351683"/>
+		<geoPoint number="31" position="59.33138903,18.09364557"/>
+		<geoPoint number="32" position="59.33087461,18.09391379"/>
+		<geoPoint number="33" position="59.33041491,18.09421420"/>
+		<geoPoint number="34" position="59.33029452,18.09426785"/>
+		<geoPoint number="35" position="59.33002636,18.09452534"/>
+		<geoPoint number="36" position="59.32971441,18.09489012"/>
+		<geoPoint number="37" position="59.32936963,18.09527636"/>
+		<geoPoint number="38" position="59.32904126,18.09572697"/>
+		<geoPoint number="39" position="59.32868552,18.09612393"/>
+		<geoPoint number="40" position="59.32840093,18.09641361"/>
+		<geoPoint number="41" position="59.32811086,18.09661746"/>
+		<geoPoint number="42" position="59.32795214,18.09664965"/>
+		<geoPoint number="43" position="59.32774416,18.09661746"/>
+		<geoPoint number="44" position="59.32752524,18.09647799"/>
+		<geoPoint number="45" position="59.32734463,18.09638143"/>
+		<geoPoint number="46" position="59.32714212,18.09629560"/>
+		<geoPoint number="47" position="59.32695056,18.09617758"/>
+		<geoPoint number="48" position="59.32681920,18.09612393"/>
+		<geoPoint number="49" position="59.32669332,18.09613466"/>
+		<geoPoint number="50" position="59.32652365,18.09615612"/>
+		<geoPoint number="51" position="59.32642513,18.09620976"/>
+		<geoPoint number="52" position="59.32628830,18.09629560"/>
+		<geoPoint number="53" position="59.32617336,18.09637070"/>
+		<geoPoint number="54" position="59.32604200,18.09643507"/>
+		<geoPoint number="55" position="59.32591064,18.09656382"/>
+		<geoPoint number="56" position="59.32572454,18.09669256"/>
+		<geoPoint number="57" position="59.32552203,18.09684277"/>
+		<geoPoint number="58" position="59.32535783,18.09697151"/>
+		<geoPoint number="59" position="59.32515531,18.09712172"/>
+		<geoPoint number="60" position="59.32502394,18.09723973"/>
+		<geoPoint number="61" position="59.32482690,18.09743285"/>
+		<geoPoint number="62" position="59.32471195,18.09762597"/>
+		<geoPoint number="63" position="59.32458059,18.09782982"/>
+		<geoPoint number="64" position="59.32441638,18.09811950"/>
+		<geoPoint number="65" position="59.32432880,18.09836626"/>
+		<geoPoint number="66" position="59.32425217,18.09863448"/>
+		<geoPoint number="67" position="59.32404965,18.09964299"/>
+		<geoPoint number="68" position="59.32394565,18.10030818"/>
+		<geoPoint number="69" position="59.32378144,18.10128450"/>
+		<geoPoint number="70" position="59.32352417,18.10263634"/>
+		<geoPoint number="71" position="59.32331617,18.10379505"/>
+		<geoPoint number="72" position="59.32323406,18.10455680"/>
+		<geoPoint number="73" position="59.32313553,18.10551167"/>
+		<geoPoint number="74" position="59.32307532,18.10608029"/>
+		<geoPoint number="75" position="59.32305343,18.10683131"/>
+		<geoPoint number="76" position="59.32305890,18.10739994"/>
+		<geoPoint number="77" position="59.32308627,18.10802221"/>
+		<geoPoint number="78" position="59.32313006,18.10858011"/>
+		<geoPoint number="79" position="59.32317385,18.10901999"/>
+		<geoPoint number="80" position="59.32323406,18.10958862"/>
+		<geoPoint number="81" position="59.32328880,18.11002851"/>
+		<geoPoint number="82" position="59.32327238,18.11025381"/>
+		<geoPoint number="83" position="59.32320122,18.11038256"/>
+		<geoPoint number="84" position="59.32311911,18.11043620"/>
+		<geoPoint number="85" position="59.32301511,18.11048985"/>
+		<geoPoint number="86" position="59.32291111,18.11056495"/>
+		<geoPoint number="87" position="59.32280710,18.11064005"/>
+		<geoPoint number="88" position="59.32266478,18.11091900"/>
+		<geoPoint number="89" position="59.32261552,18.11141253"/>
+		<geoPoint number="90" position="59.32262646,18.11161637"/>
+		<geoPoint number="91" position="59.32265383,18.11173439"/>
+		<geoPoint number="92" position="59.32269215,18.11200261"/>
+		<geoPoint number="93" position="59.32281805,18.11241031"/>
+		<geoPoint number="94" position="59.32294942,18.11269999"/>
+		<geoPoint number="95" position="59.32313553,18.11290383"/>
+		<geoPoint number="96" position="59.32337638,18.11295748"/>
+		<geoPoint number="97" position="59.32356796,18.11280727"/>
+		<geoPoint number="98" position="59.32368838,18.11244249"/>
+		<geoPoint number="99" position="59.32378144,18.11207771"/>
+		<geoPoint number="100" position="59.32390733,18.11165929"/>
+		<geoPoint number="101" position="59.32400586,18.11129451"/>
+		<geoPoint number="102" position="59.32406607,18.11100483"/>
+		<geoPoint number="103" position="59.32403870,18.11074734"/>
+		<geoPoint number="104" position="59.32394565,18.11046839"/>
+		<geoPoint number="105" position="59.32379786,18.11033964"/>
+		<geoPoint number="106" position="59.32365554,18.11018944"/>
+		<geoPoint number="107" position="59.32351322,18.10997486"/>
+		<geoPoint number="108" position="59.32338733,18.10972810"/>
+		<geoPoint number="109" position="59.32331069,18.10947061"/>
+		<geoPoint number="110" position="59.32324501,18.10922384"/>
+		<geoPoint number="111" position="59.32319027,18.10888052"/>
+		<geoPoint number="112" position="59.32312732,18.10792029"/>
+		<geoPoint number="113" position="59.32308901,18.10706735"/>
+		<geoPoint number="114" position="59.32310269,18.10618758"/>
+		<geoPoint number="115" position="59.32327511,18.10454607"/>
+		<geoPoint number="116" position="59.32351596,18.10288310"/>
+		<geoPoint number="117" position="59.32378417,18.10149372"/>
+		<geoPoint number="118" position="59.32411259,18.09959471"/>
+		<geoPoint number="119" position="59.32430143,18.09863448"/>
+		<geoPoint number="120" position="59.32443280,18.09823751"/>
+		<geoPoint number="121" position="59.32476669,18.09760988"/>
+		<geoPoint number="122" position="59.32491995,18.09740067"/>
+		<geoPoint number="123" position="59.32626367,18.09636533"/>
+		<geoPoint number="124" position="59.32655375,18.09622586"/>
+		<geoPoint number="125" position="59.32687667,18.09622049"/>
+		<geoPoint number="126" position="59.32759913,18.09661210"/>
+		<geoPoint number="127" position="59.32794667,18.09669793"/>
+		<geoPoint number="128" position="59.32817380,18.09663892"/>
+		<geoPoint number="129" position="59.32841461,18.09647262"/>
+		<geoPoint number="130" position="59.32949003,18.09525490"/>
+		<geoPoint number="131" position="59.33000173,18.09463799"/>
+		<geoPoint number="132" position="59.33029178,18.09434295"/>
+		<geoPoint number="133" position="59.33149574,18.09364021"/>
+		<geoPoint number="134" position="59.33172285,18.09359193"/>
+		<geoPoint number="135" position="59.33181588,18.09346855"/>
+		<geoPoint number="136" position="59.33187334,18.09335053"/>
+		<geoPoint number="137" position="59.33188155,18.09309840"/>
+		<geoPoint number="138" position="59.33168728,18.08492839"/>
+		<geoPoint number="139" position="59.33161066,18.08131814"/>
+		<geoPoint number="140" position="59.33162708,18.08106065"/>
+		<geoPoint number="141" position="59.33167907,18.08070660"/>
+		<geoPoint number="142" position="59.33242605,18.07795465"/>
+		<geoPoint number="143" position="59.33249445,18.07760596"/>
+		<geoPoint number="144" position="59.33254917,18.07729483"/>
+		<geoPoint number="145" position="59.33275165,18.07653308"/>
+		<geoPoint number="146" position="59.33296507,18.07577133"/>
+		<geoPoint number="147" position="59.33299516,18.07533681"/>
+		<geoPoint number="148" position="59.33297054,18.07365775"/>
+		<geoPoint number="149" position="59.33298969,18.07332516"/>
+		<geoPoint number="150" position="59.33297054,18.07255805"/>
+		<geoPoint number="151" position="59.33287477,18.07177484"/>
+		<geoPoint number="152" position="59.33279816,18.07133496"/>
+		<geoPoint number="153" position="59.33275712,18.07054639"/>
+	</geoPoints>
+	
+	<audioPoints>
+		<audioPoint number="0" position="59.33277,18.07126" radius="20">
+			<audio id="t7_01_welcome"/>
+			<audio id="t7_02_kunstragarden"/>
+		</audioPoint>
+		<audioPoint number="1" position="59.33244,18.07757" radius="20">
+			<audio id="t7_03_hist"/>
+		</audioPoint>
+		<audioPoint number="2" position="59.33148,18.08558" radius="20">
+			<audio id="t7_04_bridge"/>
+		</audioPoint>
+		<audioPoint number="3" position="59.33078,18.09398" radius="20">
+			<audio id="t7_05_museums"/>
+		</audioPoint>
+		<audioPoint number="4" position="59.32667,18.09612" radius="20">
+			<audio id="t7_06_lie_abba"/>
+		</audioPoint>
+		<audioPoint number="5" position="59.3247,18.09761" radius="20">
+			<audio id="t7_07_gronalund"/>
+		</audioPoint>
+		<audioPoint number="6" position="59.32367,18.10186" radius="20">
+			<audio id="t7_08_bekholmen"/>
+		</audioPoint>
+		<audioPoint number="7" position="59.32306,18.10699" radius="20">
+			<audio id="t7_09_waldemarsudde"/>
+		</audioPoint>
+		<audioPoint number="8" position="59.32265,18.11138" radius="20">
+			<audio id="t7_10_directions for leaving"/>
+		</audioPoint>
+		<audioPoint number="9" position="59.32286,18.11245" radius="20">
+			<audio id="t7_11_Oakhill"/>
+		</audioPoint>
+		<audioPoint number="10" position="59.32311,18.10714" radius="20">
+			<audio id="t7_12_Djurgardskolan"/>
+		</audioPoint>
+		<audioPoint number="11" position="59.32352,18.10286" radius="20">
+			<audio id="t7_13_Skansen"/>
+		</audioPoint>
+		<audioPoint number="12" position="59.32415,18.09956" radius="20">
+			<audio id="t7_14_Cirkus"/>
+		</audioPoint>
+		<audioPoint number="13" position="59.32663,18.09629" radius="20">
+			<audio id="t7_15_biol_museum"/>
+		</audioPoint>
+		<audioPoint number="14" position="59.33036,18.09436" radius="20">
+			<audio id="t7_16_blue_gate"/>
+		</audioPoint>
+		<audioPoint number="15" position="59.33171,18.08907" radius="20">
+			<audio id="t7_17_strandvagen"/>
+		</audioPoint>
+		<audioPoint number="16" position="59.33259,18.07735" radius="20">
+			<audio id="t7_18_Dramaten"/>
+		</audioPoint>
+		<audioPoint number="17" position="59.333,18.07353" radius="20">
+			<audio id="t7_19_byebye"/>
+		</audioPoint>
+			
+	</audioPoints>
+</route>

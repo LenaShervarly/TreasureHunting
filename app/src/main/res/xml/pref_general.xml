@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<ListPreference-->
+        <!--android:key="@string/settings_language_preference"-->
+        <!--android:title="@string/settings_language_caption"-->
+        <!--android:entries="@array/language"-->
+        <!--android:entryValues="@array/languageAlias"/>-->
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/settings_fake_location_id"
+        android:summary="@string/pref_description_social_recommendations"
+        android:title="@string/pref_title_social_recommendations" />
+
+    <Preference android:title="@string/send_my_map"
+        android:key="@string/settings_send_my_map"
+        android:summary="@string/caption_send_map"/>
+
+</PreferenceScreen>
