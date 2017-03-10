@@ -1,53 +1,25 @@
 package com.home.croaton.followme.activities;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.home.croaton.followme.R;
-import com.home.croaton.followme.billing.CommonConstants;
 import com.home.croaton.followme.billing.IabHelper;
-import com.home.croaton.followme.billing.IabResult;
-import com.home.croaton.followme.billing.Purchase;
 import com.home.croaton.followme.domain.Excursion;
 import com.home.croaton.followme.domain.ExcursionBrief;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
-import com.home.croaton.followme.download.IExcursionDownloader;
-import com.home.croaton.followme.download.S3ExcursionDownloader;
 import com.home.croaton.followme.instrumentation.ConnectionHelper;
-import com.home.croaton.followme.instrumentation.IObserver;
-import com.home.croaton.followme.maps.MapHelper;
 import com.home.croaton.followme.security.PermissionAndConnectionChecker;
-
-import org.osmdroid.bonuspack.cachemanager.CacheManager;
-import org.osmdroid.util.BoundingBoxE6;
-import org.osmdroid.views.MapView;
-
-import java.util.ArrayList;
 
 public class ExcursionOverviewActivity extends AppCompatActivity {//implements IabHelper.OnIabSetupFinishedListener {
 

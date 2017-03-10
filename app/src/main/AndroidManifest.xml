@@ -43,7 +43,6 @@
         </activity>
         <activity
             android:name="com.home.croaton.followme.activities.ExcursionOverviewActivity"
-            android:parentActivityName=".activities.ChooseExcursionActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait">
@@ -52,14 +51,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".activities.ChooseExcursionActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
-
         </activity>
 
     </application>
