@@ -66,18 +66,6 @@ public class ExcursionDownloadManager {
         return new File(getPointNamesFileName());
     }
 
-    public void deleteExcursion() {
-        deleteRecursive(new File(getExcursionLocalDir()));
-        deleteRecursive(new File(getAudioLocalDir(context, excursionBrief.getKey(), language)));
-    }
-
-    void deleteRecursive(File fileOrDirectory) {
-        if (fileOrDirectory.isDirectory())
-            for (File child : fileOrDirectory.listFiles())
-                deleteRecursive(child);
-
-        fileOrDirectory.delete();
-    }
 
     @NonNull
     public ArrayList<String> getTracksAtPoint(Route route, AudioPoint closestPoint) {
