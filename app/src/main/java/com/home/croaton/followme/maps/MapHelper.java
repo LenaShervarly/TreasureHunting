@@ -111,7 +111,7 @@ public class MapHelper
     }
 
     public static void drawAudioPoints(Context context, MapView map, AudioPlaybackController controller,
-                                       Excursion excursion, List<Marker> markers, ArrayList<Circle> mCircles) {
+                                       Excursion excursion, List<Marker> markers) {
         final boolean isDebug = (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
 
         for(AudioPoint point : excursion.getAudioPoints())
@@ -128,8 +128,6 @@ public class MapHelper
             Marker marker = putMarker(context, map, point.Position, resId, Marker.ANCHOR_CENTER, anchor, isDebug);
             markers.add(marker);
 
-            //if (isDebug)
-            //    mCircles.add(addCircle(context, map, point.Position, point.Radius));
         }
     }
 
@@ -170,15 +168,5 @@ public class MapHelper
         }
     }
 
-    public static Circle addCircle(Context context, MapView map, GeoPoint position, Integer radius)
-    {
-        Circle circle = new Circle(context, position, radius);
-        circle.setStrokeColor(0xFFFF0050);
-        circle.setStrokeWidth(4);
-        map.getOverlays().add(circle);
-        map.invalidate();
-
-        return circle;
-    }
 
 }

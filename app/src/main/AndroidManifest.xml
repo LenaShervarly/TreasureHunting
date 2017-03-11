@@ -17,13 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:versionCode="6"
-        android:versionName="1.05"
-        >
+        android:versionName="1.05">
         <service
-            android:name="com.home.croaton.followme.audio.AudioService"
+            android:name=".audio.AudioService"
             android:stopWithTask="false" />
         <service
-            android:name="com.home.croaton.followme.location.LocationService"
+            android:name=".location.LocationService"
             android:stopWithTask="false" />
 
         <meta-data
@@ -34,7 +33,7 @@
             android:value="pk.eyJ1IjoiY3JvYXRvbiIsImEiOiJjaW0yajFpZ20wMG51dXhtNGtkcW5temd0In0.ZdfAVCZA5_f4YfB4brpJ1A" />
 
         <activity
-            android:name="com.home.croaton.followme.activities.MapsActivity"
+            android:name=".activities.MapsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -42,17 +41,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.home.croaton.followme.activities.ExcursionOverviewActivity"
+            android:name=".activities.ExcursionOverviewActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".activities.QuizzActivity"></activity>
     </application>
 
 </manifest>

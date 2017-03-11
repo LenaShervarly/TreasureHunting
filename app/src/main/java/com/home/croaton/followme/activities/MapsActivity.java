@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -27,15 +26,11 @@ import com.home.croaton.followme.domain.Point;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 import com.home.croaton.followme.instrumentation.IObserver;
 import com.home.croaton.followme.location.LocationService;
-import com.home.croaton.followme.location.TrackEmulator;
 import com.home.croaton.followme.location.TrackerCommand;
-import com.home.croaton.followme.maps.Circle;
 import com.home.croaton.followme.maps.MapHelper;
-import com.home.croaton.followme.maps.MapOnClickListener;
 import com.home.croaton.followme.math.Vector2;
 import com.home.croaton.followme.security.PermissionAndConnectionChecker;
 
-import org.osmdroid.bonuspack.overlays.MapEventsOverlay;
 import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
@@ -43,7 +38,6 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 public class MapsActivity extends FragmentActivity {
 
@@ -54,7 +48,6 @@ public class MapsActivity extends FragmentActivity {
     private PowerManager.WakeLock mWakeLock;
     private AudioPlayerUI mAudioPlayerUi;
     private ArrayList<Marker> mAudioPointMarkers = new ArrayList<>();
-    private ArrayList<Circle> mCircles = new ArrayList<>();
     private String mLanguage;
     private IObserver<GeoPoint> mLocationListener;
     private Excursion mCurrentExcursion;
@@ -63,14 +56,13 @@ public class MapsActivity extends FragmentActivity {
     private boolean mIsActivityPresentOnScreen;
     private GeoPoint mPreviousLocation = new GeoPoint(0,0);
     private ExcursionDownloadManager mDownloadManager;
-
-    private boolean mIsDebug;
+    //private boolean mIsDebug;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mIsDebug = (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        //mIsDebug = (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
 
         PowerManager mgr = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKE_LOCK_NAME);
@@ -79,7 +71,7 @@ public class MapsActivity extends FragmentActivity {
         mCurrentExcursion = getIntent().getParcelableExtra(IntentNames.SELECTED_EXCURSION);
 
         loadState(savedInstanceState);
-        //mDownloadManager = new ExcursionDownloadManager(this, mCurrentExcursion.getBrief(), mLanguage);
+        mDownloadManager = new ExcursionDownloadManager(this, mCurrentExcursion.getBrief(), mLanguage);
 
         setContentView(R.layout.activity_maps2);
         setUpMap();
@@ -212,20 +204,9 @@ public class MapsActivity extends FragmentActivity {
         MapHelper.focusCameraOnPoint(mMap, mAudioPlaybackController.getFirstNotDoneAudioPoint());
         MapHelper.setStartRouteIcon(this, mMap, routePoints.get(0).Position);
         MapHelper.setEndRouteIcon(this, mMap, routePoints.get(routePoints.size() - 1).Position);
-        MapHelper.drawAudioPoints(this, mMap, mAudioPlaybackController, mCurrentExcursion, mAudioPointMarkers, mCircles);
+        MapHelper.drawAudioPoints(this, mMap, mAudioPlaybackController, mCurrentExcursion, mAudioPointMarkers);
 
-        /* if (mIsDebug && mCurrentExcursion.getBrief().getUseDirections())
-            MapHelper.drawDirections(this, mMap, mCurrentExcursion.getRoute().audioPoints());
 
-        if (mIsDebug) {
-            mMap.getOverlays().add(new MapEventsOverlay(this, new MapOnClickListener(new Callable<Void>() {
-                @Override
-                public Void call() throws Exception {
-                    mMap.invalidate();
-                    return null;
-                }
-            }, mCircles)));
-        } */
         // Map click - forwarded as location
 //        mMap.getOverlays().add(new MapEventsOverlay(this, new MapEventsReceiver() {
 //            @Override
@@ -240,11 +221,14 @@ public class MapsActivity extends FragmentActivity {
 //            }
 //        }));
 
-        /*for(Marker marker : mAudioPointMarkers)
+        for(Marker marker : mAudioPointMarkers)
             marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker, MapView mapView) {
-                    AudioPoint audioPoint = mAudioPlaybackController.getResourceToPlay(marker.getPosition());
+                    Intent intent = new Intent(MapsActivity.this, QuizzActivity.class);
+                    startActivity(intent);
+
+                    /*AudioPoint audioPoint = mAudioPlaybackController.getResourceToPlay(marker.getPosition());
                     ArrayList<String> trackNames = mDownloadManager.getTracksAtPoint(mCurrentExcursion.getRoute(), audioPoint);
 
                     if (mLastActiveMarker != -1)
@@ -254,10 +238,10 @@ public class MapsActivity extends FragmentActivity {
 
                     mAudioPlaybackController.startPlaying(MapsActivity.this, trackNames);
                     mLastActiveMarker = audioPoint.Number;
-
+                    */
                     return true;
                 }
-            }); */
+            });
     }
 
     private void enableMyLocation() {
@@ -320,9 +304,6 @@ public class MapsActivity extends FragmentActivity {
         savedInstanceState.putParcelable(IntentNames.SELECTED_EXCURSION_BRIEF, mCurrentExcursion);
         savedInstanceState.putInt(getString(R.string.last_active_marker), mLastActiveMarker);
 
-        if (mIsDebug)
-            mDownloadManager.specialSaveRouteToDisc(mCircles, mAudioPointMarkers, mCurrentExcursion.getRoute());
-
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -335,15 +316,6 @@ public class MapsActivity extends FragmentActivity {
             mLocationOverlay.enableMyLocation();
     }
 
-    @Override
-    protected void onStop()
-    {
-        if (mWakeLock.isHeld())
-            mWakeLock.release();
-
-        super.onStop();
-        TrackEmulator.stop();
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)

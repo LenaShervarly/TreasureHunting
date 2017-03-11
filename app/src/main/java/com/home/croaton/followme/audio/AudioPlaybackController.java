@@ -59,13 +59,8 @@ public class AudioPlaybackController {
             float distance = LocationHelper.GetDistance(position, point.Position);
             if (distance < min && distance <= point.Radius)
             {
-                if ((!excursion.getBrief().getUseDirections() || point.Direction.dot(direction) >= 0)) {
                     min = distance;
                     closestPoint = point;
-                }
-                else if (point.Direction.dot(direction) < 0) {
-                    banned.add(point);
-                }
             }
         }
 

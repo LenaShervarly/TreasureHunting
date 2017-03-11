@@ -8,7 +8,6 @@ import com.home.croaton.followme.domain.AudioPoint;
 import com.home.croaton.followme.domain.IExcursionBrief;
 import com.home.croaton.followme.domain.Route;
 import com.home.croaton.followme.domain.RouteSerializer;
-import com.home.croaton.followme.maps.Circle;
 
 import org.osmdroid.bonuspack.overlays.Marker;
 
@@ -77,9 +76,7 @@ public class ExcursionDownloadManager {
         return fullNames;
     }
 
-    public void specialSaveRouteToDisc(ArrayList<Circle> circles, ArrayList<Marker> pointMarkers, Route route) {
-        if (circles.size() > 0 && pointMarkers.size() > 0)
-            route.updateAudioPoints(circles, pointMarkers);
+    public void specialSaveRouteToDisc(ArrayList<Marker> pointMarkers, Route route) {
 
         FileOutputStream fs = null;
         try {
