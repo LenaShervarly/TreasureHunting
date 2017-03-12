@@ -71,7 +71,7 @@ public class MapsActivity extends FragmentActivity {
         mCurrentExcursion = getIntent().getParcelableExtra(IntentNames.SELECTED_EXCURSION);
 
         loadState(savedInstanceState);
-        mDownloadManager = new ExcursionDownloadManager(this, mCurrentExcursion.getBrief(), mLanguage);
+        mDownloadManager = new ExcursionDownloadManager(this, mLanguage);
 
         setContentView(R.layout.activity_maps2);
         setUpMap();

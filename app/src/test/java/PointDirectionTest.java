@@ -1,7 +1,6 @@
 import com.home.croaton.followme.audio.AudioPlaybackController;
 import com.home.croaton.followme.domain.AudioPoint;
 import com.home.croaton.followme.domain.IExcursion;
-import com.home.croaton.followme.domain.IExcursionBrief;
 import com.home.croaton.followme.domain.Route;
 import com.home.croaton.followme.location.LocationHelper;
 import com.home.croaton.followme.math.Vector2;

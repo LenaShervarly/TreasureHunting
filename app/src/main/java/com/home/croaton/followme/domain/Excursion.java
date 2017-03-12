@@ -11,12 +11,17 @@ import com.home.croaton.followme.R;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 
 import org.apache.commons.io.IOUtils;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 
+@Root(name="content")
 public class Excursion implements Parcelable, IExcursion {
 
     private static Context context;
@@ -37,30 +42,31 @@ public class Excursion implements Parcelable, IExcursion {
     private static final String LOCAL_AUDIO_FOLDER_NAME = "audio";
 
     private TrackNames trackNames;
-    private IExcursionBrief excursionBrief;
+    private ExcursionBriefContent excursionBriefContent;
     private Route route;
 
+    @ElementList(name = "content", inline = true)
+    private List<ExcursionBriefContent> contentByLanguage;
 
+    @Attribute(name = "key")
+    private String key;
 
-    public Excursion(ExcursionBrief brief, Context context) {
+    @ElementList(name = "area")
+    private List<SerializableGeoPoint> area;
+
+    public Excursion(Context context) {
         this.context = context;
-        excursionBrief = brief;
+        //excursionBrief = brief;
         loadRoute();
         //tryLoad(context, "ru", new ExcursionDownloadManager(context, excursionBrief, "ru"));
     }
 
     protected Excursion(Parcel in) {
 
-        excursionBrief = in.readParcelable(ExcursionBrief.class.getClassLoader());
+        //excursionBrief = in.readParcelable(ExcursionBrief.class.getClassLoader());
         trackNames = in.readParcelable(TrackNames.class.getClassLoader());
         route = in.readParcelable(Route.class.getClassLoader());
 
-    }
-    public String getKey() {
-        if (excursionBrief == null)
-            throw new UnsupportedOperationException("Called get key on empty excursion");
-
-        return excursionBrief.getKey();
     }
 
     public Route getRoute() {
@@ -89,7 +95,7 @@ public class Excursion implements Parcelable, IExcursion {
     }
 
     public void loadTrackNames(ArrayList<File> files) throws FileNotFoundException {
-        String pointNamesFile = excursionBrief.getKey() + POINT_NAMES_SUFFIX + XML_EXTENSION;
+        String pointNamesFile = "tram7" + POINT_NAMES_SUFFIX + XML_EXTENSION;
 
         for(File maybePointNames : files)
         {
@@ -115,9 +121,17 @@ public class Excursion implements Parcelable, IExcursion {
         return 0;
     }
 
+    public ExcursionBriefContent getContentByLanguage(String language) {
+        for (ExcursionBriefContent content : contentByLanguage) {
+            if (content.getLang().equals(language))
+                return content;
+        }
+
+        return null;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable((ExcursionBrief)excursionBrief, flags);
         dest.writeParcelable(trackNames, flags);
         dest.writeParcelable(route, flags);
     }
@@ -145,7 +159,7 @@ public class Excursion implements Parcelable, IExcursion {
     public boolean audiosAreLoaded(Route route, Context context, String language) {
         for(String filename : route.getAudioFileNames())
         {
-            File file = new File(TextUtils.join(FOLDER_SEPARATOR, new String[]{ ExcursionDownloadManager.getAudioLocalDir(context, getKey(), language), filename + MP3_EXTENSION}));
+            File file = new File(TextUtils.join(FOLDER_SEPARATOR, new String[]{ ExcursionDownloadManager.getAudioLocalDir(context, "tram7", language), filename + MP3_EXTENSION}));
             if (!file.exists()) {
                 Log.d("Follow Me", "Couldn't find file " + file.getAbsolutePath());
                 return false;
@@ -173,7 +187,9 @@ public class Excursion implements Parcelable, IExcursion {
         return new ArrayList<>();
     }
 
-    public IExcursionBrief getBrief() {
-        return excursionBrief;
+    @Override
+    public String getKey() {
+        return key;
     }
+
 }

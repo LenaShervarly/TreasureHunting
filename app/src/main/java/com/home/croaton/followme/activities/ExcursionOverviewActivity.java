@@ -6,19 +6,16 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.domain.Excursion;
-import com.home.croaton.followme.domain.ExcursionBrief;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 import com.home.croaton.followme.instrumentation.ConnectionHelper;
 import com.home.croaton.followme.security.PermissionAndConnectionChecker;
 
 public class ExcursionOverviewActivity extends AppCompatActivity  {
 
-    private ExcursionBrief excursionBrief;
     private Excursion excursion;
     private String currentLanguage;
    // private FloatingActionButton openButton;
@@ -31,13 +28,14 @@ public class ExcursionOverviewActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_excursion_overview);
 
         Intent intent = getIntent();
-        excursionBrief = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION_BRIEF);
+        //excursionBrief = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION_BRIEF);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "ru");
 
-        downloadManager = new ExcursionDownloadManager(this, excursionBrief, currentLanguage);
-        excursion = new Excursion(excursionBrief, this);
+        //downloadManager = new ExcursionDownloadManager(this, excursionBrief, currentLanguage);
+        excursion = new Excursion(this);
+        //excursion.getBrief().getContentByLanguage("ru");
 
 
         PermissionAndConnectionChecker.checkForPermissions(ExcursionOverviewActivity.this, new String[]

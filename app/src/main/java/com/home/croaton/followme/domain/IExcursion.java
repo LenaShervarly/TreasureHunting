@@ -7,5 +7,4 @@ public interface IExcursion
 {
     Route getRoute();
     String getKey();
-    IExcursionBrief getBrief();
 }

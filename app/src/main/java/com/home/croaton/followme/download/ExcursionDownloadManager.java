@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.IExcursionBrief;
 import com.home.croaton.followme.domain.Route;
 import com.home.croaton.followme.domain.RouteSerializer;
 
@@ -25,12 +24,11 @@ public class ExcursionDownloadManager {
     private static final String LOCAL_AUDIO_FOLDER_NAME = "audio";
     private static final String MP3_EXTENSION = ".mp3";
 
-    private final IExcursionBrief excursionBrief;
+
     private final Context context;
     private String language;
 
-    public ExcursionDownloadManager(Context context, IExcursionBrief brief, String currentLanguage) {
-        this.excursionBrief = brief;
+    public ExcursionDownloadManager(Context context, String currentLanguage) {
         this.language = currentLanguage;
         this.context = context;
     }
@@ -38,7 +36,7 @@ public class ExcursionDownloadManager {
     public String getExcursionLocalDir()
     {
         return TextUtils.join(FOLDER_SEPARATOR, new String[]{context.getFilesDir().getAbsolutePath(),
-                LOCAL_EXCURSIONS_DIR, excursionBrief.getKey() });
+                LOCAL_EXCURSIONS_DIR, "tram7" });
     }
 
     public static String getAudioLocalDir(Context context, String key, String language)
@@ -49,7 +47,7 @@ public class ExcursionDownloadManager {
 
     public String getRouteFileName() {
         String routeName = getExcursionLocalDir();
-        return TextUtils.join(FOLDER_SEPARATOR, new String[]{ routeName, excursionBrief.getKey() + XML_EXTENSION });
+        return TextUtils.join(FOLDER_SEPARATOR, new String[]{ routeName, "tram7" + XML_EXTENSION });
     }
 
     public File getRouteFile() {
@@ -58,7 +56,7 @@ public class ExcursionDownloadManager {
 
     public String getPointNamesFileName() {
         String routeName = getExcursionLocalDir();
-        return TextUtils.join(FOLDER_SEPARATOR, new String[]{ routeName, excursionBrief.getKey() + POINT_NAMES_SUFFIX + XML_EXTENSION });
+        return TextUtils.join(FOLDER_SEPARATOR, new String[]{ routeName, "tram7" + POINT_NAMES_SUFFIX + XML_EXTENSION });
     }
 
     public File getPointNamesFile() {
@@ -70,7 +68,7 @@ public class ExcursionDownloadManager {
     public ArrayList<String> getTracksAtPoint(Route route, AudioPoint closestPoint) {
         ArrayList<String> fullNames = new ArrayList<>();
         for(String fileName : route.getAudiosForPoint(closestPoint))
-            fullNames.add(getAudioLocalDir(context, excursionBrief.getKey(), language)
+            fullNames.add(getAudioLocalDir(context, "tram7", language)
                     + FOLDER_SEPARATOR+ fileName + MP3_EXTENSION);
 
         return fullNames;
@@ -80,7 +78,7 @@ public class ExcursionDownloadManager {
 
         FileOutputStream fs = null;
         try {
-            fs = new FileOutputStream(getExcursionLocalDir() + FOLDER_SEPARATOR + excursionBrief.getKey() + XML_EXTENSION);
+            fs = new FileOutputStream(getExcursionLocalDir() + FOLDER_SEPARATOR + "tram7" + XML_EXTENSION);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
