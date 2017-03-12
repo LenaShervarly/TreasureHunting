@@ -39,10 +39,10 @@ public class ExcursionDownloadManager {
                 LOCAL_EXCURSIONS_DIR, "tram7" });
     }
 
-    public static String getAudioLocalDir(Context context, String key, String language)
+    public static String getAudioLocalDir(Context context)
     {
-        return TextUtils.join(FOLDER_SEPARATOR, new String[] {context.getFilesDir().getAbsolutePath(),
-                LOCAL_AUDIO_FOLDER_NAME, key, language});
+        return context.getResources().getResourceName(context.getResources().getIdentifier("t7_01_welcome", "raw", context.getPackageName()));
+
     }
 
     public String getRouteFileName() {
@@ -68,8 +68,8 @@ public class ExcursionDownloadManager {
     public ArrayList<String> getTracksAtPoint(Route route, AudioPoint closestPoint) {
         ArrayList<String> fullNames = new ArrayList<>();
         for(String fileName : route.getAudiosForPoint(closestPoint))
-            fullNames.add(getAudioLocalDir(context, "tram7", language)
-                    + FOLDER_SEPARATOR+ fileName + MP3_EXTENSION);
+            fullNames.add(context.getResources().getResourceName(context.getResources().getIdentifier(fileName, "raw", context.getPackageName()))+ MP3_EXTENSION);
+            //fullNames.add(getAudioLocalDir(context)+ FOLDER_SEPARATOR+ fileName + MP3_EXTENSION);
 
         return fullNames;
     }

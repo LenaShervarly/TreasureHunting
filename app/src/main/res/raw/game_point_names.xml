@@ -1,83 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <names>
 	<audioFile name="t7_01_welcome">
-		<en></en>
+		<en>Hello</en>
 		<ru>Здравствуйте!</ru>
 	</audioFile>
   <audioFile name="t7_02_kunstragarden">
-		<en></en>
+		<en>Type in smth</en>
 		<ru>Кунстрегорден</ru>
 	</audioFile>
   <audioFile name="t7_03_hist">
-		<en></en>
+		<en>Photo</en>
 		<ru>История Юргордена</ru>
 	</audioFile>
   <audioFile name="t7_04_bridge">
-		<en></en>
+		<en>Photo</en>
 		<ru>Мост Юргордсброн</ru>
 	</audioFile>
   <audioFile name="t7_05_museums">
-		<en></en>
+		<en>Quizz</en>
 		<ru>Музеи на Юргордене</ru>
-	</audioFile>
-  <audioFile name="t7_06_lie_abba">
-		<en></en>
-		<ru>Галерея Лиевалш и музей Абба</ru>
-	</audioFile>
-  <audioFile name="t7_07_gronalund">
-		<en></en>
-		<ru>Парк Греналунд</ru>
-	</audioFile>
-  <audioFile name="t7_08_bekholmen">
-		<en></en>
-		<ru>Бекхольмен</ru>
-	</audioFile>
-  <audioFile name="t7_09_waldemarsudde">
-		<en></en>
-		<ru>Поместье Вальдемарссуде</ru>
-	</audioFile>
-  <audioFile name="t7_10_directions">
-		<en></en>
-		<ru>При желании покиньте трамвай</ru>
-	</audioFile>
-  <audioFile name="t7_11_Oakhill">
-		<en></en>
-		<ru>Oakhill - Русский холм</ru>
-	</audioFile>
-  <audioFile name="t7_12_Djurgardskolan">
-		<en></en>
-		<ru>Школа Юргордена</ru>
-	</audioFile>
-  <audioFile name="t7_13_Skansen">
-		<en></en>
-		<ru>Скансен</ru>
-	</audioFile>
-  <audioFile name="t7_14_Cirkus">
-		<en></en>
-		<ru>Цирк Стокгольма</ru>
-	</audioFile>
-  <audioFile name="t7_15_biol_museum">
-		<en></en>
-		<ru>Музей биологии</ru>
-	</audioFile>
-  <audioFile name="t7_16_blue_gate">
-		<en></en>
-		<ru>Яркие голубые ворота</ru>
-	</audioFile>
-  <audioFile name="t7_17_strandvagen">
-		<en></en>
-		<ru>Бульвар Страндвэген</ru>
-	</audioFile>
-  <audioFile name="t7_18_Dramaten">
-		<en></en>
-		<ru>Королевский драматический театр</ru>
-	</audioFile>
-  <audioFile name="t7_19_byebye">
-		<en></en>
-		<ru>Спасибо что были с нами!</ru>
-	</audioFile>
-  <audioFile name="d7_1_biom">
-		<en></en>
-		<ru>Музей биологии</ru>
 	</audioFile>
 </names>

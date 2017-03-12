@@ -64,7 +64,7 @@ public class RouteSerializer {
             Element audioPoints = doc.createElement(AudioPoints);
             rootElement.appendChild(audioPoints);
 
-            for(AudioPoint audioPoint : route.audioPoints())
+            for(com.home.croaton.followme.domain.AudioPoint audioPoint : route.audioPoints())
             {
                 Element pointElement = doc.createElement(AudioPoint);
                 pointElement.setAttribute(PointNumber, audioPoint.Number.toString());
@@ -141,7 +141,7 @@ public class RouteSerializer {
         {
             NamedNodeMap attrs = list.item(i).getAttributes();
 
-            AudioPoint ap = new AudioPoint(Integer.parseInt(attrs.getNamedItem(PointNumber).getNodeValue()),
+            com.home.croaton.followme.domain.AudioPoint ap = new AudioPoint(Integer.parseInt(attrs.getNamedItem(PointNumber).getNodeValue()),
                     stringToGeoPoint(attrs.getNamedItem(PointPosition).getNodeValue()),
                     Integer.parseInt(attrs.getNamedItem(PointRadius).getNodeValue()));
             route.addAudioPoint(ap);

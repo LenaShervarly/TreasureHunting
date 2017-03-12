@@ -114,7 +114,7 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
     {
         String caption = trackName.equals("")
             ? _context.getString(R.string.audio_choose_tack)
-            : excursion.getTrackNames().getTrackName(_context.getLanguage(), trackName);
+            : excursion.getTrackNames().getTrackName("en", trackName);
 
         TextView textView = (TextView)_context.findViewById(R.id.textViewSongName);
         textView.setText(caption);

@@ -81,7 +81,7 @@ public class Route implements Parcelable {
 
     public ArrayList<AudioPoint> audioPoints()
     {
-        return (ArrayList<AudioPoint>)_audioPoints.clone();
+        return (ArrayList<AudioPoint>) _audioPoints.clone();
     }
 
     public void markAudioPoint(int pointNumber, boolean passed)

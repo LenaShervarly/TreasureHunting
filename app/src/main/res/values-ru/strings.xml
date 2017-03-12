@@ -15,7 +15,7 @@
     <string name="caption_send_map">Нажми меня как кнопку</string>
     <string name="settings_language_caption">Язык</string>
 
-    <string name="audio_track_notification_caption">Сейчас на точке:</string>
+    <string name="game_track_notification_caption">Сейчас на точке:</string>
     <string name="audio_choose_tack">Кликните на точку для воспроизведения</string>
 
     <string name="cost_free">Бесплатно</string>

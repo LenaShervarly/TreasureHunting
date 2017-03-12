@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
@@ -56,13 +57,12 @@ public class MapsActivity extends FragmentActivity {
     private boolean mIsActivityPresentOnScreen;
     private GeoPoint mPreviousLocation = new GeoPoint(0,0);
     private ExcursionDownloadManager mDownloadManager;
-    //private boolean mIsDebug;
+    private MediaPlayer mPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //mIsDebug = (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
 
         PowerManager mgr = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKE_LOCK_NAME);
@@ -82,11 +82,12 @@ public class MapsActivity extends FragmentActivity {
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
 
         mAudioPlayerUi = new AudioPlayerUI(this, mCurrentExcursion);
+        mPlayer = MediaPlayer.create(this, R.raw.t7_01_welcome);
     }
 
     private void loadState(Bundle savedInstanceState) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        mLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
+        mLanguage = "en";
 
         mAudioPlaybackController = new AudioPlaybackController(mLanguage, mCurrentExcursion);
 
@@ -124,8 +125,8 @@ public class MapsActivity extends FragmentActivity {
 
         if (mMap != null) {
             if (mLastActiveMarker != -1)
-                MapHelper.setMarkerIconFromResource(this, R.drawable.audio_point_big, mAudioPointMarkers.get(mLastActiveMarker));
-            MapHelper.setMarkerIconFromResource(this, R.drawable.audio_point_big_active, mAudioPointMarkers.get(audioPoint.Number));
+                MapHelper.setMarkerIconFromResource(this, R.drawable.game_point_big, mAudioPointMarkers.get(mLastActiveMarker));
+            MapHelper.setMarkerIconFromResource(this, R.drawable.game_point_big_active, mAudioPointMarkers.get(audioPoint.Number));
             mMap.invalidate();
             mLastActiveMarker = audioPoint.Number;
         }
@@ -225,20 +226,20 @@ public class MapsActivity extends FragmentActivity {
             marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker, MapView mapView) {
-                    Intent intent = new Intent(MapsActivity.this, QuizzActivity.class);
+                    /*Intent intent = new Intent(MapsActivity.this, QuizzActivity.class);
                     startActivity(intent);
-
-                    /*AudioPoint audioPoint = mAudioPlaybackController.getResourceToPlay(marker.getPosition());
-                    ArrayList<String> trackNames = mDownloadManager.getTracksAtPoint(mCurrentExcursion.getRoute(), audioPoint);
+                    */
+                    AudioPoint gamePoint = mAudioPlaybackController.getResourceToPlay(marker.getPosition());
+                    ArrayList<String> trackNames = mDownloadManager.getTracksAtPoint(mCurrentExcursion.getRoute(), gamePoint);
 
                     if (mLastActiveMarker != -1)
-                        MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.audio_point_big, mAudioPointMarkers.get(mLastActiveMarker));
-                    MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.audio_point_big_active, marker);
+                        MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.game_point_big, mAudioPointMarkers.get(mLastActiveMarker));
+                    MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.game_point_big_active, marker);
                     mapView.invalidate();
 
                     mAudioPlaybackController.startPlaying(MapsActivity.this, trackNames);
-                    mLastActiveMarker = audioPoint.Number;
-                    */
+                    mLastActiveMarker = gamePoint.Number;
+
                     return true;
                 }
             });

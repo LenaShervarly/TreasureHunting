@@ -119,7 +119,7 @@ public class MapHelper
             boolean isPointPassed = controller.isAudioPointPassed(point.Number);
             int resId = isPointPassed
                     ? R.drawable.passed
-                    : R.drawable.audio_point_big;
+                    : R.drawable.game_point_big;
 
             float anchor = isPointPassed
                     ? Marker.ANCHOR_CENTER

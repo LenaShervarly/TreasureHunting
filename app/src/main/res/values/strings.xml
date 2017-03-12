@@ -15,7 +15,7 @@
     <string name="caption_send_map">Click me as a button</string>
     <string name="settings_language_caption">Language</string>
 
-    <string name="audio_track_notification_caption">Now at point:</string>
+    <string name="game_track_notification_caption">Now at point:</string>
     <string name="audio_choose_tack">Click at point to choose audio</string>
 
     <string name="cost_free">Free</string>

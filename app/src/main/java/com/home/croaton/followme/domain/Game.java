@@ -55,14 +55,12 @@ public class Game implements Parcelable, IGame {
 
     public Game(Context context) {
         this.context = context;
-        //excursionBrief = brief;
         loadRoute();
-        //tryLoad(context, "ru", new ExcursionDownloadManager(context, excursionBrief, "ru"));
+        tryLoad(context, "en", new ExcursionDownloadManager(context, "en"));
     }
 
     protected Game(Parcel in) {
 
-        //excursionBrief = in.readParcelable(ExcursionBrief.class.getClassLoader());
         trackNames = in.readParcelable(TrackNames.class.getClassLoader());
         route = in.readParcelable(Route.class.getClassLoader());
 
@@ -72,18 +70,11 @@ public class Game implements Parcelable, IGame {
         return this.route;
     }
 
-    /*public void loadRoute(File routeFile) throws FileNotFoundException {
-        ArrayList<File> temp = new ArrayList<>(1);
-        temp.add(routeFile);
-        loadRoute(temp);
-    }*/
 
     public void loadRoute()  {
 
         route = RouteSerializer.deserializeFromResource(context.getResources(), context.getResources().getIdentifier("tram7", "raw", context.getPackageName()));
-
-        //if (excursionBrief.getUseDirections())
-            route.generateDirections();
+        //route.generateDirections();
 
     }
 
@@ -94,7 +85,7 @@ public class Game implements Parcelable, IGame {
     }
 
     public void loadTrackNames(ArrayList<File> files) throws FileNotFoundException {
-        String pointNamesFile = "tram7" + POINT_NAMES_SUFFIX + XML_EXTENSION;
+        String pointNamesFile = "game" + POINT_NAMES_SUFFIX + XML_EXTENSION;
 
         for(File maybePointNames : files)
         {
@@ -135,7 +126,9 @@ public class Game implements Parcelable, IGame {
         dest.writeParcelable(route, flags);
     }
 
+
     public boolean tryLoad(Context context, String language, ExcursionDownloadManager downloadManager) {
+
         if (route == null) {
                 loadRoute();
         }
@@ -158,7 +151,7 @@ public class Game implements Parcelable, IGame {
     public boolean audiosAreLoaded(Route route, Context context, String language) {
         for(String filename : route.getAudioFileNames())
         {
-            File file = new File(TextUtils.join(FOLDER_SEPARATOR, new String[]{ ExcursionDownloadManager.getAudioLocalDir(context, "tram7", language), filename + MP3_EXTENSION}));
+            File file = new File(context.getResources().getResourceName(context.getResources().getIdentifier(filename, "raw", context.getPackageName()))+ MP3_EXTENSION);
             if (!file.exists()) {
                 Log.d("Follow Me", "Couldn't find file " + file.getAbsolutePath());
                 return false;
