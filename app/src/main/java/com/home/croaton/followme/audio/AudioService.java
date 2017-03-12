@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.activities.IntentNames;
 import com.home.croaton.followme.activities.MapsActivity;
-import com.home.croaton.followme.domain.Excursion;
+import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.instrumentation.IObservable;
 import com.home.croaton.followme.instrumentation.MyObservable;
 
@@ -122,7 +122,7 @@ public class AudioService extends android.app.Service implements
                 break;
             case StartForeground:
                 String caption = intent.getStringExtra(TrackCaption);
-                Excursion excursion = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION);
+                Game excursion = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION);
                 setUpAsForeground(caption, excursion);
                 break;
         }
@@ -200,7 +200,7 @@ public class AudioService extends android.app.Service implements
 
     }
 
-    void setUpAsForeground(String text, Excursion excursion)
+    void setUpAsForeground(String text, Game excursion)
     {
         if (_notificationBuilder == null)
         {

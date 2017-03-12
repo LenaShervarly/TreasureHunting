@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 //import com.home.croaton.followme.R;
-import com.home.croaton.followme.R;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 
 import org.apache.commons.io.IOUtils;
@@ -22,16 +21,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Root(name="content")
-public class Excursion implements Parcelable, IExcursion {
+public class Game implements Parcelable, IGame {
 
     private static Context context;
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public Excursion createFromParcel(Parcel in) {
-            return new Excursion(in);
+        public Game createFromParcel(Parcel in) {
+            return new Game(in);
         }
 
-        public Excursion[] newArray(int size) {
-            return new Excursion[size];
+        public Game[] newArray(int size) {
+            return new Game[size];
         }
     };
 
@@ -42,11 +41,11 @@ public class Excursion implements Parcelable, IExcursion {
     private static final String LOCAL_AUDIO_FOLDER_NAME = "audio";
 
     private TrackNames trackNames;
-    private ExcursionBriefContent excursionBriefContent;
+    private GameContentDescription gameContentDescription;
     private Route route;
 
     @ElementList(name = "content", inline = true)
-    private List<ExcursionBriefContent> contentByLanguage;
+    private List<GameContentDescription> contentByLanguage;
 
     @Attribute(name = "key")
     private String key;
@@ -54,14 +53,14 @@ public class Excursion implements Parcelable, IExcursion {
     @ElementList(name = "area")
     private List<SerializableGeoPoint> area;
 
-    public Excursion(Context context) {
+    public Game(Context context) {
         this.context = context;
         //excursionBrief = brief;
         loadRoute();
         //tryLoad(context, "ru", new ExcursionDownloadManager(context, excursionBrief, "ru"));
     }
 
-    protected Excursion(Parcel in) {
+    protected Game(Parcel in) {
 
         //excursionBrief = in.readParcelable(ExcursionBrief.class.getClassLoader());
         trackNames = in.readParcelable(TrackNames.class.getClassLoader());
@@ -121,8 +120,8 @@ public class Excursion implements Parcelable, IExcursion {
         return 0;
     }
 
-    public ExcursionBriefContent getContentByLanguage(String language) {
-        for (ExcursionBriefContent content : contentByLanguage) {
+    public GameContentDescription getContentByLanguage(String language) {
+        for (GameContentDescription content : contentByLanguage) {
             if (content.getLang().equals(language))
                 return content;
         }

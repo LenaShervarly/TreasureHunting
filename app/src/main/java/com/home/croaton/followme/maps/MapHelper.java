@@ -11,7 +11,7 @@ import com.home.croaton.followme.R;
 import com.home.croaton.followme.activities.MapsActivity;
 import com.home.croaton.followme.audio.AudioPlaybackController;
 import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.Excursion;
+import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.domain.Point;
 import com.home.croaton.followme.math.Vector2;
 
@@ -111,7 +111,7 @@ public class MapHelper
     }
 
     public static void drawAudioPoints(Context context, MapView map, AudioPlaybackController controller,
-                                       Excursion excursion, List<Marker> markers) {
+                                       Game excursion, List<Marker> markers) {
         final boolean isDebug = (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
 
         for(AudioPoint point : excursion.getAudioPoints())

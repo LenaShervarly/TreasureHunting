@@ -21,7 +21,7 @@ import com.home.croaton.followme.R;
 import com.home.croaton.followme.audio.AudioPlaybackController;
 import com.home.croaton.followme.audio.AudioPlayerUI;
 import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.Excursion;
+import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.domain.Point;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 import com.home.croaton.followme.instrumentation.IObserver;
@@ -50,7 +50,7 @@ public class MapsActivity extends FragmentActivity {
     private ArrayList<Marker> mAudioPointMarkers = new ArrayList<>();
     private String mLanguage;
     private IObserver<GeoPoint> mLocationListener;
-    private Excursion mCurrentExcursion;
+    private Game mCurrentExcursion;
     private int mLastActiveMarker = -1;
     private volatile MyLocationNewOverlay mLocationOverlay;
     private boolean mIsActivityPresentOnScreen;
@@ -86,7 +86,7 @@ public class MapsActivity extends FragmentActivity {
 
     private void loadState(Bundle savedInstanceState) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        mLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "ru");
+        mLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
 
         mAudioPlaybackController = new AudioPlaybackController(mLanguage, mCurrentExcursion);
 

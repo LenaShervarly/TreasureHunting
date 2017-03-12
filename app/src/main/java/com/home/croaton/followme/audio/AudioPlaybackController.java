@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.IExcursion;
+import com.home.croaton.followme.domain.IGame;
 import com.home.croaton.followme.location.LocationHelper;
 import com.home.croaton.followme.math.Vector2;
 
@@ -20,11 +20,11 @@ import java.util.Set;
 // ToDo: split excursion scenarios and logic in different classes.
 public class AudioPlaybackController {
     private static final CharSequence FOLDER_SEPARATOR = "/";
-    private IExcursion excursion;
+    private IGame excursion;
     private String language;
     private Set<AudioPoint> banned;
 
-    public AudioPlaybackController(String language, IExcursion excursion) {
+    public AudioPlaybackController(String language, IGame excursion) {
         this.excursion = excursion;
         this.language = language;
         banned = new HashSet<>();

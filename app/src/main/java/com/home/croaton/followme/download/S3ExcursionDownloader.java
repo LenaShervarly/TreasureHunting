@@ -67,20 +67,8 @@ public class S3ExcursionDownloader  {
     }
 
      /* @Override
-    public Excursion downloadExcursion( String language) {
+    public Game downloadExcursion( String language) {
 
-      Excursion excursion = new Excursion(brief, null);
-
-        String excursionKey = brief.getKey().toLowerCase();
-        ArrayList<File> routeAndPointNames = downloadAndSavePackage(getExcursionPackageDir(excursionKey), excursionDir);
-
-        try {
-            excursion.loadRoute();
-            excursion.loadTrackNames(routeAndPointNames);
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-            return null;
-        }
 
         if (downloadAndSavePackage(getAudioPackageDir(excursionKey, language), audioDir).size() == 0)
             return null;

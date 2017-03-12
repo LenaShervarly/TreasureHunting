@@ -9,14 +9,14 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.home.croaton.followme.R;
-import com.home.croaton.followme.domain.Excursion;
+import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 import com.home.croaton.followme.instrumentation.ConnectionHelper;
 import com.home.croaton.followme.security.PermissionAndConnectionChecker;
 
 public class ExcursionOverviewActivity extends AppCompatActivity  {
 
-    private Excursion excursion;
+    private Game excursion;
     private String currentLanguage;
    // private FloatingActionButton openButton;
     private ExcursionDownloadManager downloadManager;
@@ -31,11 +31,11 @@ public class ExcursionOverviewActivity extends AppCompatActivity  {
         //excursionBrief = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION_BRIEF);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "ru");
+        currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
 
         //downloadManager = new ExcursionDownloadManager(this, excursionBrief, currentLanguage);
-        excursion = new Excursion(this);
-        //excursion.getBrief().getContentByLanguage("ru");
+        excursion = new Game(this);
+
 
 
         PermissionAndConnectionChecker.checkForPermissions(ExcursionOverviewActivity.this, new String[]
