@@ -13,18 +13,18 @@ import android.widget.TextView;
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.activities.IntentNames;
 import com.home.croaton.followme.activities.MapsActivity;
-import com.home.croaton.followme.domain.Excursion;
+import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.instrumentation.IObserver;
 
 public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
 
     private final MapsActivity _context;
-    private final Excursion excursion;
+    private final Game excursion;
     private IObserver<PlayerState> stateListener;
     private IObserver<String> trackNameListener;
     private IObserver<Integer> positionListener;
 
-    public AudioPlayerUI(MapsActivity mapsActivity, Excursion excursion)
+    public AudioPlayerUI(MapsActivity mapsActivity, Game excursion)
     {
         this.excursion = excursion;
         _context = mapsActivity;
@@ -114,7 +114,7 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
     {
         String caption = trackName.equals("")
             ? _context.getString(R.string.audio_choose_tack)
-            : excursion.getTrackNames().getTrackName(_context.getLanguage(), trackName);
+            : excursion.getTrackNames().getTrackName("en", trackName);
 
         TextView textView = (TextView)_context.findViewById(R.id.textViewSongName);
         textView.setText(caption);

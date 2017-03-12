@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.activities.IntentNames;
 import com.home.croaton.followme.activities.MapsActivity;
-import com.home.croaton.followme.domain.Excursion;
+import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.instrumentation.IObservable;
 import com.home.croaton.followme.instrumentation.MyObservable;
 
@@ -122,7 +123,7 @@ public class AudioService extends android.app.Service implements
                 break;
             case StartForeground:
                 String caption = intent.getStringExtra(TrackCaption);
-                Excursion excursion = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION);
+                Game excursion = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION);
                 setUpAsForeground(caption, excursion);
                 break;
         }
@@ -200,7 +201,7 @@ public class AudioService extends android.app.Service implements
 
     }
 
-    void setUpAsForeground(String text, Excursion excursion)
+    void setUpAsForeground(String text, Game excursion)
     {
         if (_notificationBuilder == null)
         {
@@ -213,7 +214,7 @@ public class AudioService extends android.app.Service implements
             _notificationBuilder = new NotificationCompat.Builder(this)
                     .setContentIntent(pendInt)
                     .setOngoing(true)
-                    .setContentTitle(getString(R.string.audio_track_notification_caption))
+                    .setContentTitle(getString(R.string.game_track_notification_caption))
                     .setSmallIcon(R.drawable.notification_icon_small);
         }
         _notificationBuilder.setContentText(text);
@@ -231,8 +232,8 @@ public class AudioService extends android.app.Service implements
                 return;
 
             _lastPlayedTrackName = getFileName(_uriQueue.peek());
-            _innerTrackName.notifyObservers(_lastPlayedTrackName);
-            _mediaPlayer.setDataSource(_uriQueue.poll());
+            //_innerTrackName.notifyObservers(_lastPlayedTrackName);
+            _mediaPlayer.setDataSource(this, Uri.parse("android.resource://com.home.croaton.followme/raw/t7_01_welcome"));
         } catch (Exception e)
         {
             Log.e(_serviceName, e.toString());
@@ -248,13 +249,13 @@ public class AudioService extends android.app.Service implements
     }
 
     private boolean NextTrackExists() {
-        while(!new File(_uriQueue.peek()).exists()) {
+      /*  while(!new File(_uriQueue.peek()).exists()) {
             CharSequence text = getResources().getString(R.string.file_not_found);
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
             _uriQueue.poll();
             if (_uriQueue.size() == 0)
                 return false;
-        }
+        }*/
 
         return true;
     }

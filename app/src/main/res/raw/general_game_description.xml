@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<excursionGallery>
+    <excursionBrief key="tram7" thumbnailFilePath="tram70" useDirections="true">
+        <content lang="en">
+            <name>General Desctiption of the Game</name>
+            <overview>
+    Some text describing what to dp
+            </overview>
+        </content>
+        <length>6.2</length>
+        <duration>0.67</duration>
+        <area>
+            <geoPoint latitude="59.33322" longitude="18.07291"/>
+            <geoPoint latitude="59.32265" longitude="18.1131"/>
+        </area>
+    </excursionBrief>
+</excursionGallery>

@@ -7,26 +7,30 @@ import android.text.TextUtils;
 import android.util.Log;
 
 //import com.home.croaton.followme.R;
-import com.home.croaton.followme.R;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 
 import org.apache.commons.io.IOUtils;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Excursion implements Parcelable, IExcursion {
+@Root(name="content")
+public class Game implements Parcelable, IGame {
 
     private static Context context;
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public Excursion createFromParcel(Parcel in) {
-            return new Excursion(in);
+        public Game createFromParcel(Parcel in) {
+            return new Game(in);
         }
 
-        public Excursion[] newArray(int size) {
-            return new Excursion[size];
+        public Game[] newArray(int size) {
+            return new Game[size];
         }
     };
 
@@ -37,48 +41,40 @@ public class Excursion implements Parcelable, IExcursion {
     private static final String LOCAL_AUDIO_FOLDER_NAME = "audio";
 
     private TrackNames trackNames;
-    private IExcursionBrief excursionBrief;
+    private GameContentDescription gameContentDescription;
     private Route route;
 
+    @ElementList(name = "content", inline = true)
+    private List<GameContentDescription> contentByLanguage;
 
+    @Attribute(name = "key")
+    private String key;
 
-    public Excursion(ExcursionBrief brief, Context context) {
+    @ElementList(name = "area")
+    private List<SerializableGeoPoint> area;
+
+    public Game(Context context) {
         this.context = context;
-        excursionBrief = brief;
         loadRoute();
-        //tryLoad(context, "ru", new ExcursionDownloadManager(context, excursionBrief, "ru"));
+        tryLoad(context, "en", new ExcursionDownloadManager(context, "en"));
     }
 
-    protected Excursion(Parcel in) {
+    protected Game(Parcel in) {
 
-        excursionBrief = in.readParcelable(ExcursionBrief.class.getClassLoader());
         trackNames = in.readParcelable(TrackNames.class.getClassLoader());
         route = in.readParcelable(Route.class.getClassLoader());
 
-    }
-    public String getKey() {
-        if (excursionBrief == null)
-            throw new UnsupportedOperationException("Called get key on empty excursion");
-
-        return excursionBrief.getKey();
     }
 
     public Route getRoute() {
         return this.route;
     }
 
-    /*public void loadRoute(File routeFile) throws FileNotFoundException {
-        ArrayList<File> temp = new ArrayList<>(1);
-        temp.add(routeFile);
-        loadRoute(temp);
-    }*/
 
     public void loadRoute()  {
 
         route = RouteSerializer.deserializeFromResource(context.getResources(), context.getResources().getIdentifier("tram7", "raw", context.getPackageName()));
-
-        //if (excursionBrief.getUseDirections())
-            route.generateDirections();
+        //route.generateDirections();
 
     }
 
@@ -89,7 +85,7 @@ public class Excursion implements Parcelable, IExcursion {
     }
 
     public void loadTrackNames(ArrayList<File> files) throws FileNotFoundException {
-        String pointNamesFile = excursionBrief.getKey() + POINT_NAMES_SUFFIX + XML_EXTENSION;
+        String pointNamesFile = "game" + POINT_NAMES_SUFFIX + XML_EXTENSION;
 
         for(File maybePointNames : files)
         {
@@ -115,14 +111,24 @@ public class Excursion implements Parcelable, IExcursion {
         return 0;
     }
 
+    public GameContentDescription getContentByLanguage(String language) {
+        for (GameContentDescription content : contentByLanguage) {
+            if (content.getLang().equals(language))
+                return content;
+        }
+
+        return null;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable((ExcursionBrief)excursionBrief, flags);
         dest.writeParcelable(trackNames, flags);
         dest.writeParcelable(route, flags);
     }
 
+
     public boolean tryLoad(Context context, String language, ExcursionDownloadManager downloadManager) {
+
         if (route == null) {
                 loadRoute();
         }
@@ -145,7 +151,7 @@ public class Excursion implements Parcelable, IExcursion {
     public boolean audiosAreLoaded(Route route, Context context, String language) {
         for(String filename : route.getAudioFileNames())
         {
-            File file = new File(TextUtils.join(FOLDER_SEPARATOR, new String[]{ ExcursionDownloadManager.getAudioLocalDir(context, getKey(), language), filename + MP3_EXTENSION}));
+            File file = new File(context.getResources().getResourceName(context.getResources().getIdentifier(filename, "raw", context.getPackageName()))+ MP3_EXTENSION);
             if (!file.exists()) {
                 Log.d("Follow Me", "Couldn't find file " + file.getAbsolutePath());
                 return false;
@@ -173,7 +179,9 @@ public class Excursion implements Parcelable, IExcursion {
         return new ArrayList<>();
     }
 
-    public IExcursionBrief getBrief() {
-        return excursionBrief;
+    @Override
+    public String getKey() {
+        return key;
     }
+
 }

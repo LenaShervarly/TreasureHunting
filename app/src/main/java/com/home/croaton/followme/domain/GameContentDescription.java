@@ -8,13 +8,13 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(name="content")
-public class ExcursionBriefContent implements Parcelable {
+public class GameContentDescription implements Parcelable {
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public ExcursionBriefContent createFromParcel(Parcel in) {
-            return new ExcursionBriefContent(in);
+        public GameContentDescription createFromParcel(Parcel in) {
+            return new GameContentDescription(in);
         }
-        public ExcursionBriefContent[] newArray(int size) {
-            return new ExcursionBriefContent[size];
+        public GameContentDescription[] newArray(int size) {
+            return new GameContentDescription[size];
         }
     };
 
@@ -27,11 +27,11 @@ public class ExcursionBriefContent implements Parcelable {
     @Element(name="overview")
     private String overview;
 
-    public ExcursionBriefContent(){
+    public GameContentDescription(){
         this("", "", "");
     }
 
-    public ExcursionBriefContent(String lang, String name, String overview) {
+    public GameContentDescription(String lang, String name, String overview) {
         this.lang = lang;
         this.name = name;
         this.overview = overview;
@@ -49,7 +49,7 @@ public class ExcursionBriefContent implements Parcelable {
         out.writeString(overview);
     }
 
-    public ExcursionBriefContent(Parcel in) {
+    public GameContentDescription(Parcel in) {
         lang = in.readString();
         name = in.readString();
         overview = in.readString();

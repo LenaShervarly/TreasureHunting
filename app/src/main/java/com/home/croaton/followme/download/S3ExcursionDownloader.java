@@ -13,8 +13,6 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
-import com.home.croaton.followme.domain.Excursion;
-import com.home.croaton.followme.domain.ExcursionBrief;
 import com.home.croaton.followme.instrumentation.IObservable;
 import com.home.croaton.followme.instrumentation.MyObservable;
 import com.home.croaton.followme.instrumentation.ZipUnZip;
@@ -22,11 +20,10 @@ import com.home.croaton.followme.instrumentation.ZipUnZip;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class S3ExcursionDownloader implements IExcursionDownloader {
+public class S3ExcursionDownloader  {
     private static final String COGNITO_POOL_ID = "us-east-1:ddabcbf7-9b32-47a4-a958-d9475c989850";
     private static final String BUCKET_NAME = "followme";
     private static final String EXCURSION_FOLDER_NAME = "excursions";
@@ -69,29 +66,17 @@ public class S3ExcursionDownloader implements IExcursionDownloader {
         this.audioDir = audioDir;
     }
 
-    @Override
-    public Excursion downloadExcursion(ExcursionBrief brief, String language) {
+     /* @Override
+    public Game downloadExcursion( String language) {
 
-        Excursion excursion = new Excursion(brief, null);
-
-        String excursionKey = brief.getKey().toLowerCase();
-        ArrayList<File> routeAndPointNames = downloadAndSavePackage(getExcursionPackageDir(excursionKey), excursionDir);
-
-        try {
-            excursion.loadRoute();
-            excursion.loadTrackNames(routeAndPointNames);
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-            return null;
-        }
 
         if (downloadAndSavePackage(getAudioPackageDir(excursionKey, language), audioDir).size() == 0)
             return null;
 
         return excursion;
-    }
+    }*/
 
-    @Override
+    //@Override
     public IObservable<Integer> getProgressObservable() {
         return _innerProgress;
     }

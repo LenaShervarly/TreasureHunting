@@ -1,7 +1,6 @@
 import com.home.croaton.followme.audio.AudioPlaybackController;
 import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.IExcursion;
-import com.home.croaton.followme.domain.IExcursionBrief;
+import com.home.croaton.followme.domain.IGame;
 import com.home.croaton.followme.domain.Route;
 import com.home.croaton.followme.location.LocationHelper;
 import com.home.croaton.followme.math.Vector2;
@@ -71,7 +70,7 @@ public class PointDirectionTest {
         IExcursionBrief brief = Mockito.mock(IExcursionBrief.class);
         when(brief.getUseDirections()).thenReturn(true);
 
-        IExcursion excursion = Mockito.mock(IExcursion.class);
+        IGame excursion = Mockito.mock(IGame.class);
         when(excursion.getRoute()).thenReturn(route);
         when(excursion.getBrief()).thenReturn(brief);
 
@@ -101,7 +100,7 @@ public class PointDirectionTest {
         IExcursionBrief brief = Mockito.mock(IExcursionBrief.class);
         when(brief.getUseDirections()).thenReturn(true);
 
-        IExcursion excursion = Mockito.mock(IExcursion.class);
+        IGame excursion = Mockito.mock(IGame.class);
         when(excursion.getRoute()).thenReturn(route);
         when(excursion.getBrief()).thenReturn(brief);
 
