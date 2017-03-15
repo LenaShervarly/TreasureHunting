@@ -1,6 +1,7 @@
 package com.home.croaton.followme.domain;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import org.simpleframework.xml.Root;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,10 +74,8 @@ public class Game implements Parcelable, IGame {
 
 
     public void loadRoute()  {
-
         route = RouteSerializer.deserializeFromResource(context.getResources(), context.getResources().getIdentifier("tram7", "raw", context.getPackageName()));
         //route.generateDirections();
-
     }
 
     private void loadTrackNames(File pointNamesFile) throws FileNotFoundException{
@@ -85,25 +85,7 @@ public class Game implements Parcelable, IGame {
     }
 
     public void loadTrackNames(ArrayList<File> files) throws FileNotFoundException {
-        String pointNamesFile = "game" + POINT_NAMES_SUFFIX + XML_EXTENSION;
-
-        for(File maybePointNames : files)
-        {
-            if (maybePointNames.getName().equals(pointNamesFile))
-            {
-                FileInputStream stream = null;
-                try {
-                    stream = new FileInputStream(maybePointNames);
-                    trackNames =  new TrackNames(RouteSerializer.deserializeAudioPointNames(stream));
-                }
-                finally {
-                    IOUtils.closeQuietly(stream);
-                }
-
-                return;
-            }
-        }
-        throw new FileNotFoundException("Couldn't find file: " + pointNamesFile);
+        trackNames =  new TrackNames(RouteSerializer.deserializeAudioPointNamesFromResource(context.getResources(), context.getResources().getIdentifier("game" + POINT_NAMES_SUFFIX, "raw", context.getPackageName())));
     }
 
     @Override
@@ -151,7 +133,8 @@ public class Game implements Parcelable, IGame {
     public boolean audiosAreLoaded(Route route, Context context, String language) {
         for(String filename : route.getAudioFileNames())
         {
-            File file = new File(context.getResources().getResourceName(context.getResources().getIdentifier(filename, "raw", context.getPackageName()))+ MP3_EXTENSION);
+            Uri filePath = Uri.parse("android.resource://com.home.croaton.followme/raw/" + filename);
+            File file = new File(filePath.toString());
             if (!file.exists()) {
                 Log.d("Follow Me", "Couldn't find file " + file.getAbsolutePath());
                 return false;

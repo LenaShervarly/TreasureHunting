@@ -38,12 +38,12 @@ public class AudioService extends android.app.Service implements
 
     private static final String _serviceName = "Audio Service";
     private static final int notificationId = 1;
-    private static String _lastPlayedTrackName = "";
+    private static String _lastPlayedTrackName = null;
     private static volatile int _position;
     private static PlayerState _playerState;
 
     private volatile MediaPlayer _mediaPlayer;
-    private Queue<String> _uriQueue = new LinkedList<>();
+    private Queue<Uri> _uriQueue = new LinkedList<>();
     private final int _positionPollTime = 500;
     private int FullProgress = 100;
 
@@ -88,7 +88,8 @@ public class AudioService extends android.app.Service implements
                 RenewPlayer();
 
                 _uriQueue.clear();
-                _uriQueue.addAll(newTracks);
+                for(String eachTrack : newTracks)
+                    _uriQueue.offer(Uri.parse(eachTrack));
 
                 setPlayerListeners();
                 preparePlayerWithNextTrack();
@@ -231,9 +232,9 @@ public class AudioService extends android.app.Service implements
             if (!NextTrackExists())
                 return;
 
-            _lastPlayedTrackName = getFileName(_uriQueue.peek());
-            //_innerTrackName.notifyObservers(_lastPlayedTrackName);
-            _mediaPlayer.setDataSource(this, Uri.parse("android.resource://com.home.croaton.followme/raw/t7_01_welcome"));
+            _lastPlayedTrackName = getFileName(_uriQueue.peek().toString());
+            _innerTrackName.notifyObservers(_lastPlayedTrackName);
+            _mediaPlayer.setDataSource(this,_uriQueue.poll());
         } catch (Exception e)
         {
             Log.e(_serviceName, e.toString());

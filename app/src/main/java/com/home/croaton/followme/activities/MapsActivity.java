@@ -226,9 +226,6 @@ public class MapsActivity extends FragmentActivity {
             marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker, MapView mapView) {
-                    /*Intent intent = new Intent(MapsActivity.this, QuizzActivity.class);
-                    startActivity(intent);
-                    */
                     AudioPoint gamePoint = mAudioPlaybackController.getResourceToPlay(marker.getPosition());
                     ArrayList<String> trackNames = mDownloadManager.getTracksAtPoint(mCurrentExcursion.getRoute(), gamePoint);
 
@@ -239,6 +236,9 @@ public class MapsActivity extends FragmentActivity {
 
                     mAudioPlaybackController.startPlaying(MapsActivity.this, trackNames);
                     mLastActiveMarker = gamePoint.Number;
+
+                    Intent intent = new Intent(MapsActivity.this, QuizzActivity.class);
+                    startActivity(intent);
 
                     return true;
                 }

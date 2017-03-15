@@ -90,7 +90,7 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
             }
         };
         AudioService.TrackName.subscribe(trackNameListener);
-        trackNameListener.notify(AudioService.getLastTrackName());
+    //    trackNameListener.notify(AudioService.getLastTrackName());
     }
 
     @Override

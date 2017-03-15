@@ -68,8 +68,7 @@ public class ExcursionDownloadManager {
     public ArrayList<String> getTracksAtPoint(Route route, AudioPoint closestPoint) {
         ArrayList<String> fullNames = new ArrayList<>();
         for(String fileName : route.getAudiosForPoint(closestPoint))
-            fullNames.add(context.getResources().getResourceName(context.getResources().getIdentifier(fileName, "raw", context.getPackageName()))+ MP3_EXTENSION);
-            //fullNames.add(getAudioLocalDir(context)+ FOLDER_SEPARATOR+ fileName + MP3_EXTENSION);
+            fullNames.add("android.resource://com.home.croaton.followme/raw/" + fileName);
 
         return fullNames;
     }
