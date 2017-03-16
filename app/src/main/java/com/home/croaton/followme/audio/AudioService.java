@@ -38,12 +38,12 @@ public class AudioService extends android.app.Service implements
 
     private static final String _serviceName = "Audio Service";
     private static final int notificationId = 1;
-    private static String _lastPlayedTrackName = "";
+    private static String _lastPlayedTrackName = null;
     private static volatile int _position;
     private static PlayerState _playerState;
 
     private volatile MediaPlayer _mediaPlayer;
-    private Queue<String> _uriQueue = new LinkedList<>();
+    private Queue<Uri> _uriQueue = new LinkedList<>();
     private final int _positionPollTime = 500;
     private int FullProgress = 100;
 
@@ -88,7 +88,8 @@ public class AudioService extends android.app.Service implements
                 RenewPlayer();
 
                 _uriQueue.clear();
-                _uriQueue.addAll(newTracks);
+                for(String eachTrack : newTracks)
+                    _uriQueue.offer(Uri.parse(eachTrack));
 
                 setPlayerListeners();
                 preparePlayerWithNextTrack();
@@ -123,8 +124,8 @@ public class AudioService extends android.app.Service implements
                 break;
             case StartForeground:
                 String caption = intent.getStringExtra(TrackCaption);
-                Game excursion = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION);
-                setUpAsForeground(caption, excursion);
+                Game game = intent.getParcelableExtra(IntentNames.SELECTED_GAME);
+                setUpAsForeground(caption, game);
                 break;
         }
 
@@ -201,12 +202,12 @@ public class AudioService extends android.app.Service implements
 
     }
 
-    void setUpAsForeground(String text, Game excursion)
+    void setUpAsForeground(String text, Game game)
     {
         if (_notificationBuilder == null)
         {
             Intent notIntent = new Intent(this, MapsActivity.class);
-            notIntent.putExtra(IntentNames.SELECTED_EXCURSION, excursion);
+            notIntent.putExtra(IntentNames.SELECTED_GAME, game);
             notIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendInt = PendingIntent.getActivity(this, 0,
                     notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -231,9 +232,9 @@ public class AudioService extends android.app.Service implements
             if (!NextTrackExists())
                 return;
 
-            _lastPlayedTrackName = getFileName(_uriQueue.peek());
-            //_innerTrackName.notifyObservers(_lastPlayedTrackName);
-            _mediaPlayer.setDataSource(this, Uri.parse("android.resource://com.home.croaton.followme/raw/t7_01_welcome"));
+            _lastPlayedTrackName = getFileName(_uriQueue.peek().toString());
+            _innerTrackName.notifyObservers(_lastPlayedTrackName);
+            _mediaPlayer.setDataSource(this,_uriQueue.poll());
         } catch (Exception e)
         {
             Log.e(_serviceName, e.toString());
