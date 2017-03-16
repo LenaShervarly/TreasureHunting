@@ -40,4 +40,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="buy">Buy</string>
+    <string name="done">DONE :)</string>
+    <string name="question_and_answers">Question And Answers</string>
+    <string name="can_you_see_a_huge_brown_building_on_you_left">Can you see a huge brown building on you left?</string>
+    <string name="is_there_a_coffee_shop_on_your_right_corner">Is there a coffee shop on your right corner?</string>
 </resources>
