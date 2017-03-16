@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
@@ -57,6 +56,8 @@ public class MapsActivity extends FragmentActivity {
     private boolean mIsActivityPresentOnScreen;
     private GeoPoint mPreviousLocation = new GeoPoint(0,0);
     private GameFileManager mfileManager;
+    private ActivityFactory factory;
+    private int activityAudioPointNumber;
 
 
 
@@ -130,6 +131,9 @@ public class MapsActivity extends FragmentActivity {
             mMap.invalidate();
             mLastActiveMarker = audioPoint.Number;
         }
+        activityAudioPointNumber = audioPoint.Number;
+        Intent intent = callActivity(activityAudioPointNumber);
+        startActivity(intent);
     }
 
     private synchronized void startLocationTracking()
@@ -213,22 +217,34 @@ public class MapsActivity extends FragmentActivity {
                 @Override
                 public boolean onMarkerClick(Marker marker, MapView mapView) {
                     AudioPoint gamePoint = mAudioPlaybackController.getResourceToPlay(marker.getPosition());
+                    activityAudioPointNumber = gamePoint.Number;
+                    // System.out.println("Audio point number is:" + activityAudioPointNumber);
                     ArrayList<String> trackNames = mfileManager.getTracksAtPoint(mCurrentGame.getRoute(), gamePoint);
 
                     if (mLastActiveMarker != -1)
                         MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.game_point_big, mAudioPointMarkers.get(mLastActiveMarker));
+
                     MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.game_point_big_active, marker);
                     mapView.invalidate();
 
                     mAudioPlaybackController.startPlaying(MapsActivity.this, trackNames);
                     mLastActiveMarker = gamePoint.Number;
 
-                    Intent intent = new Intent(MapsActivity.this, QuizzActivity.class);
+                    Intent intent = callActivity(activityAudioPointNumber);
                     startActivity(intent);
 
                     return true;
                 }
             });
+    }
+
+    public Intent callActivity(int activityAudioPointNumber){
+        Intent intent = null;
+        factory = new ActivityFactory(activityAudioPointNumber);
+
+        mCurrentGame.getAudioPoints();
+        intent = factory.chooseActivity(this, activityAudioPointNumber);
+        return intent;
     }
 
     private void enableMyLocation() {
