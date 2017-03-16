@@ -83,7 +83,7 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
                 Intent startingIntent = new Intent(_context, AudioService.class);
                 startingIntent.putExtra(AudioService.Command, AudioServiceCommand.StartForeground);
                 startingIntent.putExtra(AudioService.TrackCaption, caption);
-                startingIntent.putExtra(IntentNames.SELECTED_EXCURSION, AudioPlayerUI.this.excursion);
+                startingIntent.putExtra(IntentNames.SELECTED_GAME, AudioPlayerUI.this.excursion);
 
 
                 _context.startService(startingIntent);

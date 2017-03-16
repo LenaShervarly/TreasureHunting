@@ -124,8 +124,8 @@ public class AudioService extends android.app.Service implements
                 break;
             case StartForeground:
                 String caption = intent.getStringExtra(TrackCaption);
-                Game excursion = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION);
-                setUpAsForeground(caption, excursion);
+                Game game = intent.getParcelableExtra(IntentNames.SELECTED_GAME);
+                setUpAsForeground(caption, game);
                 break;
         }
 
@@ -202,12 +202,12 @@ public class AudioService extends android.app.Service implements
 
     }
 
-    void setUpAsForeground(String text, Game excursion)
+    void setUpAsForeground(String text, Game game)
     {
         if (_notificationBuilder == null)
         {
             Intent notIntent = new Intent(this, MapsActivity.class);
-            notIntent.putExtra(IntentNames.SELECTED_EXCURSION, excursion);
+            notIntent.putExtra(IntentNames.SELECTED_GAME, game);
             notIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendInt = PendingIntent.getActivity(this, 0,
                     notIntent, PendingIntent.FLAG_UPDATE_CURRENT);

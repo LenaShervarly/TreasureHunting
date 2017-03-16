@@ -1,4 +1,4 @@
-package com.home.croaton.followme.download;
+package com.home.croaton.followme.domain;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-public class ExcursionDownloadManager {
+public class GameFileManager {
 
     private static final String LOCAL_EXCURSIONS_DIR = "excursions";
     private static final CharSequence FOLDER_SEPARATOR = "/";
@@ -28,7 +28,7 @@ public class ExcursionDownloadManager {
     private final Context context;
     private String language;
 
-    public ExcursionDownloadManager(Context context, String currentLanguage) {
+    public GameFileManager(Context context, String currentLanguage) {
         this.language = currentLanguage;
         this.context = context;
     }

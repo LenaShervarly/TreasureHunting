@@ -4,21 +4,16 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.text.TextUtils;
 import android.util.Log;
 
 //import com.home.croaton.followme.R;
-import com.home.croaton.followme.download.ExcursionDownloadManager;
 
-import org.apache.commons.io.IOUtils;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +53,7 @@ public class Game implements Parcelable, IGame {
     public Game(Context context) {
         this.context = context;
         loadRoute();
-        tryLoad(context, "en", new ExcursionDownloadManager(context, "en"));
+        tryLoad(context, "en", new GameFileManager(context, "en"));
     }
 
     protected Game(Parcel in) {
@@ -109,7 +104,7 @@ public class Game implements Parcelable, IGame {
     }
 
 
-    public boolean tryLoad(Context context, String language, ExcursionDownloadManager downloadManager) {
+    public boolean tryLoad(Context context, String language, GameFileManager gameFileManager) {
 
         if (route == null) {
                 loadRoute();
@@ -117,7 +112,7 @@ public class Game implements Parcelable, IGame {
 
         if (trackNames == null) {
             try {
-                loadTrackNames(downloadManager.getPointNamesFile());
+                loadTrackNames(gameFileManager.getPointNamesFile());
             } catch (FileNotFoundException ex) {
                 return false;
             }
