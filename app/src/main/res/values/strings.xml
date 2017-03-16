@@ -16,7 +16,7 @@
     <string name="settings_language_caption">Language</string>
 
     <string name="game_track_notification_caption">Now at point:</string>
-    <string name="audio_choose_tack">Click at point to choose audio</string>
+    <string name="audio_choose_tack">Click on a button to play audio</string>
 
     <string name="cost_free">Free</string>
 

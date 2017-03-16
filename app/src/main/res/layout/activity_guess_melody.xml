@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.home.croaton.followme.activities.GuessMelodyActivity">
+
+
+        <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.85"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:elevation="10dp"
+        android:background="@color/background_material_light"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSongName"
+            android:paddingLeft="18dp"
+            android:maxHeight="50dp"
+            android:text="@string/audio_choose_tack"/>
+
+        <SeekBar
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/seekBar"
+            android:max="100"
+            android:minHeight="6dp"
+            android:maxHeight="6dp"/>
+
+            <android.support.design.widget.FloatingActionButton
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/button_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:elevation="2dp"
+                android:clickable="true"
+                android:src="@android:drawable/ic_media_play"
+                app:backgroundTint="@color/orange_main"
+                app:layout_anchor="@id/viewA"
+                app:layout_anchorGravity="bottom|right|end"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="0dp" />
+        </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
