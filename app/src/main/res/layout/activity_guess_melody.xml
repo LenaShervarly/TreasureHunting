@@ -47,7 +47,7 @@
                 android:clickable="true"
                 android:src="@android:drawable/ic_media_play"
                 app:backgroundTint="@color/orange_main"
-                app:layout_anchor="@id/viewA"
+
                 app:layout_anchorGravity="bottom|right|end"
                 tools:layout_editor_absoluteY="0dp"
                 tools:layout_editor_absoluteX="0dp" />
