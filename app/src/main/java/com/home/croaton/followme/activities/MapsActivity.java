@@ -40,7 +40,7 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity {
+public class MapsActivity extends FragmentActivity implements  Iactivity{
 
     public static final String WAKE_LOCK_NAME = "MyWakeLock";
 
@@ -223,7 +223,7 @@ public class MapsActivity extends FragmentActivity {
                     mAudioPlaybackController.startPlaying(MapsActivity.this, trackNames);
                     mLastActiveMarker = gamePoint.Number;
 
-                    Intent intent = new Intent(MapsActivity.this, QuizzActivity.class);
+                    Intent intent = new Intent(MapsActivity.this, GuessMelodyActivity.class);
                     startActivity(intent);
 
                     return true;
