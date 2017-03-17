@@ -18,7 +18,13 @@ public class ActivityFactory {
         switch (audioPointNumber) {
             case 0:  intent = new Intent(context, QuizzActivity.class);
                 break;
-            case 1:  intent = new Intent(context, QuizzActivity.class);
+            case 1:  intent = new Intent(context, GuessMelodyActivity.class);
+                break;
+            case 2:  intent = new Intent(context, QuizzActivity.class);
+                break;
+            case 3:  intent = new Intent(context, GuessMelodyActivity.class);
+                break;
+            case 4:  intent = new Intent(context, QuizzActivity.class);
                 break;
             default: intent = new Intent(context, QuizzActivity.class);
                 break;

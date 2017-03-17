@@ -1,5 +1,7 @@
 package com.home.croaton.followme.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +11,7 @@ import android.widget.Toast;
 import com.home.croaton.followme.R;
 
 public class QuizzActivity extends AppCompatActivity {
-
+    private int points = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class QuizzActivity extends AppCompatActivity {
                 if (checked)
 
                     Toast.makeText(this, "Right answer", Toast.LENGTH_SHORT).show();
+                    points += 5;
 
                 break;
             case R.id.button2:
@@ -44,9 +47,17 @@ public class QuizzActivity extends AppCompatActivity {
                 if (checked)
 
                     Toast.makeText(this, "Right answer", Toast.LENGTH_SHORT).show();
+                    points += 5;
 
                 break;
         }
 
+    }
+
+    public void onDoneButtonClicked(View view){
+        Intent score = new Intent();
+        score.putExtra("score", "Well done! You've got " + points +" points");
+        setResult(Activity.RESULT_OK, score);
+        finish();
     }
 }

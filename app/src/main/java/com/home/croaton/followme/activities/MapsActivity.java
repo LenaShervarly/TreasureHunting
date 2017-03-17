@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.audio.AudioPlaybackController;
@@ -58,6 +59,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
     private GameFileManager mfileManager;
     private ActivityFactory factory;
     private int activityAudioPointNumber;
+    static final int STORE_SCORES = 0;
 
 
 
@@ -232,7 +234,8 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
 
 
                     Intent intent = callActivity(activityAudioPointNumber);
-                    startActivity(intent);
+                   // startActivity(intent);
+                    startActivityForResult(intent, STORE_SCORES);
 
                     return true;
                 }
@@ -246,6 +249,15 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         mCurrentGame.getAudioPoints();
         intent = factory.chooseActivity(this, activityAudioPointNumber);
         return intent;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent score) {
+        if (requestCode == STORE_SCORES) {
+            if (resultCode == RESULT_OK) {
+                Toast t = Toast.makeText(this, score.getStringExtra("score"), Toast.LENGTH_SHORT);
+                t.show();
+            }
+        }
     }
 
     private void enableMyLocation() {
@@ -343,4 +355,5 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
 
         return super.onKeyDown(keyCode, event);
     }
+
 }
