@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.activities.IntentNames;
 import com.home.croaton.followme.activities.MapsActivity;
-import com.home.croaton.followme.domain.Excursion;
+import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.instrumentation.IObservable;
 import com.home.croaton.followme.instrumentation.MyObservable;
 
@@ -37,12 +38,12 @@ public class AudioService extends android.app.Service implements
 
     private static final String _serviceName = "Audio Service";
     private static final int notificationId = 1;
-    private static String _lastPlayedTrackName = "";
+    private static String _lastPlayedTrackName = null;
     private static volatile int _position;
     private static PlayerState _playerState;
 
     private volatile MediaPlayer _mediaPlayer;
-    private Queue<String> _uriQueue = new LinkedList<>();
+    private Queue<Uri> _uriQueue = new LinkedList<>();
     private final int _positionPollTime = 500;
     private int FullProgress = 100;
 
@@ -87,7 +88,8 @@ public class AudioService extends android.app.Service implements
                 RenewPlayer();
 
                 _uriQueue.clear();
-                _uriQueue.addAll(newTracks);
+                for(String eachTrack : newTracks)
+                    _uriQueue.offer(Uri.parse(eachTrack));
 
                 setPlayerListeners();
                 preparePlayerWithNextTrack();
@@ -122,8 +124,8 @@ public class AudioService extends android.app.Service implements
                 break;
             case StartForeground:
                 String caption = intent.getStringExtra(TrackCaption);
-                Excursion excursion = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION);
-                setUpAsForeground(caption, excursion);
+                Game game = intent.getParcelableExtra(IntentNames.SELECTED_GAME);
+                setUpAsForeground(caption, game);
                 break;
         }
 
@@ -200,12 +202,12 @@ public class AudioService extends android.app.Service implements
 
     }
 
-    void setUpAsForeground(String text, Excursion excursion)
+    void setUpAsForeground(String text, Game game)
     {
         if (_notificationBuilder == null)
         {
             Intent notIntent = new Intent(this, MapsActivity.class);
-            notIntent.putExtra(IntentNames.SELECTED_EXCURSION, excursion);
+            notIntent.putExtra(IntentNames.SELECTED_GAME, game);
             notIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendInt = PendingIntent.getActivity(this, 0,
                     notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -213,7 +215,7 @@ public class AudioService extends android.app.Service implements
             _notificationBuilder = new NotificationCompat.Builder(this)
                     .setContentIntent(pendInt)
                     .setOngoing(true)
-                    .setContentTitle(getString(R.string.audio_track_notification_caption))
+                    .setContentTitle(getString(R.string.game_track_notification_caption))
                     .setSmallIcon(R.drawable.notification_icon_small);
         }
         _notificationBuilder.setContentText(text);
@@ -230,9 +232,9 @@ public class AudioService extends android.app.Service implements
             if (!NextTrackExists())
                 return;
 
-            _lastPlayedTrackName = getFileName(_uriQueue.peek());
+            _lastPlayedTrackName = getFileName(_uriQueue.peek().toString());
             _innerTrackName.notifyObservers(_lastPlayedTrackName);
-            _mediaPlayer.setDataSource(_uriQueue.poll());
+            _mediaPlayer.setDataSource(this,_uriQueue.poll());
         } catch (Exception e)
         {
             Log.e(_serviceName, e.toString());
@@ -248,13 +250,13 @@ public class AudioService extends android.app.Service implements
     }
 
     private boolean NextTrackExists() {
-        while(!new File(_uriQueue.peek()).exists()) {
+      /*  while(!new File(_uriQueue.peek()).exists()) {
             CharSequence text = getResources().getString(R.string.file_not_found);
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
             _uriQueue.poll();
             if (_uriQueue.size() == 0)
                 return false;
-        }
+        }*/
 
         return true;
     }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<names>
+	<audioFile name="t7_01_welcome">
+		<en>Hello</en>
+		<ru>Здравствуйте!</ru>
+	</audioFile>
+  <audioFile name="t7_02_kunstragarden">
+		<en>Type in smth</en>
+		<ru>Кунстрегорден</ru>
+	</audioFile>
+  <audioFile name="t7_03_hist">
+		<en>Photo</en>
+		<ru>История Юргордена</ru>
+	</audioFile>
+  <audioFile name="t7_04_bridge">
+		<en>Photo</en>
+		<ru>Мост Юргордсброн</ru>
+	</audioFile>
+  <audioFile name="t7_05_museums">
+		<en>Quizz</en>
+		<ru>Музеи на Юргордене</ru>
+	</audioFile>
+</names>

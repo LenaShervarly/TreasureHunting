@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.home.croaton.followme">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <application
+        android:name=".instrumentation.App"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:versionCode="6"
+        android:versionName="1.05">
+        <service
+            android:name=".audio.AudioService"
+            android:stopWithTask="false" />
+        <service
+            android:name=".location.LocationService"
+            android:stopWithTask="false" />
+
+        <meta-data
+            android:name="MAPBOX_MAPID"
+            android:value="mapbox.emerald" />
+        <meta-data
+            android:name="ACCESS_TOKEN"
+            android:value="pk.eyJ1IjoiY3JvYXRvbiIsImEiOiJjaW0yajFpZ20wMG51dXhtNGtkcW5temd0In0.ZdfAVCZA5_f4YfB4brpJ1A" />
+
+        <activity
+            android:name=".activities.MapsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+<<<<<<< HEAD
+            android:name="com.home.croaton.followme.activities.ExcursionOverviewActivity"
+=======
+            android:name=".activities.GameOverviewActivity"
+>>>>>>> 39d9cbf553aac3878c84f4eeac5dcd97b73cc77b
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+<<<<<<< HEAD
+
+=======
+        <activity android:name=".activities.QuizzActivity" />
+        <activity android:name=".activities.GuessMelodyActivity"></activity>
+>>>>>>> 39d9cbf553aac3878c84f4eeac5dcd97b73cc77b
+    </application>
+
+</manifest>

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.IExcursion;
+import com.home.croaton.followme.domain.IGame;
 import com.home.croaton.followme.location.LocationHelper;
 import com.home.croaton.followme.math.Vector2;
 
@@ -20,14 +20,19 @@ import java.util.Set;
 // ToDo: split excursion scenarios and logic in different classes.
 public class AudioPlaybackController {
     private static final CharSequence FOLDER_SEPARATOR = "/";
-    private IExcursion excursion;
+    private IGame excursion;
     private String language;
     private Set<AudioPoint> banned;
+    private ArrayList<String> audioToPlay;
 
-    public AudioPlaybackController(String language, IExcursion excursion) {
+    public AudioPlaybackController(String language, IGame excursion) {
         this.excursion = excursion;
         this.language = language;
         banned = new HashSet<>();
+    }
+
+    public AudioPlaybackController(ArrayList<String> audioToPlay){
+        this.audioToPlay = audioToPlay;
     }
 
     public static void stopAnyPlayback(Context context) {
@@ -59,13 +64,8 @@ public class AudioPlaybackController {
             float distance = LocationHelper.GetDistance(position, point.Position);
             if (distance < min && distance <= point.Radius)
             {
-                if ((!excursion.getBrief().getUseDirections() || point.Direction.dot(direction) >= 0)) {
                     min = distance;
                     closestPoint = point;
-                }
-                else if (point.Direction.dot(direction) < 0) {
-                    banned.add(point);
-                }
             }
         }
 

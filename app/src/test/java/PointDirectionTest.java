@@ -1,7 +1,6 @@
 import com.home.croaton.followme.audio.AudioPlaybackController;
 import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.IExcursion;
-import com.home.croaton.followme.domain.IExcursionBrief;
+import com.home.croaton.followme.domain.IGame;
 import com.home.croaton.followme.domain.Route;
 import com.home.croaton.followme.location.LocationHelper;
 import com.home.croaton.followme.math.Vector2;
@@ -68,12 +67,9 @@ public class PointDirectionTest {
         route.generateDirections();
         GeoPoint currentLocation = new GeoPoint(3.1, 3.1);
 
-        IExcursionBrief brief = Mockito.mock(IExcursionBrief.class);
-        when(brief.getUseDirections()).thenReturn(true);
 
-        IExcursion excursion = Mockito.mock(IExcursion.class);
-        when(excursion.getRoute()).thenReturn(route);
-        when(excursion.getBrief()).thenReturn(brief);
+        IGame excursion = Mockito.mock(IGame.class);
+
 
         AudioPlaybackController controller = new AudioPlaybackController("en", excursion);
         PowerMockito.mockStatic(LocationHelper.class);
@@ -98,12 +94,8 @@ public class PointDirectionTest {
         route.generateDirections();
         GeoPoint currentLocation = new GeoPoint(3.1, 3.1);
 
-        IExcursionBrief brief = Mockito.mock(IExcursionBrief.class);
-        when(brief.getUseDirections()).thenReturn(true);
+         IGame excursion = Mockito.mock(IGame.class);
 
-        IExcursion excursion = Mockito.mock(IExcursion.class);
-        when(excursion.getRoute()).thenReturn(route);
-        when(excursion.getBrief()).thenReturn(brief);
 
         AudioPlaybackController controller = new AudioPlaybackController("en", excursion);
         PowerMockito.mockStatic(LocationHelper.class);

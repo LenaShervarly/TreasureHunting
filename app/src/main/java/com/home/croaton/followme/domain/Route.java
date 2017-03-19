@@ -3,7 +3,6 @@ package com.home.croaton.followme.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.home.croaton.followme.maps.Circle;
 import com.home.croaton.followme.math.Vector2;
 
 import org.osmdroid.bonuspack.overlays.Marker;
@@ -82,7 +81,7 @@ public class Route implements Parcelable {
 
     public ArrayList<AudioPoint> audioPoints()
     {
-        return (ArrayList<AudioPoint>)_audioPoints.clone();
+        return (ArrayList<AudioPoint>) _audioPoints.clone();
     }
 
     public void markAudioPoint(int pointNumber, boolean passed)
@@ -108,11 +107,11 @@ public class Route implements Parcelable {
         _pointTrackMapper.put(point.Number, audioFilesIds);
     }
 
-    public void updateAudioPoints(ArrayList<Circle> circles, ArrayList<Marker> pointMarkers)
+    public void updateAudioPoints(ArrayList<Marker> pointMarkers)
     {
         for(int i = 0; i < _audioPoints.size(); i++)
         {
-            _audioPoints.get(i).Radius = circles.get(i).getRadius();
+            //_audioPoints.get(i).Radius = circles.get(i).getRadius();
             _audioPoints.get(i).Position = pointMarkers.get(i).getPosition();
         }
     }

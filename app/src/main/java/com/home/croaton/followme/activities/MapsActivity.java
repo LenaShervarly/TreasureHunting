@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -17,25 +16,22 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.audio.AudioPlaybackController;
 import com.home.croaton.followme.audio.AudioPlayerUI;
 import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.Excursion;
+import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.domain.Point;
-import com.home.croaton.followme.download.ExcursionDownloadManager;
+import com.home.croaton.followme.domain.GameFileManager;
 import com.home.croaton.followme.instrumentation.IObserver;
 import com.home.croaton.followme.location.LocationService;
-import com.home.croaton.followme.location.TrackEmulator;
 import com.home.croaton.followme.location.TrackerCommand;
-import com.home.croaton.followme.maps.Circle;
 import com.home.croaton.followme.maps.MapHelper;
-import com.home.croaton.followme.maps.MapOnClickListener;
 import com.home.croaton.followme.math.Vector2;
 import com.home.croaton.followme.security.PermissionAndConnectionChecker;
 
-import org.osmdroid.bonuspack.overlays.MapEventsOverlay;
 import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
@@ -43,9 +39,8 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
-public class MapsActivity extends FragmentActivity {
+public class MapsActivity extends FragmentActivity implements  Iactivity{
 
     public static final String WAKE_LOCK_NAME = "MyWakeLock";
 
@@ -54,32 +49,32 @@ public class MapsActivity extends FragmentActivity {
     private PowerManager.WakeLock mWakeLock;
     private AudioPlayerUI mAudioPlayerUi;
     private ArrayList<Marker> mAudioPointMarkers = new ArrayList<>();
-    private ArrayList<Circle> mCircles = new ArrayList<>();
     private String mLanguage;
     private IObserver<GeoPoint> mLocationListener;
-    private Excursion mCurrentExcursion;
+    private Game mCurrentGame;
     private int mLastActiveMarker = -1;
     private volatile MyLocationNewOverlay mLocationOverlay;
     private boolean mIsActivityPresentOnScreen;
     private GeoPoint mPreviousLocation = new GeoPoint(0,0);
-    private ExcursionDownloadManager mDownloadManager;
+    private GameFileManager mfileManager;
+    private ActivityFactory factory;
+    private int activityAudioPointNumber;
+    static final int STORE_SCORES = 0;
 
-    private boolean mIsDebug;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mIsDebug = (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
-
         PowerManager mgr = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKE_LOCK_NAME);
         mWakeLock.acquire();
 
-        mCurrentExcursion = getIntent().getParcelableExtra(IntentNames.SELECTED_EXCURSION);
+        mCurrentGame = getIntent().getParcelableExtra(IntentNames.SELECTED_GAME);
 
         loadState(savedInstanceState);
-        //mDownloadManager = new ExcursionDownloadManager(this, mCurrentExcursion.getBrief(), mLanguage);
+        mfileManager = new GameFileManager(this, mLanguage);
 
         setContentView(R.layout.activity_maps2);
         setUpMap();
@@ -89,14 +84,15 @@ public class MapsActivity extends FragmentActivity {
         PermissionAndConnectionChecker.checkForPermissions(this, new String[]
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
 
-        mAudioPlayerUi = new AudioPlayerUI(this, mCurrentExcursion);
+        mAudioPlayerUi = new AudioPlayerUI(this, mCurrentGame);
+
     }
 
     private void loadState(Bundle savedInstanceState) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        mLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "ru");
+        mLanguage = "en";
 
-        mAudioPlaybackController = new AudioPlaybackController(mLanguage, mCurrentExcursion);
+        mAudioPlaybackController = new AudioPlaybackController(mLanguage, mCurrentGame);
 
         if (savedInstanceState == null)
             return;
@@ -104,7 +100,7 @@ public class MapsActivity extends FragmentActivity {
         boolean[] passed = savedInstanceState.getBooleanArray(getString(R.string.audio_point_state));
         if (passed != null) {
             int i = 0;
-            for (AudioPoint p : mCurrentExcursion.getAudioPoints())
+            for (AudioPoint p : mCurrentGame.getAudioPoints())
                 mAudioPlaybackController.markAudioPoint(p.Number, passed[i++]);
         }
         mLastActiveMarker = savedInstanceState.getInt(getString(R.string.last_active_marker));
@@ -125,18 +121,21 @@ public class MapsActivity extends FragmentActivity {
         if (audioPoint == null)
             return;
 
-        ArrayList<String> trackNames = mDownloadManager.getTracksAtPoint(mCurrentExcursion.getRoute(), audioPoint);
+        ArrayList<String> trackNames = mfileManager.getTracksAtPoint(mCurrentGame.getRoute(), audioPoint);
 
         mAudioPlaybackController.startPlaying(this, trackNames);
         mAudioPlaybackController.markAudioPoint(audioPoint.Number, true);
 
         if (mMap != null) {
             if (mLastActiveMarker != -1)
-                MapHelper.setMarkerIconFromResource(this, R.drawable.audio_point_big, mAudioPointMarkers.get(mLastActiveMarker));
-            MapHelper.setMarkerIconFromResource(this, R.drawable.audio_point_big_active, mAudioPointMarkers.get(audioPoint.Number));
+                MapHelper.setMarkerIconFromResource(this, R.drawable.game_point_big, mAudioPointMarkers.get(mLastActiveMarker));
+            MapHelper.setMarkerIconFromResource(this, R.drawable.game_point_big_active, mAudioPointMarkers.get(audioPoint.Number));
             mMap.invalidate();
             mLastActiveMarker = audioPoint.Number;
         }
+        activityAudioPointNumber = audioPoint.Number;
+        Intent intent = callActivity(activityAudioPointNumber);
+        startActivity(intent);
     }
 
     private synchronized void startLocationTracking()
@@ -207,57 +206,58 @@ public class MapsActivity extends FragmentActivity {
                 == PackageManager.PERMISSION_GRANTED)
             enableMyLocation();
 
-       List<Point> routePoints = mCurrentExcursion.getGeoPoints();
+       List<Point> routePoints = mCurrentGame.getGeoPoints();
         MapHelper.drawRoute(this, mMap, routePoints);
         MapHelper.focusCameraOnPoint(mMap, mAudioPlaybackController.getFirstNotDoneAudioPoint());
         MapHelper.setStartRouteIcon(this, mMap, routePoints.get(0).Position);
         MapHelper.setEndRouteIcon(this, mMap, routePoints.get(routePoints.size() - 1).Position);
-        MapHelper.drawAudioPoints(this, mMap, mAudioPlaybackController, mCurrentExcursion, mAudioPointMarkers, mCircles);
+        MapHelper.drawAudioPoints(this, mMap, mAudioPlaybackController, mCurrentGame, mAudioPointMarkers);
 
-        /* if (mIsDebug && mCurrentExcursion.getBrief().getUseDirections())
-            MapHelper.drawDirections(this, mMap, mCurrentExcursion.getRoute().audioPoints());
 
-        if (mIsDebug) {
-            mMap.getOverlays().add(new MapEventsOverlay(this, new MapOnClickListener(new Callable<Void>() {
-                @Override
-                public Void call() throws Exception {
-                    mMap.invalidate();
-                    return null;
-                }
-            }, mCircles)));
-        } */
-        // Map click - forwarded as location
-//        mMap.getOverlays().add(new MapEventsOverlay(this, new MapEventsReceiver() {
-//            @Override
-//            public boolean singleTapConfirmedHelper(GeoPoint p) {
-//                locationChanged(p);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean longPressHelper(GeoPoint p) {
-//                return false;
-//            }
-//        }));
-
-        /*for(Marker marker : mAudioPointMarkers)
+        for(Marker marker : mAudioPointMarkers)
             marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker, MapView mapView) {
-                    AudioPoint audioPoint = mAudioPlaybackController.getResourceToPlay(marker.getPosition());
-                    ArrayList<String> trackNames = mDownloadManager.getTracksAtPoint(mCurrentExcursion.getRoute(), audioPoint);
+                    AudioPoint gamePoint = mAudioPlaybackController.getResourceToPlay(marker.getPosition());
+                    activityAudioPointNumber = gamePoint.Number;
+                    // System.out.println("Audio point number is:" + activityAudioPointNumber);
+                    ArrayList<String> trackNames = mfileManager.getTracksAtPoint(mCurrentGame.getRoute(), gamePoint);
 
                     if (mLastActiveMarker != -1)
-                        MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.audio_point_big, mAudioPointMarkers.get(mLastActiveMarker));
-                    MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.audio_point_big_active, marker);
+                        MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.game_point_big, mAudioPointMarkers.get(mLastActiveMarker));
+
+                    MapHelper.setMarkerIconFromResource(MapsActivity.this, R.drawable.game_point_big_active, marker);
                     mapView.invalidate();
 
                     mAudioPlaybackController.startPlaying(MapsActivity.this, trackNames);
-                    mLastActiveMarker = audioPoint.Number;
+                    mLastActiveMarker = gamePoint.Number;
+
+
+                    Intent intent = callActivity(activityAudioPointNumber);
+                   // startActivity(intent);
+                    startActivityForResult(intent, STORE_SCORES);
 
                     return true;
                 }
-            }); */
+            });
+    }
+
+    public Intent callActivity(int activityAudioPointNumber){
+        Intent intent = null;
+        factory = new ActivityFactory(activityAudioPointNumber);
+
+        mCurrentGame.getAudioPoints();
+        intent = factory.chooseActivity(this, activityAudioPointNumber);
+        return intent;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent score) {
+        if (requestCode == STORE_SCORES) {
+            if (resultCode == RESULT_OK) {
+                Toast t = Toast.makeText(this, score.getStringExtra("score"), Toast.LENGTH_SHORT);
+                t.show();
+            }
+        }
     }
 
     private void enableMyLocation() {
@@ -317,11 +317,8 @@ public class MapsActivity extends FragmentActivity {
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
         savedInstanceState.putBooleanArray(getString(R.string.audio_point_state), mAudioPlaybackController.getDoneArray());
-        savedInstanceState.putParcelable(IntentNames.SELECTED_EXCURSION_BRIEF, mCurrentExcursion);
+        savedInstanceState.putParcelable(IntentNames.SELECTED_GAME_BRIEF, mCurrentGame);
         savedInstanceState.putInt(getString(R.string.last_active_marker), mLastActiveMarker);
-
-        if (mIsDebug)
-            mDownloadManager.specialSaveRouteToDisc(mCircles, mAudioPointMarkers, mCurrentExcursion.getRoute());
 
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -335,15 +332,6 @@ public class MapsActivity extends FragmentActivity {
             mLocationOverlay.enableMyLocation();
     }
 
-    @Override
-    protected void onStop()
-    {
-        if (mWakeLock.isHeld())
-            mWakeLock.release();
-
-        super.onStop();
-        TrackEmulator.stop();
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
@@ -367,4 +355,5 @@ public class MapsActivity extends FragmentActivity {
 
         return super.onKeyDown(keyCode, event);
     }
+
 }
