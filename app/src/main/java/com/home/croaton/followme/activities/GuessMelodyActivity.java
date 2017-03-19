@@ -3,6 +3,7 @@ package com.home.croaton.followme.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
         textView.setText("Guess a melody");
 
         audioToPlay = new ArrayList<>();
-        audioToPlay.add("android.resource://com.home.croaton.followme/raw/t7_05_museums");
+        audioToPlay.add("android.resource://com.home.croaton.followme/raw/abba_mamma_mia");
 
         mAudioPlaybackController = new AudioPlaybackController(audioToPlay);
         mAudioPlaybackController.startPlaying(this, audioToPlay);
@@ -47,20 +48,21 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
 
     public void onTryingAnswer(View view) {
         Button button = (Button)view;
+        //if(button.isActivated())
+            button.setBackgroundColor(getResources().getColor(R.color.orange_main));
         String buttonText = button.getText().toString();
-        String answer = "smth is wrong";
+        String answer = "You've chosen " + buttonText;
 
         switch (buttonText) {
-            case "Mamma Mia" : answer = "Right answer";
-                points = 5;
+            case "Mamma Mia" : points = 5;
                 break;
-            case "I Am Just a Girl" : answer = "Wrong answer";
+            case "I Am Just a Girl" : points = 0;
                 break;
-            case "Dancing Queen" : answer = "Wrong answer";
+            case "Dancing Queen" : points = 0;
                 break;
-            case "Happy New Year" : answer = "Wrong answer";
+            case "Happy New Year" : points = 0;
                 break;
-            default : answer = "Wrong answer";
+            default : answer += "Please chose an answer";
                 break;
         }
         Toast.makeText(this, answer, Toast.LENGTH_SHORT).show();
@@ -68,8 +70,12 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
 
     public void onDoneButtonClicked(View view){
         Intent score = new Intent();
-        score.putExtra("score", "Well done! You've got " + points +" points");
+        if(points > 0)
+            score.putExtra("score", "Well done! You've got " + points +" points");
+        else
+            score.putExtra("score", "Nice try! Unfortunately you haven't got point for this round");
         setResult(Activity.RESULT_OK, score);
         finish();
+       mAudioPlaybackController.stopAnyPlayback(this);
     }
 }

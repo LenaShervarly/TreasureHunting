@@ -61,23 +61,25 @@
 	
 	<audioPoints>
 		<audioPoint number="0" position="59.33277,18.07126" radius="20">
-			<audio id="t7_01_welcome"/>
+			<audio id="harp_1"/>
 		</audioPoint>
-		<audioPoint number="1" position="59.33244,18.07757" radius="20">
-			<audio id="t7_03_hist"/>
+		<audioPoint number="1" position="59.333,18.07353" radius="20">
+			<audio id="harp_2"/>
 		</audioPoint>
-		<audioPoint number="2" position="59.33148,18.08558" radius="20">
-			<audio id="t7_04_bridge"/>
+		<audioPoint number="2" position="59.33244,18.07757" radius="20">
+			<audio id="harp_2"/>
 		</audioPoint>
-		<audioPoint number="3" position="59.33078,18.09398" radius="20">
-			<audio id="t7_05_museums"/>
+		<audioPoint number="3" position="59.33148,18.08558" radius="20">
+			<audio id="congas"/>
 		</audioPoint>
-		<audioPoint number="4" position="59.32667,18.09612" radius="20">
-			<audio id="t7_06_lie_abba"/>
+		<audioPoint number="4" position="59.33078,18.09398" radius="20">
+			<audio id="harp_3"/>
 		</audioPoint>
-		<audioPoint number="5" position="59.333,18.07353" radius="20">
-			<audio id="t7_02_kunstragarden"/>
+		<audioPoint number="5" position="59.32667,18.09612" radius="20">
+			<audio id="harp_1"/>
 		</audioPoint>
+
+
 			
 	</audioPoints>
 </route>

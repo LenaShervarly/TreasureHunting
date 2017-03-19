@@ -84,7 +84,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         PermissionAndConnectionChecker.checkForPermissions(this, new String[]
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
 
-        mAudioPlayerUi = new AudioPlayerUI(this, mCurrentGame);
+        //mAudioPlayerUi = new AudioPlayerUI(this, mCurrentGame);
 
     }
 
@@ -232,6 +232,11 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
                     mAudioPlaybackController.startPlaying(MapsActivity.this, trackNames);
                     mLastActiveMarker = gamePoint.Number;
 
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
                     Intent intent = callActivity(activityAudioPointNumber);
                    // startActivity(intent);

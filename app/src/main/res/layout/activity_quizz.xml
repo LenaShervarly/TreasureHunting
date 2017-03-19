@@ -16,6 +16,7 @@
         android:id="@+id/welcome"
         android:text="@string/question_and_answers"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="30sp"
         android:layout_alignParentTop="true"
@@ -42,8 +43,7 @@
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="@string/yes"
-            android:textSize="16sp"
-            android:textAppearance="@string/common_google_play_services_enable_text"/>
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <RadioButton
             android:id="@+id/button2"
@@ -61,7 +61,8 @@
         android:id="@+id/Question2"
         android:text="@string/is_there_a_coffee_shop_on_your_right_corner"
         android:layout_below="@id/group1"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
