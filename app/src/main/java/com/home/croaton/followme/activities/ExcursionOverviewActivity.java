@@ -19,7 +19,6 @@ import android.widget.TextView;
 
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.domain.Game;
-import com.home.croaton.followme.download.ExcursionDownloadManager;
 import com.home.croaton.followme.instrumentation.ConnectionHelper;
 import com.home.croaton.followme.security.PermissionAndConnectionChecker;
 
@@ -30,20 +29,17 @@ public class ExcursionOverviewActivity extends AppCompatActivity  {
     private Game excursion;
     private String currentLanguage;
    // private FloatingActionButton openButton;
-    private ExcursionDownloadManager downloadManager;
     private TextView title;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_excursion_overview);
-
+        setContentView(R.layout.activity_game_overview);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
 
-        //downloadManager = new ExcursionDownloadManager(this, excursionBrief, currentLanguage);
         excursion = new Game(this);
 
         PermissionAndConnectionChecker.checkForPermissions(ExcursionOverviewActivity.this, new String[]

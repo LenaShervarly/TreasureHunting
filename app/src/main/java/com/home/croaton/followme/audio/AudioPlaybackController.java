@@ -23,11 +23,16 @@ public class AudioPlaybackController {
     private IGame excursion;
     private String language;
     private Set<AudioPoint> banned;
+    private ArrayList<String> audioToPlay;
 
     public AudioPlaybackController(String language, IGame excursion) {
         this.excursion = excursion;
         this.language = language;
         banned = new HashSet<>();
+    }
+
+    public AudioPlaybackController(ArrayList<String> audioToPlay){
+        this.audioToPlay = audioToPlay;
     }
 
     public static void stopAnyPlayback(Context context) {
