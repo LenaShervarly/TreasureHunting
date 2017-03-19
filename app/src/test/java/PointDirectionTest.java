@@ -67,12 +67,9 @@ public class PointDirectionTest {
         route.generateDirections();
         GeoPoint currentLocation = new GeoPoint(3.1, 3.1);
 
-        IExcursionBrief brief = Mockito.mock(IExcursionBrief.class);
-        when(brief.getUseDirections()).thenReturn(true);
 
         IGame excursion = Mockito.mock(IGame.class);
-        when(excursion.getRoute()).thenReturn(route);
-        when(excursion.getBrief()).thenReturn(brief);
+
 
         AudioPlaybackController controller = new AudioPlaybackController("en", excursion);
         PowerMockito.mockStatic(LocationHelper.class);
@@ -97,12 +94,8 @@ public class PointDirectionTest {
         route.generateDirections();
         GeoPoint currentLocation = new GeoPoint(3.1, 3.1);
 
-        IExcursionBrief brief = Mockito.mock(IExcursionBrief.class);
-        when(brief.getUseDirections()).thenReturn(true);
+         IGame excursion = Mockito.mock(IGame.class);
 
-        IGame excursion = Mockito.mock(IGame.class);
-        when(excursion.getRoute()).thenReturn(route);
-        when(excursion.getBrief()).thenReturn(brief);
 
         AudioPlaybackController controller = new AudioPlaybackController("en", excursion);
         PowerMockito.mockStatic(LocationHelper.class);
