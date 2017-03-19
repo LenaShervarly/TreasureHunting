@@ -1,6 +1,7 @@
 package com.home.croaton.followme.activities;
 
 import android.Manifest;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -8,11 +9,21 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 import com.home.croaton.followme.instrumentation.ConnectionHelper;
 import com.home.croaton.followme.security.PermissionAndConnectionChecker;
+
+import static java.lang.Integer.MAX_VALUE;
 
 public class ExcursionOverviewActivity extends AppCompatActivity  {
 
@@ -20,6 +31,7 @@ public class ExcursionOverviewActivity extends AppCompatActivity  {
     private String currentLanguage;
    // private FloatingActionButton openButton;
     private ExcursionDownloadManager downloadManager;
+    private TextView title;
 
 
     @Override
@@ -27,8 +39,6 @@ public class ExcursionOverviewActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_excursion_overview);
 
-        Intent intent = getIntent();
-        //excursionBrief = intent.getParcelableExtra(IntentNames.SELECTED_EXCURSION_BRIEF);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
@@ -36,11 +46,29 @@ public class ExcursionOverviewActivity extends AppCompatActivity  {
         //downloadManager = new ExcursionDownloadManager(this, excursionBrief, currentLanguage);
         excursion = new Game(this);
 
-
-
         PermissionAndConnectionChecker.checkForPermissions(ExcursionOverviewActivity.this, new String[]
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
+        bindViews();
+        animateTitle();
     }
+
+    public void animateTitle() {
+        Animation anim = new ScaleAnimation(
+                1f, 1.5f, // Start and end values for the X axis scaling
+                1f, 1.5f, // Start and end values for the Y axis scaling
+                Animation.RELATIVE_TO_SELF, 1f, // Pivot point of X scaling
+                Animation.RELATIVE_TO_SELF, 1f); // Pivot point of Y scaling
+        anim.setFillAfter(true); // Needed to keep the result of the animation
+        anim.setDuration(1000);
+        anim.setRepeatCount(Animation.INFINITE);
+        anim.setRepeatMode(ValueAnimator.REVERSE);
+        title.startAnimation(anim);
+    }
+
+    public void bindViews(){
+        title = (TextView) findViewById(R.id.title_text_view);
+    }
+
     public void onPostExecute(View view) {
         if (ConnectionHelper.hasInternetConnection(ExcursionOverviewActivity.this)) {
             Intent intent = new Intent(ExcursionOverviewActivity.this, MapsActivity.class);

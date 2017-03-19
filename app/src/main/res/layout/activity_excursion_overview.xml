@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.home.croaton.followme.activities.ExcursionOverviewActivity">
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,7 +17,42 @@
     android:id="@+id/content"
     tools:context="com.home.croaton.followme.activities.ExcursionOverviewActivity">
 
-</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/main_page_title"
+        android:typeface="monospace"
+        android:textStyle="normal|bold"
+        android:id="@+id/title_text_view"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="150sp"
+        android:src="@drawable/brain"
+        android:layout_above="@+id/title_text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="19dp" />
+
+    <ImageView
+        android:layout_width="290sp"
+        android:layout_height="250sp"
+        android:src="@drawable/footsteps2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="18dp" />
+
+
+
+</RelativeLayout>
+
 
 <android.support.design.widget.FloatingActionButton
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -28,7 +63,7 @@
     android:layout_margin="16dp"
     android:clickable="true"
     app:elevation="4dp"
-    android:layout_gravity="bottom|right"
+    android:layout_gravity="bottom|end"
     app:layout_anchorGravity="bottom|right|end"
     android:src="@drawable/walking_man"
     app:backgroundTint="@color/orange_main"

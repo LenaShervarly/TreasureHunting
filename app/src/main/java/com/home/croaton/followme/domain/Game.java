@@ -3,10 +3,8 @@ package com.home.croaton.followme.domain;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.text.TextUtils;
 import android.util.Log;
 
-//import com.home.croaton.followme.R;
 import com.home.croaton.followme.download.ExcursionDownloadManager;
 
 import org.apache.commons.io.IOUtils;
@@ -19,6 +17,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+
+//import com.home.croaton.followme.R;
 
 @Root(name="content")
 public class Game implements Parcelable, IGame {
