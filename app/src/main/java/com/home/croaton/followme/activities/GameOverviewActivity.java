@@ -21,8 +21,9 @@ import com.home.croaton.followme.security.PermissionAndConnectionChecker;
 
 public class GameOverviewActivity extends AppCompatActivity  {
 
-    private Game excursion;
+    private Game game;
     private String currentLanguage;
+    private GameFileManager downloadManager;
     // private FloatingActionButton openButton;
     private TextView title;
 
@@ -36,7 +37,7 @@ public class GameOverviewActivity extends AppCompatActivity  {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
 
-        excursion = new Game(this);
+        game = new Game(this);
 
         PermissionAndConnectionChecker.checkForPermissions(GameOverviewActivity.this, new String[]
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
@@ -64,7 +65,7 @@ public class GameOverviewActivity extends AppCompatActivity  {
     public void onPostExecute(View view) {
         if (ConnectionHelper.hasInternetConnection(GameOverviewActivity.this)) {
             Intent intent = new Intent(GameOverviewActivity.this, MapsActivity.class);
-            intent.putExtra(IntentNames.SELECTED_EXCURSION, excursion);
+            intent.putExtra(IntentNames.SELECTED_GAME, game);
             startActivity(intent);
         }
     }
@@ -82,19 +83,4 @@ public class GameOverviewActivity extends AppCompatActivity  {
         }
     }
 
-
-        /*if (ConnectionHelper.hasInternetConnection(ExcursionOverviewActivity.this)) {
-            MapView mapView = new MapView(ExcursionOverviewActivity.this);
-            MapHelper.chooseBeautifulMapProvider(ExcursionOverviewActivity.this, mapView);
-            mapView.setMinZoomLevel(1);
-            mapView.setMaxZoomLevel(18);
-        }   CacheManager cacheManager = new CacheManager(mapView);
-
-            cacheManager.downloadAreaAsync(ExcursionOverviewActivity.this,
-                    new BoundingBoxE6(excursionBrief.getArea().get(0).getLatitude(),
-                            excursionBrief.getArea().get(1).getLongitude(),
-                            excursionBrief.getArea().get(1).getLatitude(),
-                            excursionBrief.getArea().get(0).getLongitude()), 6, mapView.getMaxZoomLevel());
-
-        }*/
 }
