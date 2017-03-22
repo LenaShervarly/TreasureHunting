@@ -1,85 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <route>
 	<geoPoints>
-		<geoPoint number="1" position="59.33272155,18.07052493"/>
-		<geoPoint number="2" position="59.33277080,18.07146370"/>
-		<geoPoint number="3" position="59.33285562,18.07201087"/>
-		<geoPoint number="4" position="59.33293497,18.07255805"/>
-		<geoPoint number="5" position="59.33295959,18.07344317"/>
-		<geoPoint number="6" position="59.33293223,18.07373822"/>
-		<geoPoint number="7" position="59.33296507,18.07517588"/>
-		<geoPoint number="8" position="59.33294865,18.07540655"/>
-		<geoPoint number="9" position="59.33285836,18.07598591"/>
-		<geoPoint number="10" position="59.33281458,18.07617366"/>
-		<geoPoint number="11" position="59.33253276,18.07723045"/>
-		<geoPoint number="12" position="59.33241784,18.07764888"/>
-		<geoPoint number="13" position="59.33231934,18.07812095"/>
-		<geoPoint number="14" position="59.33218800,18.07858229"/>
-		<geoPoint number="15" position="59.33195816,18.07941914"/>
-		<geoPoint number="16" position="59.33177210,18.08010578"/>
-		<geoPoint number="17" position="59.33152037,18.08101773"/>
-		<geoPoint number="18" position="59.33143281,18.08136106"/>
-		<geoPoint number="19" position="59.33141092,18.08154345"/>
-		<geoPoint number="20" position="59.33141092,18.08185458"/>
-		<geoPoint number="21" position="59.33141092,18.08255196"/>
-		<geoPoint number="22" position="59.33143828,18.08330297"/>
-		<geoPoint number="23" position="59.33143828,18.08394670"/>
-		<geoPoint number="24" position="59.33149848,18.08619976"/>
-		<geoPoint number="25" position="59.33158057,18.08937550"/>
-		<geoPoint number="26" position="59.33164076,18.09145689"/>
-		<geoPoint number="27" position="59.33171738,18.09193969"/>
-		<geoPoint number="28" position="59.33175021,18.09301257"/>
-		<geoPoint number="29" position="59.33169549,18.09333444"/>
-		<geoPoint number="30" position="59.33157509,18.09351683"/>
-		<geoPoint number="31" position="59.33138903,18.09364557"/>
-		<geoPoint number="32" position="59.33087461,18.09391379"/>
-		<geoPoint number="33" position="59.33041491,18.09421420"/>
-		<geoPoint number="34" position="59.33029452,18.09426785"/>
-		<geoPoint number="35" position="59.33002636,18.09452534"/>
-		<geoPoint number="36" position="59.32971441,18.09489012"/>
-		<geoPoint number="37" position="59.32936963,18.09527636"/>
-		<geoPoint number="38" position="59.32904126,18.09572697"/>
-		<geoPoint number="39" position="59.32868552,18.09612393"/>
-		<geoPoint number="40" position="59.32840093,18.09641361"/>
-		<geoPoint number="41" position="59.32811086,18.09661746"/>
-		<geoPoint number="42" position="59.32795214,18.09664965"/>
-		<geoPoint number="43" position="59.32774416,18.09661746"/>
-		<geoPoint number="44" position="59.32752524,18.09647799"/>
-		<geoPoint number="45" position="59.32734463,18.09638143"/>
-		<geoPoint number="46" position="59.32714212,18.09629560"/>
-		<geoPoint number="47" position="59.32695056,18.09617758"/>
-		<geoPoint number="48" position="59.32681920,18.09612393"/>
-		<geoPoint number="49" position="59.32669332,18.09613466"/>
-		<geoPoint number="50" position="59.32652365,18.09615612"/>
-		<geoPoint number="51" position="59.32642513,18.09620976"/>
-		<geoPoint number="52" position="59.32628830,18.09629560"/>
-		<geoPoint number="53" position="59.32617336,18.09637070"/>
-		<geoPoint number="54" position="59.32604200,18.09643507"/>
-		<geoPoint number="55" position="59.32591064,18.09656382"/>
+		<geoPoint number="1" position="59.346186, 18.072819"/>
+		<geoPoint number="2" position="59.346843, 18.073257"/>
+		<geoPoint number="3" position="59.347369, 18.073730"/>
+		<geoPoint number="4" position="59.347874, 18.073123"/>
+		<geoPoint number="5" position="59.347653, 18.071957"/>
+		<geoPoint number="6" position="59.347018, 18.070993"/>
+		<geoPoint number="7" position="59.346099, 18.071851"/>
 
 	</geoPoints>
 	
 	<audioPoints>
-		<audioPoint number="0" position="59.33277,18.07126" radius="20">
+		<audioPoint number="0" position="59.346186, 18.072819" radius="20">
 			<audio id="harp_1"/>
 		</audioPoint>
-		<audioPoint number="1" position="59.333,18.07353" radius="20">
+		<audioPoint number="1" position="59.347369, 18.073730" radius="20">
 			<audio id="harp_2"/>
 		</audioPoint>
-		<audioPoint number="2" position="59.33244,18.07757" radius="20">
+		<audioPoint number="2" position="59.347874, 18.073123" radius="20">
 			<audio id="harp_2"/>
 		</audioPoint>
-		<audioPoint number="3" position="59.33148,18.08558" radius="20">
+		<audioPoint number="3" position="59.347653, 18.071957" radius="20">
 			<audio id="congas"/>
 		</audioPoint>
-		<audioPoint number="4" position="59.33078,18.09398" radius="20">
+		<audioPoint number="4" position="59.347018, 18.070993" radius="20">
 			<audio id="harp_3"/>
 		</audioPoint>
-		<audioPoint number="5" position="59.32667,18.09612" radius="20">
+		<audioPoint number="5" position="59.346099, 18.071851" radius="20">
 			<audio id="harp_1"/>
 		</audioPoint>
-
-
-			
 	</audioPoints>
 </route>
