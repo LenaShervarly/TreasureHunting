@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
 import com.home.croaton.followme.R;
+import com.home.croaton.followme.database.DatabaseHelper;
 import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.domain.GameFileManager;
 import com.home.croaton.followme.instrumentation.ConnectionHelper;
@@ -26,7 +28,7 @@ public class GameOverviewActivity extends AppCompatActivity  {
     private GameFileManager downloadManager;
     // private FloatingActionButton openButton;
     private TextView title;
-
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,13 @@ public class GameOverviewActivity extends AppCompatActivity  {
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
         bindViews();
         animateTitle();
+        setUpDB();
+    }
+
+    public void setUpDB() {
+        databaseHelper = new DatabaseHelper(this);
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+
     }
 
     public void animateTitle() {
