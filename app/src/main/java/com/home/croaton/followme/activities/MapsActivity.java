@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.Toast;
 
 import com.home.croaton.followme.R;
@@ -60,6 +62,9 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
     private ActivityFactory factory;
     private int activityAudioPointNumber;
     static final int STORE_SCORES = 0;
+    private CharSequence timeSpentForSolving;
+    private int totalUserScores;
+    private Chronometer chronometer;
 
 
 
@@ -84,8 +89,9 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         PermissionAndConnectionChecker.checkForPermissions(this, new String[]
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
 
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
         //mAudioPlayerUi = new AudioPlayerUI(this, mCurrentGame);
-
+        startTimer();
     }
 
     private void loadState(Bundle savedInstanceState) {
@@ -135,7 +141,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         }
         activityAudioPointNumber = audioPoint.Number;
         Intent intent = callActivity(activityAudioPointNumber);
-        startActivity(intent);
+        startActivityForResult(intent, STORE_SCORES);
     }
 
     private synchronized void startLocationTracking()
@@ -241,18 +247,18 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
                     Intent intent = callActivity(activityAudioPointNumber);
                    // startActivity(intent);
                     startActivityForResult(intent, STORE_SCORES);
-
                     return true;
                 }
             });
     }
 
-    public Intent callActivity(int activityAudioPointNumber){
+    private Intent callActivity(int activityAudioPointNumber){
         Intent intent = null;
         factory = new ActivityFactory(activityAudioPointNumber);
 
         mCurrentGame.getAudioPoints();
         intent = factory.chooseActivity(this, activityAudioPointNumber);
+        //startTimer();
         return intent;
     }
 
@@ -261,8 +267,29 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
             if (resultCode == RESULT_OK) {
                 Toast t = Toast.makeText(this, score.getStringExtra("message"), Toast.LENGTH_SHORT);
                 t.show();
+                totalUserScores += score.getIntExtra("scores", 0);
             }
         }
+        //stopTimer();
+    }
+
+    private void startTimer(){
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        chronometer.start();
+    }
+
+    private void stopTimer() {
+        timeSpentForSolving = chronometer.getContentDescription();
+        chronometer.setText(timeSpentForSolving);
+        chronometer.stop();
+    }
+
+    public int getTotalUserScores(){
+        return totalUserScores;
+    }
+
+    public CharSequence getTimeSpentForSolving(){
+        return timeSpentForSolving;
     }
 
     private void enableMyLocation() {

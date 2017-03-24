@@ -8,6 +8,29 @@
         android:orientation="vertical">
 
         <LinearLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/viewB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:background="@color/background_material_light">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/textViewSongName"
+                android:maxHeight="50dp"
+                android:text="@string/time_spent"/>
+
+            <Chronometer
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chronometer"/>
+
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/viewA"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -42,9 +65,5 @@
 
             </RelativeLayout>
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 </android.support.design.widget.CoordinatorLayout>

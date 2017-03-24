@@ -50,4 +50,5 @@
     <string name="Happy_New_Year">Happy New Year</string>
     <string name="Mamma_Mia">Mamma Mia</string>
     <string name="main_page_title">KNOW-HUNT</string>
+    <string name="time_spent">You\'ve spent : </string>
 </resources>
