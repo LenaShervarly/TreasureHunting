@@ -53,6 +53,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.home.croaton.followme.activities.QuizzActivity" />
+        <activity android:name="com.home.croaton.followme.activities.Quizz4answersActivity" />
         <activity android:name="com.home.croaton.followme.activities.GuessMelodyActivity"></activity>
     </application>
 

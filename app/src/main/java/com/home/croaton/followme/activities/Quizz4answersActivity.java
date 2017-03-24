@@ -2,30 +2,21 @@ package com.home.croaton.followme.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.home.croaton.followme.R;
-import com.home.croaton.followme.audio.AudioPlaybackController;
-import com.home.croaton.followme.audio.AudioPlayerUI;
 import com.home.croaton.followme.database.RemoteDatabaseRespresenter;
 
 import java.util.ArrayList;
 
-public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
-    private PowerManager.WakeLock mWakeLock;
-    public static final String WAKE_LOCK_NAME = "MyWakeLock";
-    private AudioPlayerUI mAudioPlayerUi;
-    private AudioPlaybackController mAudioPlaybackController;
-    private ArrayList<String> audioToPlay;
+public class Quizz4answersActivity extends AppCompatActivity {
+
     private int points;
     private RemoteDatabaseRespresenter dbRepresenter;
     private String correctAnswer;
@@ -33,25 +24,11 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guess_melody);
+        setContentView(R.layout.activity_quizz4answers);
 
-        PowerManager mgr = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        mWakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKE_LOCK_NAME);
-        mWakeLock.acquire();
-
-        mAudioPlayerUi = new AudioPlayerUI(this);
-        TextView textView = (TextView)this.findViewById(R.id.textViewSongName);
-        textView.setText("Guess a melody");
-
-        audioToPlay = new ArrayList<>();
-
-        dbRepresenter = new RemoteDatabaseRespresenter(this);
-        audioToPlay = new ArrayList<>();
         setContent();
-
-        mAudioPlaybackController = new AudioPlaybackController(audioToPlay);
-        mAudioPlaybackController.startPlaying(this, audioToPlay);
     }
+
     private void setContent(){
         TextView question = (TextView) findViewById(R.id.textView);
         Button answer1 = (Button)findViewById(R.id.guessMelody_option1);
@@ -59,7 +36,8 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
         Button answer3 = (Button)findViewById(R.id.guessMelody_option3);
         Button answer4 = (Button)findViewById(R.id.guessMelody_option4);
 
-        Cursor allContent = dbRepresenter.getDataWithMelody();
+        dbRepresenter = new RemoteDatabaseRespresenter(this);
+        Cursor allContent = dbRepresenter.getAllData();
 
 
         if(allContent.getCount() == 0) {
@@ -77,7 +55,6 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
 
                 correctAnswer = allContent.getString(2);
 
-                audioToPlay.add(allContent.getString(6));
                 dbRepresenter.updatePassed(allContent.getString(0));
                 allContent.close();
                 return;
@@ -121,6 +98,5 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
         score.putExtra("scores", points);
         setResult(Activity.RESULT_OK, score);
         finish();
-        mAudioPlaybackController.stopAnyPlayback(this);
     }
 }

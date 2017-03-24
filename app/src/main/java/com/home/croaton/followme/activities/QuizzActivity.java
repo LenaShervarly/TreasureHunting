@@ -62,9 +62,10 @@ public class QuizzActivity extends AppCompatActivity {
     public void onDoneButtonClicked(View view){
         Intent score = new Intent();
         if(points > 0)
-            score.putExtra("score", "Well done! You've got " + points +" points");
+            score.putExtra("message", "Well done! You've got " + points +" points");
         else
-            score.putExtra("score", "Nice try! Unfortunately you haven't got point for this round");
+            score.putExtra("message", "Nice try! Unfortunately you haven't got point for this round");
+        score.putExtra("scores", points);
         setResult(Activity.RESULT_OK, score);
         finish();
     }

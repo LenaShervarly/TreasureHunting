@@ -259,7 +259,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
     protected void onActivityResult(int requestCode, int resultCode, Intent score) {
         if (requestCode == STORE_SCORES) {
             if (resultCode == RESULT_OK) {
-                Toast t = Toast.makeText(this, score.getStringExtra("score"), Toast.LENGTH_SHORT);
+                Toast t = Toast.makeText(this, score.getStringExtra("message"), Toast.LENGTH_SHORT);
                 t.show();
             }
         }

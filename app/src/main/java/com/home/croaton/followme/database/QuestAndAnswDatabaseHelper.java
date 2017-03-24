@@ -76,7 +76,8 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
      */
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery("select * from " + TABLE_NAME, null);
+        Cursor result = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7  + " IS NULL", null);
+        //Cursor result = db.rawQuery("select * from " + TABLE_NAME, null);
         return result;
     }
 
