@@ -9,13 +9,18 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.home.croaton.followme.R;
+import com.home.croaton.followme.database.QuestAndAnswDatabaseHelper;
+import com.home.croaton.followme.database.RemoteDatabaseRespresenter;
 
 public class QuizzActivity extends AppCompatActivity {
     private int points = 0;
+    RemoteDatabaseRespresenter dbRepresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz);
+        dbRepresenter = new RemoteDatabaseRespresenter(this);
     }
 
     public void onRadioButtonClicked(View view) {

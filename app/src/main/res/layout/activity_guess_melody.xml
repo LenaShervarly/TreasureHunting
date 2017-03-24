@@ -17,12 +17,11 @@
         android:elevation="10dp"
         android:background="@color/background_material_light"
         android:id="@+id/linearLayout"
-        app:layout_constraintBottom_toTopOf="@+id/guessMelody_option2"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="32dp">
+        app:layout_constraintHorizontal_bias="0.284">
 
         <TextView
             android:layout_width="fill_parent"
@@ -64,13 +63,15 @@
         android:layout_height="wrap_content"
         android:text="@string/guess_melody_task_description"
         android:textAlignment="center"
-        android:textSize="22dp"
+        android:textSize="24dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="italic"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/guessMelody_option2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:id="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <LinearLayout
         android:layout_width="368dp"
@@ -84,63 +85,53 @@
 
     <Button
         android:id="@+id/guessMelody_option1"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
+        android:layout_width="150dp"
+        android:layout_height="72dp"
+        android:onClick="onTryingAnswer"
         android:text="@string/Mamma_Mia"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintLeft_toRightOf="@+id/guessMelody_option4"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guessMelody_option3"
         app:layout_constraintVertical_weight="1"
-        android:onClick="onTryingAnswer"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guessMelody_option3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/guessMelody_option4" />
 
     <Button
         android:id="@+id/guessMelody_option2"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
+        android:layout_width="150dp"
+        android:layout_height="72dp"
+        android:onClick="onTryingAnswer"
         android:text="@string/Happy_New_Year"
-        app:layout_constraintBottom_toTopOf="@+id/guessMelody_option4"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guessMelody_option3"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_weight="1"
-        android:onClick="onTryingAnswer"/>
+        app:layout_constraintBottom_toTopOf="@+id/guessMelody_option4" />
 
 
     <Button
         android:id="@+id/guessMelody_option3"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
+        android:layout_width="150dp"
+        android:layout_height="72dp"
+        android:onClick="onTryingAnswer"
         android:text="@string/Dancing_Queen"
-        app:layout_constraintBottom_toTopOf="@+id/guessMelody_option1"
-        app:layout_constraintLeft_toRightOf="@+id/guessMelody_option2"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_weight="1"
-        android:onClick="onTryingAnswer"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/guessMelody_option2"
+        app:layout_constraintBottom_toTopOf="@+id/guessMelody_option1"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/guessMelody_option4"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
+        android:layout_width="150dp"
+        android:layout_height="72dp"
+        android:onClick="onTryingAnswer"
         android:text="@string/I_Am_Just_a_Girl"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/guessMelody_option1"
-        app:layout_constraintTop_toBottomOf="@+id/guessMelody_option2"
         app:layout_constraintVertical_weight="1"
-        android:onClick="onTryingAnswer"/>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="236dp"
-        android:layout_height="48dp"
-        android:text="Done :)"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:onClick="onDoneButtonClicked"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guessMelody_option1" />
+        app:layout_constraintTop_toBottomOf="@+id/guessMelody_option2"
+        app:layout_constraintRight_toLeftOf="@+id/guessMelody_option1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
 
 
 </android.support.constraint.ConstraintLayout>
