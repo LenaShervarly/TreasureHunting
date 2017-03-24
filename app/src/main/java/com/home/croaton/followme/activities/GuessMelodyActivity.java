@@ -39,17 +39,14 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
         textView.setText("Guess a melody");
 
         audioToPlay = new ArrayList<>();
-        audioToPlay.add("android.resource://com.home.croaton.followme/raw/abba_mamma_mia");
 
         mAudioPlaybackController = new AudioPlaybackController(audioToPlay);
         mAudioPlaybackController.startPlaying(this, audioToPlay);
-
     }
 
     public void onTryingAnswer(View view) {
         Button button = (Button)view;
         //if(button.isActivated())
-            button.setBackgroundColor(getResources().getColor(R.color.orange_main));
         String buttonText = button.getText().toString();
         String answer = "You've chosen " + buttonText;
 
@@ -65,10 +62,8 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
             default : answer += "Please chose an answer";
                 break;
         }
-        Toast.makeText(this, answer, Toast.LENGTH_SHORT).show();
     }
 
-    public void onDoneButtonClicked(View view){
         Intent score = new Intent();
         if(points > 0)
             score.putExtra("score", "Well done! You've got " + points +" points");
