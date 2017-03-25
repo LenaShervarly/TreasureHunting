@@ -3,7 +3,6 @@ package com.home.croaton.followme.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +43,7 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
 
         mAudioPlaybackController = new AudioPlaybackController(audioToPlay);
         mAudioPlaybackController.startPlaying(this, audioToPlay);
+
     }
 
     public void onTryingAnswer(View view) {
