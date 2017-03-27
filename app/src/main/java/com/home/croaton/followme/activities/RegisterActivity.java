@@ -15,43 +15,46 @@ import com.home.croaton.followme.database.Player;
 public class RegisterActivity extends AppCompatActivity {
     private Player player;
     private DatabaseHelper myDB;
-    private EditText reName,reSurname,reUsername,rePassword,reEmail;
-    private Button reRegist;
+    private EditText reName, reSurname, reUsername, rePassword, reEmail;
+    private Button register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        myDB=new DatabaseHelper(this);
-        player=new Player();
+        myDB = new DatabaseHelper(this);
 
         reName = (EditText) findViewById(R.id.reName);
         reSurname = (EditText) findViewById(R.id.reSurName);
         reUsername = (EditText) findViewById(R.id.reUsername);
         rePassword = (EditText) findViewById(R.id.rePassword);
         reEmail = (EditText) findViewById(R.id.reEmail);
-        reRegist = (Button) findViewById(R.id.reRegist);
+        register = (Button) findViewById(R.id.reRegist);
         addPlayer();
     }
 
     public void addPlayer(){
-        reRegist.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String name = reName.getText().toString();
-                final String surname = reSurname.getText().toString();
-                final String username = reUsername.getText().toString();
-                final String password = rePassword.getText().toString();
-                final String email = reEmail.getText().toString();
 
+                player = new Player(reName.getText().toString(), reSurname.getText().toString(),
+                        reUsername.getText().toString(), rePassword.getText().toString(), reEmail.getText().toString());
 
+                /*String name = reName.getText().toString();
+                String surname = reSurname.getText().toString();
+                String username = reUsername.getText().toString();
+                String password = rePassword.getText().toString();
+                String email = reEmail.getText().toString();
 
                 player.setName(name);
                 player.setSurname(surname);
                 player.setUsername(username);
                 player.setPassword(password);
-                player.seteMail(email);
-                boolean succeeded=myDB.insertPlayer(player);
-                if(succeeded){
+                player.seteMail(email); */
+
+                boolean isInserted = myDB.insertPlayer(player);
+                if(isInserted){
+                    Toast.makeText(RegisterActivity.this, "Your data is saved", Toast.LENGTH_SHORT).show();
                     Intent loginIntent  = new Intent(RegisterActivity.this, LoginActivity.class);
                     RegisterActivity.this.startActivity(loginIntent);
                 }

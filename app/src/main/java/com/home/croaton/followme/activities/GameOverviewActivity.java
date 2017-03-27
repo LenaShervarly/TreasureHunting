@@ -23,10 +23,8 @@ import com.home.croaton.followme.security.PermissionAndConnectionChecker;
 
 public class GameOverviewActivity extends AppCompatActivity  {
 
-    private Game game;
-    private String currentLanguage;
-    private GameFileManager downloadManager;
-    // private FloatingActionButton openButton;
+
+
     private TextView title;
     DatabaseHelper databaseHelper;
 
@@ -35,14 +33,6 @@ public class GameOverviewActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_overview);
 
-
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
-
-        game = new Game(this);
-
-        PermissionAndConnectionChecker.checkForPermissions(GameOverviewActivity.this, new String[]
-                {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
         bindViews();
         animateTitle();
         setUpDB();
@@ -73,22 +63,8 @@ public class GameOverviewActivity extends AppCompatActivity  {
 
     public void onPostExecute(View view) {
         if (ConnectionHelper.hasInternetConnection(GameOverviewActivity.this)) {
-            Intent intent = new Intent(GameOverviewActivity.this,LoginActivity.class);
+            Intent intent = new Intent(GameOverviewActivity.this, RegisterActivity.class);
             startActivity(intent);
         }
     }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
-    {
-        if (requestCode == PermissionAndConnectionChecker.LocalStorageRequestCode) {
-            for (int i = 0; i < grantResults.length; i++)
-                if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                    finish();
-                    System.exit(0);
-                }
-        }
-    }
-
 }

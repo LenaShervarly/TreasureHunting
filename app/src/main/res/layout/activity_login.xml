@@ -34,7 +34,8 @@
         android:textSize="20dp"
         android:layout_marginBottom="212dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onPressingLogin"/>
 
     <TextView
         android:id="@+id/teRegister"

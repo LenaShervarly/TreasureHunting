@@ -13,6 +13,14 @@ public class Player {
     public Player(){
     }
 
+    public Player(String name, String surname, String eMail, String username, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.eMail = eMail;
+        this.username = username;
+        this.password = password;
+        scores = 0;
+    }
 
     public int getID() {
         return ID;

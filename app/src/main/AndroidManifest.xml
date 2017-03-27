@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".instrumentation.App"
@@ -51,6 +52,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.home.croaton.followme.activities.QuizzActivity" />
+        <activity android:name="com.home.croaton.followme.activities.Quizz4answersActivity" />
+        <activity android:name="com.home.croaton.followme.activities.LoginActivity" />
+        <activity android:name="com.home.croaton.followme.activities.RegisterActivity" />
+        <activity android:name="com.home.croaton.followme.activities.GuessMelodyActivity"></activity>
     </application>
 
 </manifest>

@@ -76,7 +76,8 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         mWakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKE_LOCK_NAME);
         mWakeLock.acquire();
 
-        mCurrentGame = getIntent().getParcelableExtra(IntentNames.SELECTED_GAME);
+        //mCurrentGame = getIntent().getParcelableExtra(IntentNames.SELECTED_GAME);
+        mCurrentGame = new Game(this);
 
         loadState(savedInstanceState);
         mfileManager = new GameFileManager(this, mLanguage);

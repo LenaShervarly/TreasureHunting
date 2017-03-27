@@ -16,11 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class
-DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Player.db";
-    public static final String TABLE_NAME = "player_table";
+    public static final String TABLE_NAME = "Player_table";
     public static final String _ID = "ID";
     public static final String COL_NAME = "NAME";
     public static final String COL_SURNAME = "SURNAME";
@@ -31,19 +30,21 @@ DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
-                    _ID + " INTEGER PRIMARY KEY," + " AUTOINCREMENT,"+
-                    COL_NAME + " TEXT," +
-                    COL_SURNAME + " TEXT," +
-                    COL_USERNAME + " TEXT," +
-                    COL_PASSWORD + " TEXT," +
-                    COL_E_MAIL + " TEXT" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COL_NAME + " TEXT, " +
+                    COL_SURNAME + " TEXT, " +
+                    COL_USERNAME + " TEXT, " +
+                    COL_PASSWORD + " TEXT, " +
+                    COL_E_MAIL + " TEXT, " +
                     COL_SCORES + " INTEGER)";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+
+        super(context, DATABASE_NAME, null, 1);
+
     }
 
     @Override
@@ -52,7 +53,7 @@ DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL( SQL_DELETE_ENTRIES );
         onCreate(db);
     }
@@ -60,13 +61,14 @@ DatabaseHelper extends SQLiteOpenHelper {
     public boolean insertPlayer(Player player){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_NAME,player.getName());
-        values.put(COL_SURNAME,player.getSurname());
-        values.put(COL_USERNAME,player.getUsername());
-        values.put(COL_PASSWORD,player.getPassword());
-        values.put(COL_E_MAIL,player.geteMail());
-        values.put(COL_SCORES,player.getScores());
-        long result=database.insert(TABLE_NAME, null, values);
+        values.put(COL_NAME, player.getName());
+        values.put(COL_SURNAME, player.getSurname());
+        values.put(COL_USERNAME, player.getUsername());
+        values.put(COL_PASSWORD, player.getPassword());
+        values.put(COL_E_MAIL, player.geteMail());
+        values.put(COL_SCORES, 0);
+
+        long result = database.insert(TABLE_NAME, null, values);
         if(result==-1){
             return false;
         }
