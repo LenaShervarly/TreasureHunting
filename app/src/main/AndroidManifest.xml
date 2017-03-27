@@ -33,30 +33,33 @@
             android:name="ACCESS_TOKEN"
             android:value="pk.eyJ1IjoiY3JvYXRvbiIsImEiOiJjaW0yajFpZ20wMG51dXhtNGtkcW5temd0In0.ZdfAVCZA5_f4YfB4brpJ1A" />
 
-        <activity
-            android:name="com.home.croaton.followme.activities.MapsActivity"
+        <activity android:name=".activities.MapsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.home.croaton.followme.activities.GameOverviewActivity"
+        <activity android:name=".activities.GameOverviewActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.QuizzActivity" />
+        <activity android:name=".activities.Quizz4answersActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.GuessMelodyActivity" />
+        <activity android:name=".activities.SplashScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.home.croaton.followme.activities.QuizzActivity" />
-        <activity android:name="com.home.croaton.followme.activities.Quizz4answersActivity" />
-        <activity android:name="com.home.croaton.followme.activities.LoginActivity" />
-        <activity android:name="com.home.croaton.followme.activities.RegisterActivity" />
-        <activity android:name="com.home.croaton.followme.activities.GuessMelodyActivity"></activity>
     </application>
 
 </manifest>
