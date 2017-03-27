@@ -106,12 +106,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             p.setID(cursor.getInt(cursor.getColumnIndexOrThrow(_ID)));
             p.setName(cursor.getString(cursor.getColumnIndexOrThrow(COL_NAME)));
             p.setSurname(cursor.getString(cursor.getColumnIndexOrThrow(COL_SURNAME)));
+            p.setUsername(cursor.getString(cursor.getColumnIndexOrThrow(COL_USERNAME)));
+            p.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(COL_PASSWORD)));
             p.seteMail(cursor.getString(cursor.getColumnIndexOrThrow(COL_E_MAIL)));
             p.setScores(cursor.getInt(cursor.getColumnIndexOrThrow(COL_SCORES)));
             items.add(p);
         }
         cursor.close();
-
         return items;
     }
 
@@ -148,12 +149,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             p.setID(cursor.getInt(cursor.getColumnIndexOrThrow(_ID)));
             p.setName(cursor.getString(cursor.getColumnIndexOrThrow(COL_NAME)));
             p.setSurname(cursor.getString(cursor.getColumnIndexOrThrow(COL_SURNAME)));
+            p.setUsername(cursor.getString(cursor.getColumnIndexOrThrow(COL_USERNAME)));
+            p.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(COL_PASSWORD)));
             p.seteMail(cursor.getString(cursor.getColumnIndexOrThrow(COL_E_MAIL)));
             p.setScores(cursor.getInt(cursor.getColumnIndexOrThrow(COL_SCORES)));
             items.add(p);
         }
         cursor.close();
-
         return items;
     }
 }

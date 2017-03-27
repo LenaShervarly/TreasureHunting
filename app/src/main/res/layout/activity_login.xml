@@ -45,5 +45,6 @@
         android:textSize="15dp"
         android:layout_alignTop="@+id/login"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="81dp" />
+        android:layout_marginTop="81dp"
+        android:onClick="onPressingRegister"/>
 </RelativeLayout>
