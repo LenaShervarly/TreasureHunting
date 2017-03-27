@@ -1,74 +1,95 @@
 package com.home.croaton.followme.database;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.CharArrayBuffer;
+import android.database.ContentObserver;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
+import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class
+DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Player.db";
     public static final String TABLE_NAME = "player_table";
     public static final String _ID = "ID";
     public static final String COL_NAME = "NAME";
     public static final String COL_SURNAME = "SURNAME";
+    public static final String COL_USERNAME = "USERNAME";
+    public static final String COL_PASSWORD = "PASSWORD";
     public static final String COL_E_MAIL = "E_MAIL";
     public static final String COL_SCORES = "SCORES";
 
     private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + DatabaseHelper.TABLE_NAME + " (" +
-                    DatabaseHelper._ID + " INTEGER PRIMARY KEY," +
-                    DatabaseHelper.COL_NAME + " TEXT," +
-                    DatabaseHelper.COL_SURNAME + " TEXT," +
-                    DatabaseHelper.COL_E_MAIL + " TEXT" +
-                    DatabaseHelper.COL_SCORES + " INTEGER)";
+            "CREATE TABLE " + TABLE_NAME + " (" +
+                    _ID + " INTEGER PRIMARY KEY," + " AUTOINCREMENT,"+
+                    COL_NAME + " TEXT," +
+                    COL_SURNAME + " TEXT," +
+                    COL_USERNAME + " TEXT," +
+                    COL_PASSWORD + " TEXT," +
+                    COL_E_MAIL + " TEXT" +
+                    COL_SCORES + " INTEGER)";
 
     private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + DatabaseHelper.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL( DatabaseHelper.SQL_CREATE_ENTRIES );
+        db.execSQL( SQL_CREATE_ENTRIES );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL( DatabaseHelper.SQL_DELETE_ENTRIES );
+        db.execSQL( SQL_DELETE_ENTRIES );
         onCreate(db);
     }
 
-    public void insertPlayer(Player player){
+    public boolean insertPlayer(Player player){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.COL_NAME,player.getName());
-        values.put(DatabaseHelper.COL_SURNAME,player.getSurname());
-        values.put(DatabaseHelper.COL_E_MAIL,player.geteMail());
-        values.put(DatabaseHelper.COL_SCORES,player.getScores());
-        database.insert(DatabaseHelper.TABLE_NAME, null, values);
+        values.put(COL_NAME,player.getName());
+        values.put(COL_SURNAME,player.getSurname());
+        values.put(COL_USERNAME,player.getUsername());
+        values.put(COL_PASSWORD,player.getPassword());
+        values.put(COL_E_MAIL,player.geteMail());
+        values.put(COL_SCORES,player.getScores());
+        long result=database.insert(TABLE_NAME, null, values);
+        if(result==-1){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     public ArrayList<Player> getPlayers() {
         SQLiteDatabase database = this.getReadableDatabase();
 
         String[] projection = {
-                DatabaseHelper._ID,
-                DatabaseHelper.COL_NAME,
-                DatabaseHelper.COL_SURNAME,
-                DatabaseHelper.COL_E_MAIL,
-                DatabaseHelper.COL_SCORES,
+                _ID,
+                COL_NAME,
+                COL_SURNAME,
+                COL_USERNAME,
+                COL_PASSWORD,
+                COL_E_MAIL,
+                COL_SCORES,
         };
 
         Cursor cursor = database.query(
-                DatabaseHelper.TABLE_NAME,                // The table to query
+                TABLE_NAME,                             // The table to query
                 projection,                               // The columns to return
                 null,                                // The columns for the WHERE clause
                 null,                            // The values for the WHERE clause
@@ -97,18 +118,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getReadableDatabase();
 
         String[] projection = {
-                DatabaseHelper._ID,
-                DatabaseHelper.COL_NAME,
-                DatabaseHelper.COL_SURNAME,
-                DatabaseHelper.COL_E_MAIL,
-                DatabaseHelper.COL_SCORES,
+                _ID,
+                COL_NAME,
+                COL_SURNAME,
+                COL_USERNAME,
+                COL_PASSWORD,
+                COL_E_MAIL,
+                COL_SCORES,
         };
 
         String selection = DatabaseHelper.COL_NAME + " = ?";
         String[] selectionArgs = { name };
 
         Cursor cursor = database.query(
-                DatabaseHelper.TABLE_NAME,                // The table to query
+                TABLE_NAME,                               // The table to query
                 projection,                               // The columns to return
                 selection,                                // The columns for the WHERE clause
                 selectionArgs,                            // The values for the WHERE clause

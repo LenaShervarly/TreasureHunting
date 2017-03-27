@@ -73,8 +73,7 @@ public class GameOverviewActivity extends AppCompatActivity  {
 
     public void onPostExecute(View view) {
         if (ConnectionHelper.hasInternetConnection(GameOverviewActivity.this)) {
-            Intent intent = new Intent(GameOverviewActivity.this, MapsActivity.class);
-            intent.putExtra(IntentNames.SELECTED_GAME, game);
+            Intent intent = new Intent(GameOverviewActivity.this,LoginActivity.class);
             startActivity(intent);
         }
     }
