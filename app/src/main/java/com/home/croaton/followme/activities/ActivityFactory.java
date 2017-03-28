@@ -15,7 +15,7 @@ public class ActivityFactory {
         //String nameOfChosenActivity; To be used later on in case of choosing activity by name.
 
         switch (audioPointNumber % 5) {
-            case 0:  intent = new Intent(context, Quizz4answersActivity.class);
+            case 0:  intent = new Intent(context, Camera.class);
                 break;
             case 1:  intent = new Intent(context, GuessMelodyActivity.class);
                 break;
