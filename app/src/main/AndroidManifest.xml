@@ -8,7 +8,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.camera"/>
 
     <application
         android:name=".instrumentation.App"
@@ -33,18 +34,21 @@
             android:name="ACCESS_TOKEN"
             android:value="pk.eyJ1IjoiY3JvYXRvbiIsImEiOiJjaW0yajFpZ20wMG51dXhtNGtkcW5temd0In0.ZdfAVCZA5_f4YfB4brpJ1A" />
 
-        <activity android:name=".activities.MapsActivity"
+        <activity
+            android:name=".activities.MapsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.GameOverviewActivity"
+        <activity
+            android:name=".activities.GameOverviewActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -53,13 +57,16 @@
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.GuessMelodyActivity" />
-        <activity android:name=".activities.SplashScreen"
+        <activity
+            android:name=".activities.SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.Camera"></activity>
     </application>
 
 </manifest>
