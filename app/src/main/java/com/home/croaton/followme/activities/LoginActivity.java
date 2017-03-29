@@ -55,12 +55,12 @@ public class LoginActivity extends AppCompatActivity {
         String username = userName.getText().toString();
         String pass = password.getText().toString();
 
-        //if (playerExists(username, pass)) {
+        if (playerExists(username, pass)) {
             Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
             intent.putExtra(IntentNames.SELECTED_GAME, game);
             startActivity(intent);
-        //} else
-          //  Toast.makeText(LoginActivity.this, "Username or password is not correct", Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(LoginActivity.this, "Username or password is not correct", Toast.LENGTH_SHORT).show();
     }
 
     public void onPressingRegister(View view) {

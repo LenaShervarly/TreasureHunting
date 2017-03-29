@@ -65,6 +65,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
     private CharSequence timeSpentForSolving;
     private int totalUserScores;
     private Chronometer chronometer;
+    private List<Point> routePoints;
 
 
 
@@ -143,6 +144,9 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         activityAudioPointNumber = audioPoint.Number;
         Intent intent = callActivity(activityAudioPointNumber);
         startActivityForResult(intent, STORE_SCORES);
+
+        if(audioPoint.Position.equals(routePoints.get(routePoints.size() - 1).Position))
+            showResults();
     }
 
     private synchronized void startLocationTracking()
@@ -213,11 +217,11 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
                 == PackageManager.PERMISSION_GRANTED)
             enableMyLocation();
 
-       List<Point> routePoints = mCurrentGame.getGeoPoints();
+       routePoints = mCurrentGame.getGeoPoints();
         MapHelper.drawRoute(this, mMap, routePoints);
         MapHelper.focusCameraOnPoint(mMap, mAudioPlaybackController.getFirstNotDoneAudioPoint());
-        MapHelper.setStartRouteIcon(this, mMap, routePoints.get(0).Position);
-        MapHelper.setEndRouteIcon(this, mMap, routePoints.get(routePoints.size() - 1).Position);
+        //MapHelper.setStartRouteIcon(this, mMap, routePoints.get(0).Position);
+        //MapHelper.setEndRouteIcon(this, mMap, routePoints.get(routePoints.size() - 1).Position);
         MapHelper.drawAudioPoints(this, mMap, mAudioPlaybackController, mCurrentGame, mAudioPointMarkers);
 
 
@@ -246,8 +250,10 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
                     }
 
                     Intent intent = callActivity(activityAudioPointNumber);
-                   // startActivity(intent);
                     startActivityForResult(intent, STORE_SCORES);
+                    if(marker.getPosition().equals(routePoints.get(routePoints.size() - 1).Position))
+                        showResults();
+
                     return true;
                 }
             });
@@ -285,12 +291,24 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         chronometer.stop();
     }
 
+    private void showResults(){
+        AlertDialog.Builder resultsBuilder = new AlertDialog.Builder(this);
+        StringBuilder info = new StringBuilder();
+        info.append("Your scores are: " + getTotalUserScores() + "\n");
+        info.append("You've spent ... " + getTimeSpentForSolving() + "\n");
+
+        resultsBuilder.setMessage(info);
+
+        AlertDialog alert = resultsBuilder.create();
+        alert.show();
+    }
+
     public int getTotalUserScores(){
         return totalUserScores;
     }
 
     public CharSequence getTimeSpentForSolving(){
-        return timeSpentForSolving;
+        return chronometer.getContentDescription();
     }
 
     private void enableMyLocation() {

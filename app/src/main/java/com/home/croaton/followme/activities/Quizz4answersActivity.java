@@ -14,12 +14,17 @@ import com.home.croaton.followme.R;
 import com.home.croaton.followme.database.RemoteDatabaseRespresenter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class Quizz4answersActivity extends AppCompatActivity {
 
     private int points;
     private RemoteDatabaseRespresenter dbRepresenter;
     private String correctAnswer;
+    private Random rand;
+    private List<String> answers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +48,21 @@ public class Quizz4answersActivity extends AppCompatActivity {
         if(allContent.getCount() == 0) {
             return;
         }
-        //int rand = 1;
 
         while (allContent.moveToNext()) {
             if(allContent.getString(7).contains("0")) {
                 question.setText(allContent.getString(1));
-                answer1.setText(allContent.getString(2));
-                answer2.setText(allContent.getString(3));
-                answer3.setText(allContent.getString(4));
-                answer4.setText(allContent.getString(5));
+
+                answers = new ArrayList<>();
+                for(int i = 2; i <=5; i++) {
+                    answers.add(allContent.getString(i));
+                }
+                Collections.shuffle(answers);
+
+                answer1.setText(answers.get(0));
+                answer2.setText(answers.get(1));
+                answer3.setText(answers.get(2));
+                answer4.setText(answers.get(3));
 
                 correctAnswer = allContent.getString(2);
 

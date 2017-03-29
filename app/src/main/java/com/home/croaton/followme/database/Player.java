@@ -5,20 +5,20 @@ public class Player {
     private int ID;
     private String name;
     private String surname;
-    private String eMail;
     private String username;
     private String password;
+    private String eMail;
     private int scores;
 
     public Player(){
     }
 
-    public Player(String name, String surname, String eMail, String username, String password) {
+    public Player(String name, String surname, String username, String password, String eMail) {
         this.name = name;
         this.surname = surname;
-        this.eMail = eMail;
         this.username = username;
         this.password = password;
+        this.eMail = eMail;
         scores = 0;
     }
 
@@ -45,7 +45,7 @@ public class Player {
     }
 
     public int getScores() {
-        return 0;
+        return scores;
     }
 
     public void setScores(int scores) {

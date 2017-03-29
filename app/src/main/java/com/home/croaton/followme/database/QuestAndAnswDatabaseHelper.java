@@ -38,6 +38,7 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
         db.execSQL("create table " + TABLE_NAME  + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
                 "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, MELODY_ROOT TEXT, PASSED INTEGER)");
     }

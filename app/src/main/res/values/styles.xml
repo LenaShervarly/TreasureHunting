@@ -80,4 +80,15 @@
         <item name="android:ems">10</item>
         <item name="android:layout_margin">7dp</item>
     </style>
+
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/grey_700</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/grey_700</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
 </resources>
