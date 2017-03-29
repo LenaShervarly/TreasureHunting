@@ -19,6 +19,8 @@ import com.home.croaton.followme.audio.AudioPlayerUI;
 import com.home.croaton.followme.database.RemoteDatabaseRespresenter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
     private PowerManager.WakeLock mWakeLock;
@@ -29,6 +31,7 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
     private int points;
     private RemoteDatabaseRespresenter dbRepresenter;
     private String correctAnswer;
+    private List<String> answers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +73,17 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
         while (allContent.moveToNext()) {
             if(allContent.getString(7).contains("0")) {
                 question.setText(allContent.getString(1));
-                answer1.setText(allContent.getString(2));
-                answer2.setText(allContent.getString(3));
-                answer3.setText(allContent.getString(4));
-                answer4.setText(allContent.getString(5));
+
+                answers = new ArrayList<>();
+                for(int i = 2; i <=5; i++) {
+                    answers.add(allContent.getString(i));
+                }
+                Collections.shuffle(answers);
+
+                answer1.setText(answers.get(0));
+                answer2.setText(answers.get(1));
+                answer3.setText(answers.get(2));
+                answer4.setText(answers.get(3));
 
                 correctAnswer = allContent.getString(2);
 

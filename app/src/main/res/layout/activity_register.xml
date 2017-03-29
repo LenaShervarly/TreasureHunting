@@ -28,7 +28,6 @@
                 style="@style/editText_style"
                 android:gravity="center_horizontal"
                 android:hint="Name"
-                android:inputType="textPersonName"
                 android:textColorLink="@drawable/button_style"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -62,7 +61,6 @@
             <AutoCompleteTextView
                 style="@style/editText_style"
                 android:id="@+id/reUsername"
-                android:inputType="textPersonName"
                 android:hint="User name"
                 android:layout_below="@+id/reSurName"
                 android:textStyle="bold"
@@ -78,7 +76,6 @@
             <AutoCompleteTextView
                 style="@style/editText_style"
                 android:id="@+id/rePassword"
-                android:inputType="textPersonName"
                 android:hint="Password"
                 android:textSize="20dp"
                 android:layout_below="@+id/reUsername"
@@ -96,7 +93,6 @@
             <AutoCompleteTextView
                 style="@style/editText_style"
                 android:id="@+id/reEmail"
-                android:inputType="textPersonName"
                 android:hint="Email"
                 android:textSize="20dp"
                 android:layout_below="@+id/rePassword"

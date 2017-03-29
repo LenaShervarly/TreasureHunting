@@ -40,18 +40,6 @@ public class RegisterActivity extends AppCompatActivity {
                 player = new Player(reName.getText().toString(), reSurname.getText().toString(),
                         reUsername.getText().toString(), rePassword.getText().toString(), reEmail.getText().toString());
 
-                /*String name = reName.getText().toString();
-                String surname = reSurname.getText().toString();
-                String username = reUsername.getText().toString();
-                String password = rePassword.getText().toString();
-                String email = reEmail.getText().toString();
-
-                player.setName(name);
-                player.setSurname(surname);
-                player.setUsername(username);
-                player.setPassword(password);
-                player.seteMail(email); */
-
                 boolean isInserted = myDB.insertPlayer(player);
                 if(isInserted){
                     Toast.makeText(RegisterActivity.this, "Your data is saved", Toast.LENGTH_SHORT).show();
