@@ -67,6 +67,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.Camera"></activity>
+        <application
+            android:allowBackup="true"
+            android:icon="@drawable/ic_launcher"></application>
     </application>
 
 </manifest>
