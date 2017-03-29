@@ -49,17 +49,21 @@
                 android:orientation="vertical"
                 android:layout_gravity="bottom"
                 android:layout_weight="0">
-            <EditText
-                style="@style/editText_style"
-                android:id="@+id/teUsername"
-                android:hint="Username"
-                android:textSize="20dp" />
 
-            <EditText
+                <EditText
+                    style="@style/editText_style"
+                    android:id="@+id/teUsername"
+                    android:hint="Username"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <EditText
                 style="@style/editText_style"
                 android:id="@+id/tePassword"
                 android:hint="Password"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:inputType="textPassword"
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/login"

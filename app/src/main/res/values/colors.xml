@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#f43f03</color>
 
     <color name="colorControlHighlight">@color/fifty_percent_transparency_grey_400</color>
     <color name="fifty_percent_transparency_grey_400">#80bdbdbd</color>
@@ -15,6 +15,7 @@
     <color name="blue_light">#FF3498DB</color>
     <color name="black">#111111</color>
     <color name="red">#F60707</color>
+    <color name="dark_grey">#3C3F41</color>
 
     <color name="background_player">#fffafafa</color>
 </resources>
