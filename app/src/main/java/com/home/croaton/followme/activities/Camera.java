@@ -36,4 +36,10 @@ public class Camera extends AppCompatActivity {
             mImageView.setImageBitmap(imageBitmap);
         }
     }
+
+    public void onDoneButtonClicked(View view) {
+        Intent score = new Intent();
+        finish();
+
+    }
 }
