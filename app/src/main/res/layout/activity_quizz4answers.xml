@@ -28,7 +28,8 @@
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="24dp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
 
 
 
@@ -36,6 +37,7 @@
         style="@style/questionButton_style"
         android:id="@+id/guessMelody_option1"
         android:onClick="onTryingAnswer"
+        android:layout_height="wrap_content"
         android:text="@string/Mamma_Mia"
         android:layout_marginBottom="8dp" />
 
@@ -44,7 +46,8 @@
         android:id="@+id/guessMelody_option2"
         android:onClick="onTryingAnswer"
         android:text="@string/Happy_New_Year"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"/>
 
 
     <Button
@@ -52,19 +55,16 @@
         android:id="@+id/guessMelody_option3"
         android:onClick="onTryingAnswer"
         android:text="@string/Dancing_Queen"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"/>
 
     <Button
         style="@style/questionButton_style"
         android:id="@+id/guessMelody_option4"
-        android:layout_width="150dp"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:onClick="onTryingAnswer"
         android:text="@string/I_Am_Just_a_Girl"
         android:layout_marginBottom="8dp" />
-
-
-
 
     </LinearLayout>
 </RelativeLayout>

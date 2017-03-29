@@ -21,9 +21,9 @@ public class ActivityFactory {
                 break;
             case 2:  intent = new Intent(context, QuizzActivity.class);
                 break;
-            case 3:  intent = new Intent(context, GuessMelodyActivity.class);
+            case 3:  intent = new Intent(context, Quizz4answersActivity.class);
                 break;
-            case 4:  intent = new Intent(context, Quizz4answersActivity.class);
+            case 4:  intent = new Intent(context, GuessMelodyActivity.class);
                 break;
             case 5:  intent = new Intent(context, GuessMelodyActivity.class);
                 break;

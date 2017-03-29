@@ -32,26 +32,26 @@ public class QuizzActivity extends AppCompatActivity {
             case R.id.button1:
                 if (checked)
 
-                    Toast.makeText(this, "Right answer", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Right answer", Toast.LENGTH_SHORT).show();
                     points += 5;
 
                 break;
             case R.id.button2:
                 if (checked)
 
-                    Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.button3:
                 if (checked)
 
-                    Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.button4:
                 if (checked)
 
-                    Toast.makeText(this, "Right answer", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "Right answer", Toast.LENGTH_SHORT).show();
                     points += 5;
 
                 break;
