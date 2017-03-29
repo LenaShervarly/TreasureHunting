@@ -137,7 +137,7 @@ public class MapHelper
         mapController.setCenter(point.Position);
     }
 
-    public static void setStartRouteIcon(MapsActivity context, MapView map, GeoPoint position) {
+   /*public static void setStartRouteIcon(MapsActivity context, MapView map, GeoPoint position) {
         Marker marker = putMarker(context, map, position, R.drawable.start, 0.15f, 0.9f, false);
         makeMarkerNotClickable(marker);
     }
@@ -145,7 +145,7 @@ public class MapHelper
     public static void setEndRouteIcon(MapsActivity context, MapView map, GeoPoint position) {
         Marker marker = putMarker(context, map, position, R.drawable.finish, 0.15f, 0.9f, false);
         makeMarkerNotClickable(marker);
-    }
+    }*/
 
     public static void makeMarkerNotClickable(Marker marker)
     {
