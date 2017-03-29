@@ -10,12 +10,14 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     tools:context=".activities.Camera"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/black">
 
     <Button
+        style="@style/ovalButton_style"
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
+        android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/img"
         android:layout_toRightOf="@+id/img"
         android:onClick="click"
@@ -29,6 +31,7 @@
 
 
     <Button
+        style="@style/ovalButton_style"
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

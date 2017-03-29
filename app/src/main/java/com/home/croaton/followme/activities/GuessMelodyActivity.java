@@ -96,7 +96,7 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
 
     public void onTryingAnswer(View view) {
         Button button = (Button)view;
-        button.setBackgroundColor(getResources().getColor(R.color.orange_main));
+        button.setBackgroundColor(getResources().getColor(R.color.red));
         String buttonText = button.getText().toString();
 
         if( buttonText.equals(correctAnswer))
