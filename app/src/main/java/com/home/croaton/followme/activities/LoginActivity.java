@@ -17,25 +17,25 @@ import com.home.croaton.followme.R;
 import com.home.croaton.followme.database.DatabaseHelper;
 import com.home.croaton.followme.database.Player;
 import com.home.croaton.followme.domain.Game;
-import com.home.croaton.followme.instrumentation.ConnectionHelper;
 import com.home.croaton.followme.security.PermissionAndConnectionChecker;
 
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
-    private DatabaseHelper userData;
+    private DatabaseHelper databaseHelper;
     private EditText userName, password;
     private TextView register;
     private Button login;
     private Game game;
     private String currentLanguage;
+    private Player currentPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        userData = new DatabaseHelper(this);
+        databaseHelper = new DatabaseHelper(this);
         userName = (EditText) findViewById(R.id.teUsername);
         password = (EditText) findViewById(R.id.tePassword);
         login = (Button) findViewById(R.id.login);
@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         if (playerExists(username, pass)) {
             Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
             intent.putExtra(IntentNames.SELECTED_GAME, game);
+            intent.putExtra(IntentNames.CURRENT_PLAYER_USERNAME, currentPlayer.getUsername());
             startActivity(intent);
         } else
             Toast.makeText(LoginActivity.this, "Username or password is not correct", Toast.LENGTH_SHORT).show();
@@ -83,10 +84,12 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean playerExists(String username,String password){
         ArrayList<Player> players;
-        players = userData.getPlayers();
+        players = databaseHelper.getPlayers();
         for (Player player : players){
-            if(username.equals(player.getUsername()) && password.equals(player.getPassword()))
-            { return true;}
+            if(username.equals(player.getUsername()) && password.equals(player.getPassword())) {
+                currentPlayer = player;
+                return true;
+            }
         }
         return false;
     }

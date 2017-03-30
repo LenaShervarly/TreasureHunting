@@ -159,4 +159,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return items;
     }
+
+    public void updateScores(String userName, int scores) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL("UPDATE " + TABLE_NAME +
+                " SET " + COL_SCORES + " = '" + scores + "'" +
+                " WHERE " + COL_USERNAME + " = '" + userName + "'");
+    }
 }
