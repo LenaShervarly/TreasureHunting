@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.home.croaton.followme.R;
 import com.home.croaton.followme.audio.AudioPlaybackController;
 import com.home.croaton.followme.audio.AudioPlayerUI;
+import com.home.croaton.followme.database.DatabaseHelper;
+import com.home.croaton.followme.database.Player;
 import com.home.croaton.followme.domain.AudioPoint;
 import com.home.croaton.followme.domain.Game;
 import com.home.croaton.followme.domain.Point;
@@ -66,6 +68,9 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
     private int totalUserScores;
     private Chronometer chronometer;
     private List<Point> routePoints;
+    private boolean isLastActivity = false;
+    private DatabaseHelper databaseHelper;
+    private String currentPlayer;
 
 
 
@@ -94,6 +99,9 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         chronometer = (Chronometer) findViewById(R.id.chronometer);
         //mAudioPlayerUi = new AudioPlayerUI(this, mCurrentGame);
         startTimer();
+
+        databaseHelper = new DatabaseHelper(this);
+        currentPlayer = getIntent().getStringExtra(IntentNames.CURRENT_PLAYER_USERNAME);
     }
 
     private void loadState(Bundle savedInstanceState) {
@@ -250,9 +258,9 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
                     }
 
                     Intent intent = callActivity(activityAudioPointNumber);
-                    startActivityForResult(intent, STORE_SCORES);
                     if(marker.getPosition().equals(routePoints.get(routePoints.size() - 1).Position))
-                        showResults();
+                        isLastActivity = true;
+                    startActivityForResult(intent, STORE_SCORES);
 
                     return true;
                 }
@@ -277,7 +285,11 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
                 totalUserScores += score.getIntExtra("scores", 0);
             }
         }
-        //stopTimer();
+        if(isLastActivity) {
+            showResults();
+            stopTimer();
+        }
+        databaseHelper.updateScores(currentPlayer, totalUserScores);
     }
 
     private void startTimer(){
