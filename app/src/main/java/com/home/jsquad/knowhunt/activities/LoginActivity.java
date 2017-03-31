@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,14 @@ public class LoginActivity extends AppCompatActivity {
 
         PermissionAndConnectionChecker.checkForPermissions(LoginActivity.this, new String[]
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+           // marker.setIcon(context.getResources().getDrawable(resourceId, null));
+        }
+        else
+        {
+            //marker.setIcon(context.getResources().getDrawable(resourceId));
+        }
     }
 
     public void onPressingLogin(View view) {

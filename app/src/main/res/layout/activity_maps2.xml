@@ -8,35 +8,35 @@
         android:orientation="vertical"
         style="@style/Base.ThemeOverlay.AppCompat">
 
-        <LinearLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/viewB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="top"
-            android:background="@color/fifty_percent_transparency_grey_400">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textViewSongName"
-                android:maxHeight="50dp"
-                android:text="@string/time_spent"/>
-
-            <Chronometer
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/chronometer"/>
-
-        </LinearLayout>
         <LinearLayout
             android:id="@+id/viewA"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.15"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:background="@null">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layoutMode="opticalBounds"
+                android:background="@null"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+                <Chronometer
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chronometer"
+                    android:textColor="@color/blue_main"
+                    android:fontFamily="cursive"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:background="@null"
+                    android:gravity="center" />
+            </RelativeLayout>
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/fragment_welcome"
@@ -44,6 +44,7 @@
                 android:layout_height="match_parent"
                 android:background="#fff"
                 android:orientation="vertical" >
+
             <org.osmdroid.views.MapView android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
