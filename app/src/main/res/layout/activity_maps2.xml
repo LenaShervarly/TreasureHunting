@@ -5,7 +5,8 @@
 
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        style="@style/Base.ThemeOverlay.AppCompat">
 
         <LinearLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="top"
-            android:background="@color/background_material_light">
+            android:background="@color/fifty_percent_transparency_grey_400">
 
             <TextView
                 android:layout_width="fill_parent"

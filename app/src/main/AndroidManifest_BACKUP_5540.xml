@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.home.croaton.followme">
+    package="com.home.jsquad.knowhunt">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -42,7 +42,7 @@
         </activity>
         <activity
 <<<<<<< HEAD
-            android:name="com.home.croaton.followme.activities.ExcursionOverviewActivity"
+            android:name="com.home.jsquad.knowhunt.activities.ExcursionOverviewActivity"
 =======
             android:name=".activities.GameOverviewActivity"
 >>>>>>> 39d9cbf553aac3878c84f4eeac5dcd97b73cc77b

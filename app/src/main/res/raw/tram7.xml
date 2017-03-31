@@ -13,22 +13,22 @@
 	
 	<audioPoints>
 		<audioPoint number="0" position="59.346186, 18.072819" radius="20">
-			<audio id="harp_1"/>
+			<audio id="space"/>
 		</audioPoint>
 		<audioPoint number="1" position="59.347369, 18.073730" radius="20">
-			<audio id="harp_2"/>
+			<audio id="space"/>
 		</audioPoint>
 		<audioPoint number="2" position="59.347874, 18.073123" radius="20">
-			<audio id="harp_2"/>
+			<audio id="space"/>
 		</audioPoint>
 		<audioPoint number="3" position="59.347653, 18.071957" radius="20">
-			<audio id="congas"/>
+			<audio id="space"/>
 		</audioPoint>
 		<audioPoint number="4" position="59.347018, 18.070993" radius="20">
-			<audio id="harp_3"/>
+			<audio id="space"/>
 		</audioPoint>
 		<audioPoint number="5" position="59.346099, 18.071851" radius="20">
-			<audio id="harp_1"/>
+			<audio id="space"/>
 		</audioPoint>
 	</audioPoints>
 </route>

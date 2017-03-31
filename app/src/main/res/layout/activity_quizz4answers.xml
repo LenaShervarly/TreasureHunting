@@ -8,7 +8,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="50dp"
-    tools:context="com.home.croaton.followme.activities.QuizzActivity"
+    tools:context="com.home.jsquad.knowhunt.activities.QuizzActivity"
     android:background="@color/black"
     android:gravity="center">
 

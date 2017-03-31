@@ -1,9 +1,9 @@
-import com.home.croaton.followme.audio.AudioPlaybackController;
-import com.home.croaton.followme.domain.AudioPoint;
-import com.home.croaton.followme.domain.IGame;
-import com.home.croaton.followme.domain.Route;
-import com.home.croaton.followme.location.LocationHelper;
-import com.home.croaton.followme.math.Vector2;
+import com.home.jsquad.knowhunt.audio.AudioPlaybackController;
+import com.home.jsquad.knowhunt.domain.AudioPoint;
+import com.home.jsquad.knowhunt.domain.IGame;
+import com.home.jsquad.knowhunt.domain.Route;
+import com.home.jsquad.knowhunt.location.LocationHelper;
+import com.home.jsquad.knowhunt.math.Vector2;
 
 import junit.framework.Assert;
 
@@ -14,8 +14,6 @@ import org.osmdroid.util.GeoPoint;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-
-import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 public class PointDirectionTest {

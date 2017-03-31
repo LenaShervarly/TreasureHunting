@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.home.croaton.followme">
+    package="com.home.jsquad.knowhunt">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -12,7 +12,7 @@
     <uses-feature android:name="android.hardware.camera"/>
 
     <application
-        android:name=".instrumentation.App"
+        android:name="com.home.jsquad.knowhunt.instrumentation.App"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
@@ -21,10 +21,10 @@
         android:versionCode="6"
         android:versionName="1.05">
         <service
-            android:name=".audio.AudioService"
+            android:name="com.home.jsquad.knowhunt.audio.AudioService"
             android:stopWithTask="false" />
         <service
-            android:name=".location.LocationService"
+            android:name="com.home.jsquad.knowhunt.location.LocationService"
             android:stopWithTask="false" />
 
         <meta-data
@@ -35,7 +35,7 @@
             android:value="pk.eyJ1IjoiY3JvYXRvbiIsImEiOiJjaW0yajFpZ20wMG51dXhtNGtkcW5temd0In0.ZdfAVCZA5_f4YfB4brpJ1A" />
 
         <activity
-            android:name=".activities.MapsActivity"
+            android:name="com.home.jsquad.knowhunt.activities.MapsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -43,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.GameOverviewActivity"
+            android:name="com.home.jsquad.knowhunt.activities.GameOverviewActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             android:screenOrientation="portrait">
@@ -53,13 +53,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.QuizzActivity" />
-        <activity android:name=".activities.Quizz4answersActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.GuessMelodyActivity" />
+        <activity android:name="com.home.jsquad.knowhunt.activities.QuizzActivity" />
+        <activity android:name="com.home.jsquad.knowhunt.activities.Quizz4answersActivity" />
+        <activity android:name="com.home.jsquad.knowhunt.activities.LoginActivity" />
+        <activity android:name="com.home.jsquad.knowhunt.activities.RegisterActivity" />
+        <activity android:name="com.home.jsquad.knowhunt.activities.GuessMelodyActivity" />
         <activity
-            android:name=".activities.SplashScreen"
+            android:name="com.home.jsquad.knowhunt.activities.SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,7 +67,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Camera"></activity>
+        <activity android:name="com.home.jsquad.knowhunt.activities.Camera"></activity>
         <application
             android:allowBackup="true"
             android:icon="@drawable/ic_launcher"></application>
