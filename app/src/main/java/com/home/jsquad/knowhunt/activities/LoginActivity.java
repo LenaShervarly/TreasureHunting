@@ -42,6 +42,16 @@ public class LoginActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.login);
         register = (TextView) findViewById(R.id.teRegister);
 
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M)
+        {
+            password.
+            // marker.setIcon(context.getResources().getDrawable(resourceId, null));
+        }
+        else
+        {
+            //marker.setIcon(context.getResources().getDrawable(resourceId));
+        }
+
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
 
@@ -49,14 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
         PermissionAndConnectionChecker.checkForPermissions(LoginActivity.this, new String[]
                 {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PermissionAndConnectionChecker.LocalStorageRequestCode);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-           // marker.setIcon(context.getResources().getDrawable(resourceId, null));
-        }
-        else
-        {
-            //marker.setIcon(context.getResources().getDrawable(resourceId));
-        }
+
     }
 
     public void onPressingLogin(View view) {
