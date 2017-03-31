@@ -58,28 +58,37 @@
                     android:textSize="20dp"
                     android:textStyle="bold"/>
 
-            <EditText
-                android:id="@+id/tePassword"
-                style="@style/editText_style"
-                android:fontFamily="sans-serif"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                <android.support.design.widget.TextInputLayout
+                    style="@style/editText_style"
+                    android:id="@+id/passwordLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:theme="@style/TextLabel">
+                    <AutoCompleteTextView
+                        android:id="@+id/tePassword"
+                        style="@style/editText_style"
+                        android:fontFamily="sans-serif"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
+                </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/login"
-                style="@style/ovalButton_style"
-                android:onClick="onPressingLogin"
-                android:text="Log In"
-                android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/teRegister"
-                style="@style/text_view_style"
-                android:onClick="onPressingRegister"
-                android:text="@string/register"
-                android:textAppearance="@android:style/TextAppearance.Inverse" />
+                <Button
+                    android:id="@+id/login"
+                    style="@style/ovalButton_style"
+                    android:onClick="onPressingLogin"
+                    android:text="Log In"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/teRegister"
+                    style="@style/text_view_style"
+                    android:onClick="onPressingRegister"
+                    android:text="@string/register"
+                    android:textAppearance="@android:style/TextAppearance.Inverse" />
 
         </LinearLayout>
     </LinearLayout>

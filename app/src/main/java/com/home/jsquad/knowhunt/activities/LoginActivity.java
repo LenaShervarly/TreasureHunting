@@ -7,8 +7,10 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 public class LoginActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private EditText userName, password;
+    private TextInputLayout passwordLayaot;
     private TextView register;
     private Button login;
     private Game game;
@@ -38,19 +41,14 @@ public class LoginActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
         userName = (EditText) findViewById(R.id.teUsername);
+        passwordLayaot = (TextInputLayout) findViewById(R.id.passwordLayout);
         password = (EditText) findViewById(R.id.tePassword);
         login = (Button) findViewById(R.id.login);
         register = (TextView) findViewById(R.id.teRegister);
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M)
-        {
-            password.
-            // marker.setIcon(context.getResources().getDrawable(resourceId, null));
-        }
-        else
-        {
-            //marker.setIcon(context.getResources().getDrawable(resourceId));
-        }
+            passwordLayaot.setPasswordVisibilityToggleEnabled(true);
+
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         currentLanguage = sharedPref.getString(getString(R.string.settings_language_preference), "en");
