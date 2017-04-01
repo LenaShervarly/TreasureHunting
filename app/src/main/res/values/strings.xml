@@ -52,4 +52,7 @@
     <string name="main_page_title">KNOW-HUNT</string>
     <string name="time_spent">You\'ve spent : </string>
     <string name="register">No account yet? Create one!</string>
+    <string name="restart">Restart a game</string>
+    <string name="all_results">See all results</string>
+    <string name="scores_got">You\'ve got:</string>
 </resources>

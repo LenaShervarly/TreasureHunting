@@ -17,7 +17,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.home.jsquad.knowhunt.R;
@@ -231,14 +233,6 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         //MapHelper.setEndRouteIcon(this, mMap, routePoints.get(routePoints.size() - 1).Position);
         MapHelper.drawAudioPoints(this, mMap, mAudioPlaybackController, mCurrentGame, mAudioPointMarkers);
 
-        /*AlertDialog.Builder builderChron = new AlertDialog.Builder(MapsActivity.this);
-        View chronometerView = getLayoutInflater().inflate(R.layout.chronometer_item, null);
-        chronometer = (Chronometer) chronometerView.findViewById(R.id.chronometer);
-        builderChron.setView(chronometerView);
-
-        AlertDialog dialogChronom = builderChron.create();
-        dialogChronom.show(); */
-
         for(Marker marker : mAudioPointMarkers)
             marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                 @Override
@@ -310,15 +304,39 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
     }
 
     private void showResults(){
-        AlertDialog.Builder resultsBuilder = new AlertDialog.Builder(this);
-        StringBuilder info = new StringBuilder();
-        info.append("Your scores are: " + getTotalUserScores() + "\n");
-        info.append("You've spent ... " + getTimeSpentForSolving() + "\n");
 
-        resultsBuilder.setMessage(info);
+        AlertDialog.Builder resultsBuilder = new AlertDialog.Builder(MapsActivity.this);
+        View scoresView = getLayoutInflater().inflate(R.layout.scores_item, null);
+        TextView user = (TextView) scoresView.findViewById(R.id.user);
+        TextView scoreValue = (TextView) scoresView.findViewById(R.id.scores_value);
+        TextView timeValue = (TextView) scoresView.findViewById(R.id.time_value);
+        Button allResultsButton = (Button) scoresView.findViewById(R.id.see_all_results);
+        Button restartButton = (Button) scoresView.findViewById(R.id.start_again);
 
-        AlertDialog alert = resultsBuilder.create();
-        alert.show();
+        user.setText("User: " + currentPlayer);
+        scoreValue.setText(getTotalUserScores() + " scores.");
+        timeValue.setText(getTimeSpentForSolving());
+
+        allResultsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = Toast.makeText(MapsActivity.this, "Coming soon", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }
+        );
+
+        restartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent restartGame = new Intent(MapsActivity.this, GameOverviewActivity.class);
+                startActivity(restartGame);
+            }
+        });
+        resultsBuilder.setView(scoresView);
+
+        AlertDialog dialog = resultsBuilder.create();
+        dialog.show();
     }
 
     public int getTotalUserScores(){

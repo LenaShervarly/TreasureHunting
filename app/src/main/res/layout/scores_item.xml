@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="3dp"
+        android:gravity="center">
+
+        <TextView
+            style="@style/text_view_style"
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/grey_700"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="3dp">
+
+        <TextView
+            style="@style/text_view_style"
+            android:id="@+id/scrores_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/scores_got"
+            android:layout_weight="1"
+            android:textColor="@color/grey_700"
+            android:textSize="16dp"
+            android:layout_marginLeft="50dp"
+            android:gravity="start"
+            android:textAlignment="textStart"
+            />
+
+        <TextView
+            style="@style/text_view_style"
+            android:id="@+id/scores_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/grey_700"
+            android:textSize="16dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textAlignment="textStart" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="3dp"
+        android:layout_marginLeft="15dp">
+
+        <TextView
+            style="@style/text_view_style"
+            android:id="@+id/time_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="You've spent: "
+            android:textColor="@color/grey_700"
+            android:textSize="16dp"
+            android:gravity="start"
+            android:textAlignment="textStart"
+            android:layout_marginLeft="50dp"/>
+
+        <TextView
+            style="@style/text_view_style"
+            android:id="@+id/time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="@color/grey_700"
+            android:textSize="16dp"
+            android:gravity="start"
+            android:textAlignment="textStart"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="3dp">
+
+        <Button
+            android:id="@+id/see_all_results"
+            style="@style/questionButton_style"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/all_results" />
+
+        <Button
+            android:id="@+id/start_again"
+            style="@style/questionButton_style"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/restart" />
+    </LinearLayout>
+
+
+</LinearLayout>
