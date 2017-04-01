@@ -231,6 +231,13 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         //MapHelper.setEndRouteIcon(this, mMap, routePoints.get(routePoints.size() - 1).Position);
         MapHelper.drawAudioPoints(this, mMap, mAudioPlaybackController, mCurrentGame, mAudioPointMarkers);
 
+        /*AlertDialog.Builder builderChron = new AlertDialog.Builder(MapsActivity.this);
+        View chronometerView = getLayoutInflater().inflate(R.layout.chronometer_item, null);
+        chronometer = (Chronometer) chronometerView.findViewById(R.id.chronometer);
+        builderChron.setView(chronometerView);
+
+        AlertDialog dialogChronom = builderChron.create();
+        dialogChronom.show(); */
 
         for(Marker marker : mAudioPointMarkers)
             marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
