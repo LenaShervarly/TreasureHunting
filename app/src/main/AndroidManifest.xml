@@ -8,8 +8,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-feature android:name="android.hardware.camera"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:name=".instrumentation.App"
@@ -67,10 +68,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Camera"></activity>
+        <activity android:name=".activities.Camera" />
+
         <application
             android:allowBackup="true"
-            android:icon="@drawable/ic_launcher"></application>
+            android:icon="@drawable/ic_launcher" />
+
+        <activity android:name=".activities.ShowResultsActivity"></activity>
     </application>
 
 </manifest>
