@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="settings_button_id" type="id">settings</item>
+
+    <item name="routs_collection" type="id">routs</item>
+    <item name="route1_image" type="id">route1_image</item>
+
+    <item name="route2_id" type="id">route2</item>
+    <item name="route2_image" type="id">route2_image</item>
+
+    <item name="route3_id" type="id">route3</item>
+    <item name="route3_image" type="id">route3_image</item>
+
+    <item name="fake_location_started" type="string">FakeLocationStarted</item>
+    <item name="settings_fake_location_id" type="string">fake_location</item>
+    <item name="settings_send_my_map" type="string">send_my_map</item>
+    <item name="audio_point_state" type="string">AudioPointsDone</item>
+    <item name="route_name" type="string">RouteName</item>
+    <item name="settings_language_preference" type="string">settings_language_preference</item>
+    <item name="last_active_marker" type="string">last_active_marker</item>
+
+    <item name="point_names_ending" type="string">_point_names</item>
+
+</resources>

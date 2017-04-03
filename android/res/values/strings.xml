@@ -1,0 +1,58 @@
+<resources>
+
+    <string name="app_name">Know Hunt</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_social_recommendations">Fake location data</string>
+    <string name="pref_description_social_recommendations">Will fake location data emulating movement across route</string>
+    <string name="pref_header_notifications">Settings for future</string>
+    <string name="pref_title_new_message_notifications">Test main message</string>
+    <string name="pref_title_ringtone">Test value 1</string>
+    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_title_vibrate">TestValue2</string>
+    <string name="send_my_map">Send my map</string>
+    <string name="caption_send_map">Click me as a button</string>
+    <string name="settings_language_caption">Language</string>
+
+    <string name="game_track_notification_caption">Now at point:</string>
+    <string name="audio_choose_tack">Click on a button to play audio</string>
+
+    <string name="cost_free">Free</string>
+
+    <string name="kilometers">km</string>
+    <string name="hours">h</string>
+    <string name="minutes">min</string>
+    <string name="euro">€</string>
+    <string name="excursion_load">Load</string>
+    <string name="excursion_open">Open</string>
+    <string name="excursion_delete">Delete</string>
+
+    <string name="file_not_found">File not found!</string>
+    <string name="download_error">Error during downloading</string>
+    <string name="check_internet_connection">Please check your internet connection</string>
+    <string name="downloading_excursion">Downloading Excursion</string>
+    <string name="delete_confirmation">Are you sure you want to delete this excursion?</string>
+    <string name="trash_bin">Delete excursion</string>
+
+    <string name="stockholm_excursions">Stockholm Excursions</string>
+    <string name="enable_gps_message">For best experience it is better to enable GPS on your device. Do you want to do it?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="buy">Buy</string>
+    <string name="done">DONE :)</string>
+    <string name="question_and_answers">Question And Answers</string>
+    <string name="can_you_see_a_huge_brown_building_on_you_left">Can you see a huge brown building on you left?</string>
+    <string name="is_there_a_coffee_shop_on_your_right_corner">Is there a coffee shop on your right corner?</string>
+    <string name="guess_melody_task_description">The name of the song is:</string>
+    <string name="I_Am_Just_a_Girl">I Am Just a Girl</string>
+    <string name="Dancing_Queen">Dancing Queen</string>
+    <string name="Happy_New_Year">Happy New Year</string>
+    <string name="Mamma_Mia">Mamma Mia</string>
+    <string name="main_page_title">KNOW-HUNT</string>
+    <string name="time_spent">You\'ve spent : </string>
+    <string name="register">No account yet? Create one!</string>
+    <string name="restart">Restart a game</string>
+    <string name="all_results">See all results</string>
+    <string name="scores_got">You\'ve got:</string>
+</resources>

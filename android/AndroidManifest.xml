@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<manifest package="com.home.jsquad.knowhunt" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.camera"/>
+
+
+
+
+
+
+<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="21" />
+
+
+
+
+<application android:name="com.home.jsquad.knowhunt.android.instrumentation.App" android:versionName="1.05"
+    android:versionCode="6" android:theme="@style/AppTheme"
+    android:supportsRtl="true" android:label="@string/app_name"
+    android:icon="@drawable/icon" android:allowBackup="true">
+    android:allowBackup="true"
+    android:icon="@drawable/ic_launcher"
+    android:label="KnowHunt Maze"
+    android:theme="@style/GdxTheme" >
+
+
+    <service android:name="com.home.jsquad.knowhunt.android.audio.AudioService" android:stopWithTask="false"/>
+    <service android:name="com.home.jsquad.knowhunt.android.location.LocationService" android:stopWithTask="false"/>
+    <meta-data android:name="MAPBOX_MAPID" android:value="mapbox.emerald"/>
+    <meta-data android:name="ACCESS_TOKEN" android:value="pk.eyJ1IjoiY3JvYXRvbiIsImEiOiJjaW0yajFpZ20wMG51dXhtNGtkcW5temd0In0.ZdfAVCZA5_f4YfB4brpJ1A"/>
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.MapsActivity" android:label="@string/app_name" android:screenOrientation="portrait">
+
+        <intent-filter>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+
+        </intent-filter>
+
+    </activity>
+
+    <activity
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+        android:name=".android.AndroidLauncher">
+
+    </activity>
+
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.GameOverviewActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:label="@string/app_name">
+        android:screenOrientation="portrait">
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+
+        </intent-filter>
+
+    </activity>
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.QuizzActivity"/>
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.Quizz4answersActivity"/>
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.LoginActivity"/>
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.RegisterActivity"/>
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.GuessMelodyActivity"/>
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.ShowResultsActivity"/>
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.SplashScreen" android:theme="@style/Theme.AppCompat.NoActionBar">
+
+    <intent-filter>
+    <action android:name="android.intent.action.MAIN"/>
+    <category android:name="android.intent.category.LAUNCHER"/>
+
+</intent-filter>
+
+</activity>
+
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.Camera"/>
+    <application android:icon="@drawable/ic_launcher" android:allowBackup="true"/>
+
+</application>
+
+</manifest>
