@@ -98,14 +98,14 @@ public class GameRenderer {
                                        com.home.knowhunt.screens.GameScreen.GAME_WIDTH - 30,
                                        com.home.knowhunt.screens.GameScreen.GAME_HEIGHT - 10);
         } else {
-            if (world.isGameOver() && world.win) {
+            if (world.isGameOver() && world.isWon()) {
 
                 com.home.knowhunt.mazehelpers.AssetLoader.shadow.draw(batcher, "You won!", 25, 80);
                 com.home.knowhunt.mazehelpers.AssetLoader.font.draw(batcher, "You won!", 24, 79);
 
             }
 
-            if (world.isGameOver() && !world.win) {
+            if (world.isGameOver() && !world.isWon()) {
                 com.home.knowhunt.mazehelpers.AssetLoader.shadow.draw(batcher, "Game Over", 25, 56);
                 com.home.knowhunt.mazehelpers.AssetLoader.font.draw(batcher, "Game Over", 24, 55);
                 com.home.knowhunt.mazehelpers.AssetLoader.shadow.draw(batcher, "Try again ?", 23, 76);

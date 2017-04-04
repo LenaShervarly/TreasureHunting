@@ -3,6 +3,7 @@ package com.home.knowhunt.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.home.knowhunt.gameworld.GameRenderer;
+import com.home.knowhunt.gameworld.GameWorld;
 
 public class GameScreen implements Screen {
 
@@ -48,4 +49,5 @@ public class GameScreen implements Screen {
         float gameHeight = screenHeight / (screenWidth / GAME_WIDTH);
         return (int) gameHeight;
     }
+    public GameWorld getWorld (){return world;}
 }

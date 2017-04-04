@@ -3,6 +3,7 @@ package com.home.knowhunt.mazehelpers;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector3;
 import com.home.knowhunt.gameworld.GameRenderer;
+import com.home.knowhunt.maze.MazeGame;
 import com.home.knowhunt.shared.Directions;
 import com.home.knowhunt.gameobjects.Boy;
 
@@ -13,6 +14,21 @@ public class InputHandler implements InputProcessor {
     private GameRenderer renderer;
     private Boy boy;
     Vector3 touchPoint;
+
+
+
+
+
+
+    private void callBack() {
+
+        // check the calling class has actually implemented MyGameCallback
+        if (MazeGame.myGameCallback != null) {
+            MazeGame.myGameCallback.onStartSomeActivity(world.isWon(), 0);
+        }
+
+
+    }
 
     public InputHandler(com.home.knowhunt.gameworld.GameWorld world, GameRenderer renderer) {
         this.world = world;
@@ -29,8 +45,13 @@ public class InputHandler implements InputProcessor {
 
         boy.onClick(touchPoint.x, touchPoint.y);
 
-        if (world.isGameOver() || world.isHighScore()) { world.restart(); }
-
+        if (world.isGameOver()) {
+            if (world.isWon()){
+                callBack();
+            }
+            else
+                world.restart();
+        }
         return true;
     }
 

@@ -10,7 +10,7 @@ public class GameWorld {
     private com.home.knowhunt.gameobjects.Boy boy;
     private com.home.knowhunt.gameobjects.Goal end;
     public enum GameState { READY, RUNNING, GAMEOVER, HIGHSCORE }
-    public boolean win;
+    private boolean win;
     private GameState currentState;
     private GamePlay gp;
 
@@ -29,17 +29,17 @@ public class GameWorld {
 
         int y = 10;
         int x = 10;
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 5; i++) {
             int rand = (int) (Math.random() * 150);
             int rand2 = (int) (Math.random() * 150);
-            for (int j = 0; j < 5; j++) {
-                wall = new com.home.knowhunt.gameobjects.Wall(x+(x*j),y );
+            for (int j = 0; j < 4; j++) {
+                wall = new com.home.knowhunt.gameobjects.Wall(x+(x*j)+rand,y );
                 gp.getObstacles().add(wall);
             }
-            x+=60;
-            wall2=new com.home.knowhunt.gameobjects.Wall2(y,wall.getX());
+            x+=rand;
+            wall2=new com.home.knowhunt.gameobjects.Wall2(y+rand2,wall.getX());
             gp.getObstaclesv().add(wall2);
-            y+=60;
+            y+=rand2;
             wall2=new com.home.knowhunt.gameobjects.Wall2(y,wall.getX()+40);
             gp.getObstaclesv().add(wall2);
 
@@ -61,7 +61,9 @@ public class GameWorld {
         gp = new GamePlay(boy);
         end= new com.home.knowhunt.gameobjects.Goal();
         end.setNode(100,100);
+        generateMap(3);
 
+        /*
         wall=new com.home.knowhunt.gameobjects.Wall();
         wall.setX(20);
         wall.setY(50);
@@ -81,16 +83,17 @@ public class GameWorld {
         wall5= new com.home.knowhunt.gameobjects.Wall2();
         wall3.setX(50);
         wall3.setY(20);
+/*
 
-generateMap(3);
-   //    gp.getObstacles().add(wall);
-     //  gp.getObstacles().add(wall2);
-      // gp.getObstacles().add(wall3);
-       //gp.getObstacles().add(wall4);
-       //gp.getObstacles().add(wall5);
+       gp.getObstacles().add(wall);
+      gp.getObstacles().add(wall2);
+       gp.getObstacles().add(wall3);
+       gp.getObstacles().add(wall4);
+       gp.getObstacles().add(wall5);
 
-
+*/
     }
+
 
     public void update(float delta) {
         switch (currentState) {
@@ -145,5 +148,5 @@ generateMap(3);
 
     public boolean isReady() { return currentState == GameState.READY; }
     public boolean isGameOver() { return currentState == GameState.GAMEOVER; }
-    public boolean isHighScore() { return currentState == GameState.HIGHSCORE; }
+    public boolean isWon() {return win;}
 }
