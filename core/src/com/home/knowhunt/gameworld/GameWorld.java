@@ -1,5 +1,7 @@
 package com.home.knowhunt.gameworld;
 
+import com.home.knowhunt.gameobjects.Wall;
+import com.home.knowhunt.gameobjects.Wall2;
 import com.home.knowhunt.mazehelpers.AssetLoader;
 
 import java.util.LinkedList;
@@ -24,30 +26,43 @@ public class GameWorld {
 
 
     public void generateMap (int blocksCount) {
-        com.home.knowhunt.gameobjects.Wall wall = new com.home.knowhunt.gameobjects.Wall();
-        com.home.knowhunt.gameobjects.Wall2 wall2;
+        Wall wall;
+        Wall2 wall2;
 
-        int y = 10;
-        int x = 10;
-        for (int i = 0; i < 5; i++) {
-            int rand = (int) (Math.random() * 150);
-            int rand2 = (int) (Math.random() * 150);
-            for (int j = 0; j < 4; j++) {
-                wall = new com.home.knowhunt.gameobjects.Wall(x+(x*j)+rand,y );
+        int y = 30;
+        int x = 43;
+        int j=0;
+        for (int i = 0; i < 3; i++) {
+            //     int rand = (int) (Math.random() * 150);
+            //    int rand2 = (int) (Math.random() * 150);
+            while(j<7){
+                wall = new Wall(i*x,j*y );
                 gp.getObstacles().add(wall);
+                wall2=new Wall2(i*x,j*y);
+                gp.getObstaclesv().add(wall2);
+                j++;
             }
-            x+=rand;
-            wall2=new com.home.knowhunt.gameobjects.Wall2(y+rand2,wall.getX());
-            gp.getObstaclesv().add(wall2);
-            y+=rand2;
-            wall2=new com.home.knowhunt.gameobjects.Wall2(y,wall.getX()+40);
-            gp.getObstaclesv().add(wall2);
 
+
+            j=0;
         }
 
+    }
 
+    public void removeWalls () {
+        int offset=0;
 
+        int[] rowsToRemove = {10,11,15,19,8,9,16,18,7,6,5,3,2,0};
+        int[] columnToRemove = {4,5,6,11,12,7,4,2,20,1,10,18,16,15};
+
+        for (int i = 0; i < rowsToRemove.length; i++) {
+            //        offset= (int)(Math.random()*20);
+
+            getObstacles().get(Math.abs(rowsToRemove[i]-offset)).setY(500);
+            getObstaclesv().get(Math.abs(columnToRemove[i]-offset)).setY(500);
         }
+    }
+
 
 
 
@@ -60,8 +75,9 @@ public class GameWorld {
 
         gp = new GamePlay(boy);
         end= new com.home.knowhunt.gameobjects.Goal();
-        end.setNode(100,100);
+        end.setNode(110,5);
         generateMap(3);
+        removeWalls();
 
         /*
         wall=new com.home.knowhunt.gameobjects.Wall();
@@ -83,7 +99,6 @@ public class GameWorld {
         wall5= new com.home.knowhunt.gameobjects.Wall2();
         wall3.setX(50);
         wall3.setY(20);
-/*
 
        gp.getObstacles().add(wall);
       gp.getObstacles().add(wall2);
