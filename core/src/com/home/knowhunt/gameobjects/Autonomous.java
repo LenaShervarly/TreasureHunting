@@ -6,8 +6,13 @@ import com.home.knowhunt.screens.GameScreen;
 
 import java.util.Random;
 
-
-public abstract class Autonomous extends Obstacle implements Artificial {
+/**
+ * This class is used to represent shared properties between objects
+ * on the game board
+ * @author      Aiham Alkaseer
+ * @version     1.0
+ */
+public abstract class Autonomous extends Obstacle {
 
     private static Random r = new Random();
     private int factor;
@@ -29,25 +34,6 @@ public abstract class Autonomous extends Obstacle implements Artificial {
     public void setFactor(int factor) { this.factor = factor; }
     public void setDivider(int divider) { this.divider = divider; }
 
-
-
-    public void changeDir() {
-        switch (r.nextInt(factor) % divider) {
-            case 0:
-                setDir(com.home.knowhunt.shared.Directions.NORTH);
-                break;
-            case 1:
-                setDir(com.home.knowhunt.shared.Directions.EAST);
-                break;
-            case 2:
-                setDir(com.home.knowhunt.shared.Directions.SOUTH);
-                break;
-            case 3:
-                setDir(com.home.knowhunt.shared.Directions.WEST);
-                break;
-
-        }
-    }
 
     public abstract TextureRegion getTexture();
 
