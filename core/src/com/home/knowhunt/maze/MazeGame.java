@@ -22,7 +22,7 @@ public class MazeGame extends Game {
     // Define an interface for your various callbacks to the android launcher
     public interface MyGameCallback {
 
-        public void onStartSomeActivity(boolean win, int score);
+        public void onGameEnd(boolean win);
     }
 
     public static void setMyGameCallback(MazeGame.MyGameCallback callback) {

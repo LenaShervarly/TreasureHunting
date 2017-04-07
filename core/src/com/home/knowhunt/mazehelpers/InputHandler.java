@@ -24,7 +24,7 @@ public class InputHandler implements InputProcessor {
 
         // check the calling class has actually implemented MyGameCallback
         if (MazeGame.myGameCallback != null) {
-            MazeGame.myGameCallback.onStartSomeActivity(world.isWon(), 0);
+            MazeGame.myGameCallback.onGameEnd(world.isWon());
         }
 
 

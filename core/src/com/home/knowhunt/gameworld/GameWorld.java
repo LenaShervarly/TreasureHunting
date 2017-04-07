@@ -17,15 +17,8 @@ public class GameWorld {
     private GamePlay gp;
 
     private int midPointY;
-    private com.home.knowhunt.gameobjects.Wall wall;
-    private com.home.knowhunt.gameobjects.Wall wall2;
-    private com.home.knowhunt.gameobjects.Wall wall3;
-    private com.home.knowhunt.gameobjects.Wall2 wall4;
-    private com.home.knowhunt.gameobjects.Wall2 wall5;
 
-
-
-    public void generateMap (int blocksCount) {
+    public void generateMap () {
         Wall wall;
         Wall2 wall2;
 
@@ -33,8 +26,6 @@ public class GameWorld {
         int x = 43;
         int j=0;
         for (int i = 0; i < 3; i++) {
-            //     int rand = (int) (Math.random() * 150);
-            //    int rand2 = (int) (Math.random() * 150);
             while(j<7){
                 wall = new Wall(i*x,j*y );
                 gp.getObstacles().add(wall);
@@ -56,8 +47,7 @@ public class GameWorld {
         int[] columnToRemove = {4,5,6,11,12,7,4,2,20,1,10,18,16,15};
 
         for (int i = 0; i < rowsToRemove.length; i++) {
-            //        offset= (int)(Math.random()*20);
-
+            //        offset= (int)(Math.random()*20);     // this would make the walls removal random
             getObstacles().get(Math.abs(rowsToRemove[i]-offset)).setY(500);
             getObstaclesv().get(Math.abs(columnToRemove[i]-offset)).setY(500);
         }
@@ -76,37 +66,9 @@ public class GameWorld {
         gp = new GamePlay(boy);
         end= new com.home.knowhunt.gameobjects.Goal();
         end.setNode(110,5);
-        generateMap(3);
+        generateMap();
         removeWalls();
 
-        /*
-        wall=new com.home.knowhunt.gameobjects.Wall();
-        wall.setX(20);
-        wall.setY(50);
-
-        wall2= new com.home.knowhunt.gameobjects.Wall();
-        wall2.setX(60);
-        wall2.setY(80);
-
-        wall3= new com.home.knowhunt.gameobjects.Wall();
-        wall3.setX(50);
-        wall3.setY(20);
-
-        wall4= new com.home.knowhunt.gameobjects.Wall2();
-        wall3.setX(60);
-        wall3.setY(80);
-
-        wall5= new com.home.knowhunt.gameobjects.Wall2();
-        wall3.setX(50);
-        wall3.setY(20);
-
-       gp.getObstacles().add(wall);
-      gp.getObstacles().add(wall2);
-       gp.getObstacles().add(wall3);
-       gp.getObstacles().add(wall4);
-       gp.getObstacles().add(wall5);
-
-*/
     }
 
 

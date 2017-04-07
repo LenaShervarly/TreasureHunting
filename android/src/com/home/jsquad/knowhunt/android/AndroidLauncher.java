@@ -1,5 +1,15 @@
 package com.home.jsquad.knowhunt.android;
 
+
+/**
+ * This class is the activity that is responsible of initiating the libgx game
+ * it calls the constructor of MazeGame class, then uses the game call back interface to get
+ * an answer from the game wether the player has won or not
+ * it passes this data back to the maps activity to handle the score
+ * @author      Aiham Alkaseer
+ * @version     1.0
+ */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,20 +30,31 @@ public class AndroidLauncher extends AndroidApplication implements MazeGame.MyGa
 
 	}
 
+	/**
+	 * checks if the player won or not
+	 * <p>
+	 * this method gets the returned value of the libgdx game callback and
+	 * adds point if the player has finished the game
+	 * <p>
+	 *
+	 * @param  win boolean : it represents the winning state.
+	 */
+
+
 	@Override
-	public void onStartSomeActivity(boolean win, int points) {
+	public void onGameEnd(boolean win) {
 
 		Intent score = new Intent();
-		int ppoints=0;
+		int points=0;
 		if(win) {
-		ppoints=10;
-			score.putExtra("message", "Well done! You've got " + 10 + " points");
+			points=10;
+			score.putExtra("message", "Well done! You've got " + points + " points");
 		}
 		else
 			score.putExtra("message", "Nice try! Unfortunately you haven't got point for this round");
-		score.putExtra("scores", ppoints);
-		setResult(Activity.RESULT_OK, score);
-		finish();
+			score.putExtra("scores", points);
+			setResult(Activity.RESULT_OK, score);
+			finish();
 
 	}
 }

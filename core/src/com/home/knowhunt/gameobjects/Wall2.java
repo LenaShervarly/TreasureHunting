@@ -24,7 +24,6 @@ public class Wall2 extends Autonomous
 
 
     public void update(float delta) {
-        changeDir();
         move(delta + lvl);
     }
 
