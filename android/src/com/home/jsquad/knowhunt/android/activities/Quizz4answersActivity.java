@@ -42,6 +42,7 @@ public class Quizz4answersActivity extends AppCompatActivity {
         Button answer4 = (Button)findViewById(R.id.guessMelody_option4);
 
         dbRepresenter = new RemoteDatabaseRespresenter(this);
+        dbRepresenter.getDataFromServer(this);
         Cursor allContent = dbRepresenter.getAllData();
 
 

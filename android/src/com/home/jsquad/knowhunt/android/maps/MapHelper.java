@@ -79,14 +79,6 @@ public class MapHelper
 
         for(Point point : points) {
 
-//            Marker marker = new Marker(map);
-//            marker.setPosition(point.Position);
-//            marker.setAnchor(0.5f, 1f);
-//
-//            setMarkerIconFromResource(context, R.drawable.bonuspack_bubble, marker);
-//            marker.setTitle(Integer.toString(point.Number));
-//            marker.setDraggable(true);
-//            map.getOverlays().add(marker);
             geoPoints.add(point.Position);
         }
 
@@ -136,15 +128,6 @@ public class MapHelper
         mapController.setCenter(point.Position);
     }
 
-   /*public static void setStartRouteIcon(MapsActivity context, MapView map, GeoPoint position) {
-        Marker marker = putMarker(context, map, position, R.drawable.start, 0.15f, 0.9f, false);
-        makeMarkerNotClickable(marker);
-    }
-
-    public static void setEndRouteIcon(MapsActivity context, MapView map, GeoPoint position) {
-        Marker marker = putMarker(context, map, position, R.drawable.finish, 0.15f, 0.9f, false);
-        makeMarkerNotClickable(marker);
-    }*/
 
     public static void makeMarkerNotClickable(Marker marker)
     {

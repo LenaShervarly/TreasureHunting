@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateQaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateQaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{qaController.selected.id}" title="#{bundle.CreateQaTitle_id}" required="true" requiredMessage="#{bundle.CreateQaRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateQaLabel_question}" for="question" />
+                    <h:inputText id="question" value="#{qaController.selected.question}" title="#{bundle.CreateQaTitle_question}" />
+                    <h:outputLabel value="#{bundle.CreateQaLabel_rightAnswer}" for="rightAnswer" />
+                    <h:inputText id="rightAnswer" value="#{qaController.selected.rightAnswer}" title="#{bundle.CreateQaTitle_rightAnswer}" />
+                    <h:outputLabel value="#{bundle.CreateQaLabel_optionalAnswer1}" for="optionalAnswer1" />
+                    <h:inputText id="optionalAnswer1" value="#{qaController.selected.optionalAnswer1}" title="#{bundle.CreateQaTitle_optionalAnswer1}" />
+                    <h:outputLabel value="#{bundle.CreateQaLabel_optionalAnswer2}" for="optionalAnswer2" />
+                    <h:inputText id="optionalAnswer2" value="#{qaController.selected.optionalAnswer2}" title="#{bundle.CreateQaTitle_optionalAnswer2}" />
+                    <h:outputLabel value="#{bundle.CreateQaLabel_optionalAnswer3}" for="optionalAnswer3" />
+                    <h:inputText id="optionalAnswer3" value="#{qaController.selected.optionalAnswer3}" title="#{bundle.CreateQaTitle_optionalAnswer3}" />
+                    <h:outputLabel value="#{bundle.CreateQaLabel_melodyRoot}" for="melodyRoot" />
+                    <h:inputText id="melodyRoot" value="#{qaController.selected.melodyRoot}" title="#{bundle.CreateQaTitle_melodyRoot}" />
+                    <h:outputLabel value="#{bundle.CreateQaLabel_passed}" for="passed" />
+                    <h:inputText id="passed" value="#{qaController.selected.passed}" title="#{bundle.CreateQaTitle_passed}" />
+                    <h:outputLabel value="#{bundle.CreateQaLabel_secretCode}" for="secretCode" />
+                    <h:inputText id="secretCode" value="#{qaController.selected.secretCode}" title="#{bundle.CreateQaTitle_secretCode}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{qaController.create}" value="#{bundle.CreateQaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{qaController.prepareList}" value="#{bundle.CreateQaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateQaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

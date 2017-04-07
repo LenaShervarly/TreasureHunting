@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <body>
+
+        <ui:composition template="./WEB-INF/template.xhtml">
+
+           
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="1">
+                        <h:outputText value ="Secret Code" />
+                        <h:inputText value ="#{qa.secretCode}" title="Code of the Game" id="secretCode" required="true" />
+                        <h:message for ="secretCode" style="color: blue" />
+                        
+                        <h:outputText value ="Question: " />
+                        <h:inputText value ="#{qa.question}" title="question" id="question" required="true" />
+                        <h:message for ="question" style="color: blue" />
+                        
+                        <h:outputText value ="Answer: " />
+                        <h:inputText value ="#{qa.rightAnswer}" title="answer" id="answer" required="true" />
+                        <h:message for ="answer" style="color: blue" />
+                        
+                        <h:outputText value ="Optional Answer 1: " />
+                        <h:inputText value ="#{qa.optionalAnswer1}" title="Optional Answer 1" id="optionalAnswer1" required="true" />
+                        <h:message for ="optionalAnswer1" style="color: blue" />
+                        
+                        <h:outputText value ="Optional Answer 2: " />
+                        <h:inputText value ="#{qa.optionalAnswer2}" title="Optional Answer 2" id="optionalAnswer2" required="true" />
+                        <h:message for ="optionalAnswer2" style="color: blue" />
+                        
+                        <h:outputText value ="Optional Answer 3: " />
+                        <h:inputText value ="#{qa.optionalAnswer3}" title="Optional Answer 3" id="optionalAnswer3" required="true" />
+                        <h:message for ="optionalAnswer3" style="color: blue" />
+                        
+                    </h:panelGrid>
+                    <h:commandButton action="show" actionListener ="#{qaEJB.create}" value="submit"/>
+                </h:form>
+                
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>

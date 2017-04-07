@@ -108,4 +108,9 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+    public void deleteTable() {
+        SQLiteDatabase db  = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
+    }
 }

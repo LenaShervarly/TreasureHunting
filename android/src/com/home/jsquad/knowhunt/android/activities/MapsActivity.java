@@ -334,7 +334,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent restartGame = new Intent(MapsActivity.this, GameOverviewActivity.class);
+                Intent restartGame = new Intent(MapsActivity.this, StartTheGameActivity.class);
                 startActivity(restartGame);
             }
         });

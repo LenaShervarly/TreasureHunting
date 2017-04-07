@@ -14,7 +14,7 @@ import com.home.jsquad.knowhunt.R;
 import com.home.jsquad.knowhunt.android.database.DatabaseHelper;
 import com.home.jsquad.knowhunt.android.instrumentation.ConnectionHelper;
 
-public class GameOverviewActivity extends AppCompatActivity  {
+public class StartTheGameActivity extends AppCompatActivity  {
 
 
 
@@ -55,8 +55,8 @@ public class GameOverviewActivity extends AppCompatActivity  {
     }
 
     public void onPostExecute(View view) {
-        if (ConnectionHelper.hasInternetConnection(GameOverviewActivity.this)) {
-            Intent intent = new Intent(GameOverviewActivity.this, LoginActivity.class);
+        if (ConnectionHelper.hasInternetConnection(StartTheGameActivity.this)) {
+            Intent intent = new Intent(StartTheGameActivity.this, LoginActivity.class);
             startActivity(intent);
         }
     }

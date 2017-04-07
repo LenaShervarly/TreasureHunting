@@ -53,7 +53,7 @@
 
     </activity>
 
-    <activity android:name="com.home.jsquad.knowhunt.android.activities.GameOverviewActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:label="@string/app_name">
+    <activity android:name="com.home.jsquad.knowhunt.android.activities.StartTheGameActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:label="@string/app_name">
         android:screenOrientation="portrait">
 
         <intent-filter>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewQaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewQaLabel_id}"/>
+                    <h:outputText value="#{qaController.selected.id}" title="#{bundle.ViewQaTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewQaLabel_question}"/>
+                    <h:outputText value="#{qaController.selected.question}" title="#{bundle.ViewQaTitle_question}"/>
+                    <h:outputText value="#{bundle.ViewQaLabel_rightAnswer}"/>
+                    <h:outputText value="#{qaController.selected.rightAnswer}" title="#{bundle.ViewQaTitle_rightAnswer}"/>
+                    <h:outputText value="#{bundle.ViewQaLabel_optionalAnswer1}"/>
+                    <h:outputText value="#{qaController.selected.optionalAnswer1}" title="#{bundle.ViewQaTitle_optionalAnswer1}"/>
+                    <h:outputText value="#{bundle.ViewQaLabel_optionalAnswer2}"/>
+                    <h:outputText value="#{qaController.selected.optionalAnswer2}" title="#{bundle.ViewQaTitle_optionalAnswer2}"/>
+                    <h:outputText value="#{bundle.ViewQaLabel_optionalAnswer3}"/>
+                    <h:outputText value="#{qaController.selected.optionalAnswer3}" title="#{bundle.ViewQaTitle_optionalAnswer3}"/>
+                    <h:outputText value="#{bundle.ViewQaLabel_melodyRoot}"/>
+                    <h:outputText value="#{qaController.selected.melodyRoot}" title="#{bundle.ViewQaTitle_melodyRoot}"/>
+                    <h:outputText value="#{bundle.ViewQaLabel_passed}"/>
+                    <h:outputText value="#{qaController.selected.passed}" title="#{bundle.ViewQaTitle_passed}"/>
+                    <h:outputText value="#{bundle.ViewQaLabel_secretCode}"/>
+                    <h:outputText value="#{qaController.selected.secretCode}" title="#{bundle.ViewQaTitle_secretCode}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{qaController.destroyAndView}" value="#{bundle.ViewQaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewQaEditLink}"/>
+                <br />
+                <h:commandLink action="#{qaController.prepareCreate}" value="#{bundle.ViewQaCreateLink}" />
+                <br />
+                <h:commandLink action="#{qaController.prepareList}" value="#{bundle.ViewQaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewQaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

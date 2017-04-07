@@ -1,0 +1,250 @@
+﻿body {
+    font-family:'Open Sans', sans-serif;
+    font-size:14px;
+    background-color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Open Sans', sans-serif;
+}
+
+h1 {
+    line-height:50px;
+    font-weight:900;
+    font-size:40px;
+    padding:50px 20px 5px 20px;
+    text-transform:uppercase;
+    color:rgba(0, 121, 138, 1);
+}
+
+.pad-adjust {
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}
+
+.text-center {
+    text-align:center;
+}
+
+h2 {
+    line-height:50px;
+}
+h3 {
+    line-height:30px;
+    padding-bottom:20px;
+}
+h4 {
+   padding-top: 25px;
+line-height: 40px;
+padding-bottom: 0px;
+font-size: 22px;
+font-weight: 900;
+}
+
+p {
+    font-weight:300;
+    line-height:30px;
+    padding-bottom:15px;
+}
+
+.space-free {
+    height:100px;
+}
+
+.g-pad-bottom {
+    padding-bottom:40px;
+}
+
+section {
+    padding-top:20px;
+    margin-top:50px;
+}
+
+.c-blue {
+   background-color:rgba(0, 121, 138, 1);
+   color:#fff;
+}
+.form-control {
+        background-color: rgba(255, 255, 255, 0);
+}
+/*=======================================
+    HOME SECTION STYLES
+==================================================*/
+
+
+.head-btn-one {
+    background-color: rgba(252, 64, 101, 1);
+     border: 0px solid #fff;
+
+}
+#home-sec {
+    background-color:rgba(0, 121, 138, 1);
+}
+#home {
+    padding-top:130px;
+    padding-bottom:200px;
+}
+.head-main {
+    font-size:80px ;
+    font-weight:900;
+    
+}
+.head-sub-main {
+    font-size:40px ;
+    font-weight:600;
+    padding:5px 20px 10px 20px;
+}
+.head-last {
+    font-size:20px ;
+    font-weight:300;
+    padding:5px 20px 20px 20px;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+border-radius: 0px; 
+
+}
+/* ===========================================================
+   NAVBAR CHANGES   
+   ============================================================*/
+.navbar {
+	font-size: 14px;
+}
+
+.navbar-inverse {
+	background-image:url(../img/footsteps.png);
+
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+	background: #ffffff;
+}
+
+.navbar-inverse .navbar-brand {
+	color: rgba(0, 121, 138, 1);
+	font-weight: bolder;
+	font-size: 40px;
+    font-weight:900;
+	letter-spacing: 2px;
+}
+.navbar-inverse :hover .navbar-brand:hover {
+	color: #dd5823;	
+}
+.navbar-inverse .navbar-nav > li > a {
+color: rgba(0, 121, 138, 1);
+}
+
+/*=======================================
+    FOOTER STYLES
+==================================================*/
+
+
+#footer {
+    background-color:#ffffff;
+    color: rgba(0, 121, 138, 1);
+    padding:20px 50px 20px 50px;
+    text-align:right;
+}
+
+table {
+	color: #333; 
+	font-family: Helvetica, Arial, sans-serif; 
+	width: 640px;
+	border-collapse:
+	collapse; border-spacing: 0;
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } 
+
+th {
+	background: #F2CA30; 
+	font-weight: bold;
+}
+
+td {
+	text-align: center;
+	background: #FAFAFA; 
+}
+
+table, th, td {
+    border: 1px solid black;
+	border-color: #F2CA30;
+	text-align: center;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+  
+img.jsquadlogo {
+	 height: 200px;
+	 width: 200px;
+	 border-radius: 25px;
+	 border-style: solid;
+  }
+
+  
+  form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password]{
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 14%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 20%;
+    border-radius: 50%;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: center;
+    padding-top: 16px;
+	color: black;
+}
+
+a{
+	color: #ff0000
+}
+
+input[type=radio] {
+	width: 5%;
+}
+
+.radiochoice{
+	text-align: center;
+	margin-right:20px;
+}
+

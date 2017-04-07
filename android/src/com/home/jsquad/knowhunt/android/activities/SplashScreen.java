@@ -20,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    Intent intent = new Intent(SplashScreen.this,GameOverviewActivity.class);
+                    Intent intent = new Intent(SplashScreen.this,StartTheGameActivity.class);
                     startActivity(intent);
                 }
             }
