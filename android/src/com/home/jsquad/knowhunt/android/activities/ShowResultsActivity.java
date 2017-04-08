@@ -44,18 +44,16 @@ public class ShowResultsActivity extends AppCompatActivity {
         goToLastActivity();
     }
 
+    /**
+     * Finds the best two players
+     * @return Array list containing the best two players
+     */
     public ArrayList<Player> TopTwoPlayersDecider() {
         int max = 0;
         int index;
         ArrayList<Player> players = new ArrayList<Player>();
         ArrayList<Player> bestTwoPlayers = new ArrayList<Player>();
-        // mapsActivityObject=new MapsActivity();
         players = myDB.getPlayers();
-        // for(Player player:players){
-        //    int finalScore=mapsActivityObject.getTotalUserScores();
-        //     myDB.updateScores(player.getUsername(),finalScore);
-        // }
-        // players=myDB.getPlayers();
         if(players.size()==0||players.size()==1)return players;
         for (int j = 0; j < 2; j++) {
             max = (players.get(0)).getScores();
@@ -74,16 +72,15 @@ public class ShowResultsActivity extends AppCompatActivity {
         return bestTwoPlayers;
     }
 
+    /**
+     * Gets the best two players information from the database
+     * @return ArrayList containing the best two players with their info
+     */
     public ArrayList<Player> getTopTwoInfo() {
         ArrayList<Player> topTwo = new ArrayList<Player>();
         ArrayList<Player> players = new ArrayList<Player>();
         ArrayList<Player> bestTwoPlayers=TopTwoPlayersDecider();
         players = myDB.getPlayers();
-        //mapsActivityObject=new MapsActivity();
-        //  for(Player player:players){
-        //      int finalScore=mapsActivityObject.getTotalUserScores();
-        //      myDB.updateScores(player.getUsername(),finalScore);
-        // }
         if((players.size()==0||players.size()==1))return players;
         for (Player bestTwoPlayer : bestTwoPlayers) {
             for (Player player : players) {
@@ -96,6 +93,9 @@ public class ShowResultsActivity extends AppCompatActivity {
         return topTwo;
     }
 
+    /**
+     * Shows the top two players
+     */
     public void showTopTwo(){
 
         ArrayList<Player> bestTwoPlayers = new ArrayList<Player>();
