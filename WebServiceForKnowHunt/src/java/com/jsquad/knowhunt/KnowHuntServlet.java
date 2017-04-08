@@ -35,12 +35,11 @@ public class KnowHuntServlet extends HttpServlet {
 
     
     @PersistenceUnit
-    EntityManagerFactory emf;
     @EJB QaEJB qaEjb;
-    ArrayList<Qa> questionsAndAnswers = new ArrayList<>();
-    Gson gson  = new Gson();
-    JSONObject jsobObjFinal;
-    JSONArray jSONArrayOfQaRaws = new JSONArray();
+    private EntityManagerFactory emf;
+    private ArrayList<Qa> questionsAndAnswers = new ArrayList<>();
+    private JSONObject jsobObjFinal;
+    private JSONArray jSONArrayOfQaRaws = new JSONArray();
     
    
     /**
@@ -54,18 +53,18 @@ public class KnowHuntServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // response.setContentType("text/html;charset=UTF-8");
+      
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-             response.setContentType("application/json");
-        
-                    
+           
+            response.setContentType("application/json");                    
             jsobObjFinal = new JSONObject();
             List<Qa> allQaValues = (List<Qa>)qaEjb.getList();
             
             for(int i = 0; i < qaEjb.getList().size(); i++) {
                 Qa qa = (Qa)qaEjb.getList().get(i);
+                
                 JSONObject oneRawJSonObject = new JSONObject();
+                oneRawJSonObject.put("secretCode", qa.getSecretCode());
                 oneRawJSonObject.put("question", qa.getQuestion());
                 oneRawJSonObject.put("rightAnswer", qa.getRightAnswer()); 
                 oneRawJSonObject.put("optionalAnswer1", qa.getOptionalAnswer1());
@@ -73,30 +72,11 @@ public class KnowHuntServlet extends HttpServlet {
                 oneRawJSonObject.put("optionalAnswer3", qa.getOptionalAnswer3());
                 
                 questionsAndAnswers.add(qa);
- 
                 jSONArrayOfQaRaws.add(i, oneRawJSonObject);
             }
-            //jSONArray.
             jsobObjFinal.put("qaList", jSONArrayOfQaRaws);
-           
-            
             out.print(jsobObjFinal);
-            out.flush();      
-            //gson.toJson(questionsAndAnswers);
-            //out.println(gson);
-            
-            //Qa qa = (Qa)qaEjb.getList().get(2);
-            //out.println(qa.getOptionalAnswer1()); 
-            
-            //out.println(questionsAndAnswers.get(2).getQuestion() +" : " + questionsAndAnswers.get(2).getRightAnswer());
-           /* for(Qa qa : questionsAndAnswers){
-                out.println(qa.getQuestion() +" : " + qa.getRightAnswer() + "\n") ;
-            }*/
-            //out.println(questionsAndAnswers.get(0).getQuestion() +" : " + questionsAndAnswers.get(0).getRightAnswer());
-            
-            
-            
-           
+            out.flush();                
         }
     }
 
@@ -113,8 +93,7 @@ public class KnowHuntServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-       
+              
     }
 
     /**
@@ -128,17 +107,7 @@ public class KnowHuntServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*processRequest(request, response);
-        String jsonData = gson.toJson(questionsAndAnswers);
-        String jsonData = jsobObj.toString(); */
-        
-       
-        
-        /*response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(jsonData);
-        PrintWriter out = response.getWriter();
-        out.println(jsonData); 
-        out.close(); */       
+        processRequest(request, response);
     }
 
     /**

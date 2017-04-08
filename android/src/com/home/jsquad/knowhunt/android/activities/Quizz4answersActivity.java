@@ -51,7 +51,7 @@ public class Quizz4answersActivity extends AppCompatActivity {
         }
 
         while (allContent.moveToNext()) {
-            if(allContent.getString(7).contains("0")) {
+            if(allContent.getString(6).contains("0")) {
                 question.setText(allContent.getString(1));
 
                 answers = new ArrayList<>();
@@ -67,7 +67,7 @@ public class Quizz4answersActivity extends AppCompatActivity {
 
                 correctAnswer = allContent.getString(2);
 
-                dbRepresenter.updatePassed(allContent.getString(0));
+                dbRepresenter.updatePassedQA(allContent.getString(0));
                 allContent.close();
                 return;
             }

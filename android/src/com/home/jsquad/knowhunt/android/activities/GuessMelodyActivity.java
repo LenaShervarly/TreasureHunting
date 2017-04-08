@@ -67,10 +67,9 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
         if(allContent.getCount() == 0) {
             return;
         }
-        //int rand = 1;
 
         while (allContent.moveToNext()) {
-            if(allContent.getString(7).contains("0")) {
+            if(allContent.getString(6).contains("0")) {
                 question.setText(allContent.getString(1));
 
                 answers = new ArrayList<>();
@@ -86,8 +85,8 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
 
                 correctAnswer = allContent.getString(2);
 
-                audioToPlay.add(allContent.getString(6));
-                dbRepresenter.updatePassed(allContent.getString(0));
+                audioToPlay.add(allContent.getString(7));
+                dbRepresenter.updatePassedMusic(allContent.getString(0));
                 allContent.close();
                 return;
             }
