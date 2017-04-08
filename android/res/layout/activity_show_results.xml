@@ -10,109 +10,101 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="top"
-        android:layout_weight="1">
+        android:layout_weight="10">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="start"
             android:layout_margin="5dp"
             android:layout_weight="0.5"
-            android:src="@drawable/trophy"
-            android:layout_gravity="start"/>
+            android:src="@drawable/trophy" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
     </LinearLayout>
 
-    <LinearLayout
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="bottom"
-        android:layout_weight="0">
+        android:layout_height="match_parent"
+        android:stretchColumns="*"
+        android:layout_marginTop="250dp"
+        android:id="@+id/tableLayout">
+        <TableRow
+            android:layout_margin="1dp"
+            >
+            <EditText
+                android:id="@+id/sName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="#FFFF"
+                android:text="Name"
+                android:textSize="20dp" />
 
+            <EditText
+                android:id="@+id/sScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="#FFFF"
+                android:text="Score"
+                android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/topTow"
-        style="@style/editText_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
-        android:text="Top two players:"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:layout_above="@+id/sfirstName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        </TableRow>
+        <TableRow
+            android:layout_margin="1dp" >
 
-    <EditText
-        android:id="@+id/sfirstName"
-        style="@style/editText_style"
-        android:background="@drawable/edit_text_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="first name"
-        android:textSize="20dp"
-        android:layout_above="@+id/sfirstScore"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <EditText
+                android:id="@+id/sfirstName"
 
-    <EditText
-        android:id="@+id/sfirstScore"
-        style="@style/editText_style"
-        android:background="@drawable/edit_text_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="first Score"
-        android:textSize="20dp"
-        android:layout_above="@+id/ssecondName"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="#FFFF"
+                android:hint="first name"
+                android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/ssecondName"
-        style="@style/editText_style"
-        android:background="@drawable/edit_text_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="secondName"
-        android:textSize="20dp"
-        android:layout_above="@+id/ssecondScore"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp" />
+            <EditText
+                android:id="@+id/sfirstScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="#FFFF"
+                android:hint="first Score"
+                android:textSize="20dp" />
+        </TableRow>
+        <TableRow
+            android:layout_margin="1dp">
+            <EditText
+                android:id="@+id/ssecondName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="#FFFF"
+                android:hint="secondName"
+                android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/ssecondScore"
-        style="@style/editText_style"
-        android:background="@drawable/edit_text_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="secondScore"
-        android:textSize="20dp"
-        android:layout_above="@+id/ok"
-        android:layout_alignRight="@+id/ssecondName"
-        android:layout_alignEnd="@+id/ssecondName" />
+            <EditText
+                android:id="@+id/ssecondScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="#FFFF"
+                android:hint="secondScore"
+                android:textSize="20dp" />
 
+        </TableRow>
 
-
+    </TableLayout>
     <Button
         style="@style/ovalButton_style"
         android:layout_width="match_parent"
@@ -120,12 +112,6 @@
         android:text="OK"
         android:textSize="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/ssecondScore"
-        android:layout_alignEnd="@+id/ssecondScore"
-        android:layout_marginRight="14dp"
-        android:layout_marginEnd="14dp" />
-
-        </LinearLayout>
-    </LinearLayout>
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
