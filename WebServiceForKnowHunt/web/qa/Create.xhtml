@@ -11,9 +11,9 @@
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table" id="main" style="align-content: center"/>
             </h:panelGroup>
-            <h:form>
+            <h:form style="align-content: center">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateQaLabel_id}" for="id" />
                     <h:inputText id="id" value="#{qaController.selected.id}" title="#{bundle.CreateQaTitle_id}" required="true" requiredMessage="#{bundle.CreateQaRequiredMessage_id}"/>
@@ -42,7 +42,7 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.CreateQaIndexLink}"/>
-            </h:form>
+                </h:form>
         </ui:define>
     </ui:composition>
 

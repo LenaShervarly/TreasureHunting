@@ -39,7 +39,7 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-       db.execSQL("create table " + TABLE_MUSIC + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
+        db.execSQL("create table " + TABLE_MUSIC + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
         "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER, MELODY_ROOT TEXT)");
         db.execSQL("create table " + TABLE_QA + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
                 "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER)");
@@ -136,9 +136,13 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public void deleteTable() {
+    public void renewTables() {
         SQLiteDatabase db  = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS" + TABLE_QA);
         db.execSQL("DROP TABLE IF EXISTS" + TABLE_MUSIC);
+        db.execSQL("create table " + TABLE_MUSIC + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
+                "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER, MELODY_ROOT TEXT)");
+        db.execSQL("create table " + TABLE_QA + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
+                "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER)");
     }
 }

@@ -10,40 +10,41 @@
 
            
 
-            <ui:define name="content">
-                <h:form>
-                    <h:panelGrid columns="1">
+            <ui:define name="content" >
+                <h1>To customize Question and Answers game, please, fill in the form: </h1>
+                <h:form style="color: #333"> <center>
+                    <h:panelGrid columns="1" style="box-shadow: beige" >
+                        
+                        
                         <h:outputText value ="Secret Code" />
                         <h:inputText value ="#{qa.secretCode}" title="Code of the Game" id="secretCode" required="true" />
-                        <h:message for ="secretCode" style="color: blue" />
+                        <h:message for ="secretCode" style="color: #078ECD" />
                         
                         <h:outputText value ="Question: " />
                         <h:inputText value ="#{qa.question}" title="question" id="question" required="true" />
-                        <h:message for ="question" style="color: blue" />
+                        <h:message for ="question" style="color: #078ECD" />
                         
                         <h:outputText value ="Answer: " />
                         <h:inputText value ="#{qa.rightAnswer}" title="answer" id="answer" required="true" />
-                        <h:message for ="answer" style="color: blue" />
+                        <h:message for ="answer" style="color: #078ECD" />
                         
                         <h:outputText value ="Optional Answer 1: " />
                         <h:inputText value ="#{qa.optionalAnswer1}" title="Optional Answer 1" id="optionalAnswer1" required="true" />
-                        <h:message for ="optionalAnswer1" style="color: blue" />
+                        <h:message for ="optionalAnswer1" style="color: #078ECD" />
                         
                         <h:outputText value ="Optional Answer 2: " />
                         <h:inputText value ="#{qa.optionalAnswer2}" title="Optional Answer 2" id="optionalAnswer2" required="true" />
-                        <h:message for ="optionalAnswer2" style="color: blue" />
+                        <h:message for ="optionalAnswer2" style="color: #078ECD" />
                         
                         <h:outputText value ="Optional Answer 3: " />
                         <h:inputText value ="#{qa.optionalAnswer3}" title="Optional Answer 3" id="optionalAnswer3" required="true" />
-                        <h:message for ="optionalAnswer3" style="color: blue" />
+                        <h:message for ="optionalAnswer3" style="color: #078ECD" />
                         
                     </h:panelGrid>
-                    <h:commandButton action="show" actionListener ="#{qaEJB.create}" value="submit"/>
-                </h:form>
+                    <h:commandButton action="show" actionListener ="#{qaEJB.create}" value="Submit my question" style="color: #333"/>
+                </center></h:form>
                 
             </ui:define>
-
-
 
         </ui:composition>
 

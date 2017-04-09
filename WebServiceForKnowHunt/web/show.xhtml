@@ -10,9 +10,23 @@
 
 
             <ui:define name="content">
-                <h:dataTable var ="q" value="#{qaEJB.list}">
-                    <h:column>#{q.question} - #{q.rightAnswer} / #{q.optionalAnswer1} / #{q.optionalAnswer2} / #{q.optionalAnswer3} </h:column>
-                </h:dataTable>
+                <h:form style="color: #333">
+                    <h:panelGrid columns="6" style="box-shadow: beige" frame="border">
+                        <tr>
+                        <th>Questions and Answers</th> 
+                        </tr>
+                        <h:dataTable var ="q" value="#{qaEJB.list}" style="border-collapse: separate" cellspacing="2"> 
+                            
+                        <h:column>#{q.secretCode} </h:column>
+                        <h:column>#{q.question} </h:column>
+                        <h:column> #{q.rightAnswer}</h:column>
+                        <h:column> #{q.optionalAnswer1} </h:column>
+                        <h:column> #{q.optionalAnswer2} </h:column>
+                        <h:column> #{q.optionalAnswer3}</h:column>
+                    </h:dataTable>
+                </h:panelGrid>
+                <h:commandButton action="create" actionListener ="#{qaEJB.create}" value="Create one more question" style="color: #333"/>
+                </h:form>
             </ui:define>
 
         </ui:composition>

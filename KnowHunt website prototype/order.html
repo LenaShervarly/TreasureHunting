@@ -17,6 +17,19 @@
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    width: 22%;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+</style>	
 </head>
 <body >
        <!-- NAV SECTION -->
@@ -54,38 +67,75 @@
             <div class="col-md-12">
               <span class="head-main">Order</span>
 			
-			<h2 class="head-sub-main">In here you can either pick a premade game or customize your own!</h2>
-			<h3 class="head-last">Please pick an option</h3>
+			<h2 class="head-sub-main">In here you can either pick a default game or customize your own!</h2>
+			<h3 class="head-last">Please pick an option:</h3>
+			
 			<div class="radiochoice">
-			<input type="radio"  name="choice" value="pre-made" checked="true"> 
-			<label>pre-made Know Hunt</label> <br>
+			<input type="radio"  name="choice" value="pre-made" > 
+			<label>Use default Know-Hunt Game</label> <br>
 			<input type="radio" name="choice" value="customized">
-			<label>customized Know Hunt</label> <br>
+			<label>Create a new Know-Hunt Game</label> <br>
             </div>
 			
+			<form action="http://localhost:8080/WebServiceForKnowHunt/faces/create.xhtml">  
+			<div class="customized">
+			<h4 class = "sub-title">If you want to customize your own game: </h4><br> 
+			1) Select a number of nodes you'd like to have in your game:
+			<br> <i> Enter the number of nodes: </i> 
+			<select>
+			  <option value="5">5</option>
+			  <option value="7">7</option>
+			  <option value="10">10</option>
+			  <option value="15">15</option>
+			</select> <br>
+			<br>2) Choose tasks you would like to have in your game: <br>
+			<center><table style="align : center">
+				<tr><td><input type="checkbox" name="vehicle" value="QA" style = "text-align : left">Questions and answers<br> </td></tr>
+				<tr><td text-align: left; padding: 8px;><input type="checkbox" name="vehicle" value="GM" style = "align : left">Guess meoldy  <br></td></tr>
+				<tr><td><input type="checkbox" name="vehicle" value="Quizz" style = "text-align : left">Quizz with yes/no answers <br></td></tr>
+				<tr><td><input type="checkbox" name="vehicle" value="Photo" style = "text-align : left">Taking photos <br></td></tr>
+				<tr><td><input type="checkbox" name="vehicle" value="Game" style = "text-align : left">Interactive mini game <br></td></tr>
+			</table></center>
+		
+			<br>3) If you want to customize one of them, you can just choose and option and click on the button: <br>
+			<i> Select an activity to customize: </i> 
+			 <select>
+			  <option value="Q^A">Questions and answers</option>
+			  <option value="guessmelody">Guess meoldy</option>
+			  <option value="Quizz">Quizz with yes/no answers</option>
+			  <option value="Photo">Taking photos</option> 
+			  <option value="Game">Interactive mini game</option> 
+			 </select>  <br><br>
+			<input type="submit" value="Create own game" /><br>
+				
+			</div>
+			<br>
+			</form>
+			 
+			
+			<br>
 			<div class="premade">
 			<img class=jsquadlogo src="./assets/img/paris.jpg">
 			<h3>Paris Know Hunt</h3>
-			<a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">Download now!</a>
-			<br>
-			<img class=jsquadlogo src="./assets/img/kth.jpg">
-			<h3>KTH Know Hunt<h3>
-			<a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">Download now!</a>
 			</div>
 			
-			<div class="customized">
-			<form>
-			  Enter the number of coordinates: <input type="text" name="cnumber"><br>
-			  <div class="customizecoordinates">
-			  Enter coordinate value: <input type="text" name="cvalue"><br>
-			  <select>
-			  <option value="guessmelody">Guess meoldy</option>
-			  <option value="Q^A">Questions and answers</option>
-			  <option value="Quizz">Quizz</option>
-			  <option value="Game">Game</option>
-			 <input type="submit" value="Submit">
+	
+			
+			<a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">Download now!</a>
+			<br>
+			<label> </label>
+			
+			
+			<div class="kth">
+			<img class=jsquadlogo src="./assets/img/kth.jpg">
+			<h3>KTH Know Hunt<h3>
+			
+					
+			<a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">Download now!</a>
+			<br>
 			</div>
-			</form>
+			</div>
+			
         </div>
     </div>
    </div>
