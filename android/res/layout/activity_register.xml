@@ -27,12 +27,15 @@
                 android:id="@+id/reName"
                 style="@style/editText_style"
                 android:gravity="center_horizontal"
+                android:inputType="text"
                 android:hint="Name"
                 android:textColorLink="@drawable/button_style"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:style="@style/Widget.AppCompat.EditText"
-                android:maxLines="1"/>
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:imeOptions="actionNext" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -45,11 +48,14 @@
             <AutoCompleteTextView
                 style="@style/editText_style"
                 android:id="@+id/reSurName"
+                android:inputType="text"
                 android:hint="Surname"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_below="@+id/reName"
-                android:maxLines="1"/>
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -61,10 +67,13 @@
             <AutoCompleteTextView
                 style="@style/editText_style"
                 android:id="@+id/reUsername"
+                android:inputType="text"
                 android:hint="User name"
                 android:layout_below="@+id/reSurName"
                 android:textStyle="bold"
-                android:maxLines="1"/>
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:imeOptions="actionNext"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -76,11 +85,14 @@
             <AutoCompleteTextView
                 style="@style/editText_style"
                 android:id="@+id/rePassword"
+                android:inputType="text"
                 android:hint="Password"
                 android:textSize="20dp"
                 android:layout_below="@+id/reUsername"
                 android:textStyle="bold"
-                android:maxLines="1"/>
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:imeOptions="actionNext"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -97,7 +109,10 @@
                 android:textSize="20dp"
                 android:layout_below="@+id/rePassword"
                 android:textStyle="bold"
-                android:maxLines="1"/>
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:inputType="text"
+                android:imeOptions="actionNext"/>
         </android.support.design.widget.TextInputLayout>
 
     <Button

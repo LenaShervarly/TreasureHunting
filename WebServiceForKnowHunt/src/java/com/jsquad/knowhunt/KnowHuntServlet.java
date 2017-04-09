@@ -60,8 +60,8 @@ public class KnowHuntServlet extends HttpServlet {
             jsobObjFinal = new JSONObject();
             List<Qa> allQaValues = (List<Qa>)qaEjb.getList();
             
-            for(int i = 0; i < qaEjb.getList().size(); i++) {
-                Qa qa = (Qa)qaEjb.getList().get(i);
+            for(int i = 0; i < allQaValues.size(); i++) {
+                Qa qa = allQaValues.get(i);
                 
                 JSONObject oneRawJSonObject = new JSONObject();
                 oneRawJSonObject.put("secretCode", qa.getSecretCode());

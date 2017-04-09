@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.home.jsquad.knowhunt.R;
 import com.home.jsquad.knowhunt.android.database.RemoteDatabaseRespresenter;
@@ -25,12 +26,14 @@ public class Quizz4answersActivity extends AppCompatActivity {
     private String correctAnswer;
     private Random rand;
     private List<String> answers;
+    private String secretCode;
+    private Cursor allContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz4answers);
-
+        secretCode = getIntent().getStringExtra(IntentNames.SECRET_CODE);
         setContent();
     }
 
@@ -43,8 +46,19 @@ public class Quizz4answersActivity extends AppCompatActivity {
 
         dbRepresenter = new RemoteDatabaseRespresenter(this);
         dbRepresenter.getDataFromServer(this);
-        Cursor allContent = dbRepresenter.getAllData();
+        allContent = dbRepresenter.getAllQuestionsAndAnswers();
 
+        if (!secretCode.equals("")){
+            if(dbRepresenter.checkSecretCodeValidity(secretCode))
+                allContent = dbRepresenter.getQAForSecretCode(secretCode);
+            else {
+                Toast.makeText(this, "Secret code is invalid. Please try again!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+            }
+        }
+        else if(secretCode.equals("")|| secretCode.isEmpty())
+            allContent = dbRepresenter.getAllQuestionsAndAnswers();
 
         if(allContent.getCount() == 0) {
             return;

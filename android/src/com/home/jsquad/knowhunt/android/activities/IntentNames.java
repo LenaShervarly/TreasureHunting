@@ -6,4 +6,5 @@ public class IntentNames {
     public static final String SELECTED_GAME = "SELECTED_EXCURSION";
     public static final String CURRENT_PLAYER_USERNAME = "Current_Player_UserName";
     public static final String LAST_ACTIVITY = "Last_Activity";
+    public static final String SECRET_CODE = "Secret_Code";
 }

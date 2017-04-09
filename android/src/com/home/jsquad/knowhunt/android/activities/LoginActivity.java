@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
-    private EditText userName, password;
+    private EditText userName, password, secretCodeField;
     private TextInputLayout passwordLayaot;
     private TextView register;
     private Button login;
@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         userName = (EditText) findViewById(R.id.teUsername);
         passwordLayaot = (TextInputLayout) findViewById(R.id.passwordLayout);
         password = (EditText) findViewById(R.id.tePassword);
+        secretCodeField = (EditText) findViewById(R.id.teSecretCode);
         login = (Button) findViewById(R.id.login);
         register = (TextView) findViewById(R.id.teRegister);
 
@@ -62,11 +63,13 @@ public class LoginActivity extends AppCompatActivity {
     public void onPressingLogin(View view) {
         String username = userName.getText().toString();
         String pass = password.getText().toString();
+        String secretCode = secretCodeField.getText().toString();
 
         if (playerExists(username, pass)) {
             Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
             intent.putExtra(IntentNames.SELECTED_GAME, game);
             intent.putExtra(IntentNames.CURRENT_PLAYER_USERNAME, currentPlayer.getUsername());
+            intent.putExtra(IntentNames.SECRET_CODE, secretCode);
             startActivity(intent);
         } else
             Toast.makeText(LoginActivity.this, "Username or password is not correct", Toast.LENGTH_SHORT).show();

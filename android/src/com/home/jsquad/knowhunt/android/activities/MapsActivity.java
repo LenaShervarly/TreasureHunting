@@ -72,6 +72,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
     private boolean isLastActivity = false;
     private DatabaseHelper databaseHelper;
     private String currentPlayer;
+    private String secretCode;
 
 
 
@@ -103,6 +104,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
 
         databaseHelper = new DatabaseHelper(this);
         currentPlayer = getIntent().getStringExtra(IntentNames.CURRENT_PLAYER_USERNAME);
+        secretCode = getIntent().getStringExtra(IntentNames.SECRET_CODE);
     }
 
     private void loadState(Bundle savedInstanceState) {
@@ -260,6 +262,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
                     Intent intent = callActivity(activityAudioPointNumber);
                     if(marker.getPosition().equals(routePoints.get(routePoints.size() - 1).Position))
                         isLastActivity = true;
+                    intent.putExtra(IntentNames.SECRET_CODE, secretCode);
                     startActivityForResult(intent, STORE_SCORES);
 
                     return true;

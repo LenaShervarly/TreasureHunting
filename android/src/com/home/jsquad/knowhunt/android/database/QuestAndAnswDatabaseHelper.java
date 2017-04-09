@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
+
+import java.sql.PreparedStatement;
 
 /**
  * Created by lena on 3/21/17.
@@ -23,6 +26,7 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_6 = "OPTIONAL_ANSWER_3";
     public static final String COL_7 = "PASSED";
     public static final String COL_8 = "MELODY_ROOT";
+    public static final String COL_SC = "SECRET_CODE";
 
 
     /**
@@ -42,7 +46,7 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_MUSIC + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
         "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER, MELODY_ROOT TEXT)");
         db.execSQL("create table " + TABLE_QA + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
-                "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER)");
+                "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER, SECRET_CODE TEXT)");
 
     }
 
@@ -61,7 +65,7 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
      * @param optionalAnswer2 optional anwer to choose from
      * @param optionalAnswer3 optional anwer to choose from
      */
-    public void insertDataQA(String question, String rightAnswer, String optionalAnswer1, String optionalAnswer2, String optionalAnswer3, int passed) {
+    public void insertDataQA(String question, String rightAnswer, String optionalAnswer1, String optionalAnswer2, String optionalAnswer3, int passed, String secretCode) {
         SQLiteDatabase db  = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, question);
@@ -70,6 +74,7 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_5, optionalAnswer2);
         contentValues.put(COL_6, optionalAnswer3);
         contentValues.put(COL_7, passed);
+        contentValues.put(COL_SC, secretCode);
         long result = db.insert(TABLE_QA, null, contentValues);
     }
 
@@ -105,7 +110,33 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public boolean updateAllDataOfRaw(String ID, String question, String rightAnswer, String optionalAnswer1, String optionalAnswer2, String optionalAnswer3, String melodyRoot, int passed){
+    public Cursor getAllQuestionsAnswersForSecretCode(String secretCode){
+        SQLiteDatabase db = this.getWritableDatabase();
+        if(!secretCode.equals(null) && checkSecretCodeValidity(secretCode)) {
+            Cursor result = db.rawQuery("SELECT * FROM " + TABLE_QA + " WHERE " + COL_SC + " = '" + secretCode + "'", null);
+
+            return result;
+        }
+        else
+            return getAllQAData();
+    }
+
+    public boolean checkSecretCodeValidity(String secretCode) {
+        boolean isValid = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Tried to protect database, but in this way binding doesn't work properly, until looking for better solutions the database is not protected
+        /* SQLiteStatement sqLiteStatement = db.compileStatement("SELECT COUNT(" + COL_SC  +") FROM " + TABLE_QA + " WHERE " + COL_SC + " = ? ");
+           sqLiteStatement.bindString(1, secretCode); */
+
+        int countOfEntries = db.rawQuery("SELECT COUNT(" + COL_SC  +") FROM " + TABLE_QA + " WHERE " + COL_SC + " = '" + secretCode + "'", null).getCount();
+
+        if(countOfEntries > 0)
+            isValid = true;
+        return isValid;
+    }
+
+    public boolean updateAllDataOfRaw(String ID, String question, String rightAnswer, String optionalAnswer1, String optionalAnswer2, String optionalAnswer3, String secretCode, int passed){
         SQLiteDatabase db  = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, question);
@@ -114,6 +145,7 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_5, optionalAnswer2);
         contentValues.put(COL_6, optionalAnswer3);
         contentValues.put(COL_7, passed);
+        contentValues.put(COL_SC, secretCode);
         db.update(TABLE_QA, contentValues, "ID = ?", new String[]{ID});
         return true;
     }
@@ -143,6 +175,6 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_MUSIC + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
                 "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER, MELODY_ROOT TEXT)");
         db.execSQL("create table " + TABLE_QA + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, QUESTION TEXT, RIGHT_ANSWER TEXT, " +
-                "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER)");
+                "OPTIONAL_ANSWER_1 TEXT, OPTIONAL_ANSWER_2 TEXT, OPTIONAL_ANSWER_3 TEXT, PASSED INTEGER, SECRET_CODE TEXT)");
     }
 }

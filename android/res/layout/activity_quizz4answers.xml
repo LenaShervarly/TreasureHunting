@@ -8,7 +8,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="50dp"
-    tools:context="com.home.jsquad.knowhunt.com.kth.knowhunt.android.activities.QuizzActivity"
+    tools:context="com.home.jsquad.knowhunt.android.activities.QuizzActivity"
     android:background="@color/black"
     android:gravity="center">
 
@@ -24,7 +24,7 @@
         style="@style/description_style"
         android:id="@+id/textView"
         android:layout_marginBottom="32dp"
-        android:text="@string/guess_melody_task_description"
+        android:text="Nice question?"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="24dp"
@@ -38,14 +38,14 @@
         android:id="@+id/guessMelody_option1"
         android:onClick="onTryingAnswer"
         android:layout_height="wrap_content"
-        android:text="@string/Mamma_Mia"
+        android:text="Answer1"
         android:layout_marginBottom="8dp" />
 
     <Button
         style="@style/questionButton_style"
         android:id="@+id/guessMelody_option2"
         android:onClick="onTryingAnswer"
-        android:text="@string/Happy_New_Year"
+        android:text="Answer2"
         android:layout_marginBottom="8dp"
         android:layout_height="wrap_content"/>
 
@@ -54,7 +54,7 @@
         style="@style/questionButton_style"
         android:id="@+id/guessMelody_option3"
         android:onClick="onTryingAnswer"
-        android:text="@string/Dancing_Queen"
+        android:text="Answer3"
         android:layout_marginBottom="8dp"
         android:layout_height="wrap_content"/>
 
@@ -63,7 +63,7 @@
         android:id="@+id/guessMelody_option4"
         android:layout_height="wrap_content"
         android:onClick="onTryingAnswer"
-        android:text="@string/I_Am_Just_a_Girl"
+        android:text="Answer4"
         android:layout_marginBottom="8dp" />
 
     </LinearLayout>

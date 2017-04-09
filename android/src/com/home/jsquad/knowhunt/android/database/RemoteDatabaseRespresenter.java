@@ -35,14 +35,22 @@ public class RemoteDatabaseRespresenter {
     }
 
     private static void insertSampleData(){
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Mamma Mia", "I Am Just a Girl", "Dancing Queen", "Happy New Year", 0, "android.resource://com.home.croaton.followme/raw/abba_mamma_mia");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Halleluja", "Mamma Mia", "Let it be", "My love", 0, "android.resource://com.home.croaton.followme/raw/halleluja");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Let it be", "We are the Champions", "Halleluja", "Paris", 0, "android.resource://com.home.croaton.followme/raw/let_it_be");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "We are the Champions", "We are the Winners", "Wind of Changes", "Stay", 0, "android.resource://com.home.croaton.followme/raw/we_are_the_champions");
+        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Mamma Mia", "I Am Just a Girl", "Dancing Queen", "Happy New Year", 0, "android.resource://com.home.jsquad.knowhunt/raw/abba_mamma_mia");
+        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Halleluja", "Mamma Mia", "Let it be", "My love", 0, "android.resource://com.home.jsquad.knowhunt/raw/halleluja");
+        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Let it be", "We are the Champions", "Halleluja", "Paris", 0, "android.resource://com.home.jsquad.knowhunt/raw/let_it_be");
+        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "We are the Champions", "We are the Winners", "Wind of Changes", "Stay", 0, "android.resource://com.home.jsquad.knowhunt/raw/we_are_the_champions");
     }
 
-    public static Cursor getAllData() {
+    public static Cursor getAllQuestionsAndAnswers() {
         return questAndAnswDatabaseHelper.getAllQAData();
+    }
+
+    public static Cursor getQAForSecretCode(String secretCode) {
+        return questAndAnswDatabaseHelper.getAllQuestionsAnswersForSecretCode(secretCode);
+    }
+
+    public boolean checkSecretCodeValidity(String secretCode) {
+        return questAndAnswDatabaseHelper.checkSecretCodeValidity(secretCode);
     }
 
     public static boolean updateAlRaw(String ID, String question, String rightAnswer, String optionalAnswer1,
@@ -66,7 +74,7 @@ public class RemoteDatabaseRespresenter {
     public void getDataFromServer(Context context){
 
             queue = Volley.newRequestQueue(context);
-            url = "http://10.0.2.2:8080/WebServiceForKnowHunt/KnowHuntServlet";
+            url = "http://109.124.157.227:8080/WebServiceForKnowHunt/KnowHuntServlet";
 
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -84,7 +92,8 @@ public class RemoteDatabaseRespresenter {
 
                                 System.out.print(json_data.toString());
                                 questAndAnswDatabaseHelper.insertDataQA(json_data.getString("question"), json_data.getString("rightAnswer"),
-                                        json_data.getString("optionalAnswer1"), json_data.getString("optionalAnswer2"), json_data.getString("optionalAnswer3"), 0);
+                                        json_data.getString("optionalAnswer1"), json_data.getString("optionalAnswer2"), json_data.getString("optionalAnswer3"),
+                                        0, json_data.getString("secretCode"));
                             }
 
                         } catch (JSONException e) {
