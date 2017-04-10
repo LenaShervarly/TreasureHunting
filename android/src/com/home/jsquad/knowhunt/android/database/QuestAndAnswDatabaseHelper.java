@@ -129,8 +129,9 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
         /* SQLiteStatement sqLiteStatement = db.compileStatement("SELECT COUNT(" + COL_SC  +") FROM " + TABLE_QA + " WHERE " + COL_SC + " = ? ");
            sqLiteStatement.bindString(1, secretCode); */
 
-        int countOfEntries = db.rawQuery("SELECT COUNT(" + COL_SC  +") FROM " + TABLE_QA + " WHERE " + COL_SC + " = '" + secretCode + "'", null).getCount();
+        Cursor result = db.rawQuery("SELECT * FROM " + TABLE_QA + " WHERE " + COL_SC + " = '" + secretCode + "'", null);
 
+        int countOfEntries = result.getCount();
         if(countOfEntries > 0)
             isValid = true;
         return isValid;

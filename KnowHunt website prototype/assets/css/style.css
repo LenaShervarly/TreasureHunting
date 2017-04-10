@@ -14,7 +14,7 @@ h1 {
     font-size:40px;
     padding:50px 20px 5px 20px;
     text-transform:uppercase;
-    color:rgba(0, 121, 138, 1);
+    color:#f6feff;
 }
 
 .pad-adjust {
@@ -61,7 +61,7 @@ section {
 }
 
 .c-blue {
-   background-color:rgba(0, 121, 138, 1);
+   background-color:#f6feff;
    color:#fff;
 }
 .form-control {
@@ -73,12 +73,12 @@ section {
 
 
 .head-btn-one {
-    background-color: rgba(252, 64, 101, 1);
+    background-color: #F4850B;
      border: 0px solid #fff;
 
 }
 #home-sec {
-    background-color:rgba(0, 121, 138, 1);
+    background-color:#f6feff;
 }
 #home {
     padding-top:130px;
@@ -100,9 +100,8 @@ section {
     padding:5px 20px 20px 20px;
 }
 
-.btn-lg, .btn-group-lg > .btn {
-border-radius: 0px; 
-
+.btn-lg, .btn-group-lg > .btn { 
+border-radius: 15px;
 }
 /* ===========================================================
    NAVBAR CHANGES   
@@ -121,7 +120,7 @@ border-radius: 0px;
 }
 
 .navbar-inverse .navbar-brand {
-	color: rgba(0, 121, 138, 1);
+	color: #f6feff;
 	font-weight: bolder;
 	font-size: 40px;
     font-weight:900;
@@ -141,7 +140,7 @@ color: rgba(0, 121, 138, 1);
 
 #footer {
     background-color:#ffffff;
-    color: rgba(0, 121, 138, 1);
+    color: #f6feff;
     padding:20px 50px 20px 50px;
     text-align:right;
 }
@@ -202,7 +201,8 @@ input[type=text], input[type=password]{
 
 /* Set a style for all buttons */
 button {
-    background-color: #4CAF50;
+    background-color: #dd5823;
+    border-radius: 15px;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.home.jsquad.knowhunt.R;
 import com.home.jsquad.knowhunt.android.database.DatabaseHelper;
 import com.home.jsquad.knowhunt.android.database.Player;
+import com.home.jsquad.knowhunt.android.database.RemoteDatabaseRespresenter;
 import com.home.jsquad.knowhunt.android.domain.Game;
 import com.home.jsquad.knowhunt.android.security.PermissionAndConnectionChecker;
 
@@ -32,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
     private Game game;
     private String currentLanguage;
     private Player currentPlayer;
+    private RemoteDatabaseRespresenter dbRepresenter;
+    private String secretCode;
+    private boolean isSecretCodeValid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         secretCodeField = (EditText) findViewById(R.id.teSecretCode);
         login = (Button) findViewById(R.id.login);
         register = (TextView) findViewById(R.id.teRegister);
+
+        dbRepresenter = new RemoteDatabaseRespresenter(this);
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M)
             passwordLayaot.setPasswordVisibilityToggleEnabled(true);
@@ -63,21 +69,38 @@ public class LoginActivity extends AppCompatActivity {
     public void onPressingLogin(View view) {
         String username = userName.getText().toString();
         String pass = password.getText().toString();
-        String secretCode = secretCodeField.getText().toString();
-
-        if (playerExists(username, pass)) {
-            Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
-            intent.putExtra(IntentNames.SELECTED_GAME, game);
-            intent.putExtra(IntentNames.CURRENT_PLAYER_USERNAME, currentPlayer.getUsername());
-            intent.putExtra(IntentNames.SECRET_CODE, secretCode);
-            startActivity(intent);
-        } else
-            Toast.makeText(LoginActivity.this, "Username or password is not correct", Toast.LENGTH_SHORT).show();
+        secretCode = secretCodeField.getText().toString();
+        if(isSecretCodeCorrect()) {
+            if (playerExists(username, pass)) {
+                Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
+                intent.putExtra(IntentNames.SELECTED_GAME, game);
+                intent.putExtra(IntentNames.CURRENT_PLAYER_USERNAME, currentPlayer.getUsername());
+                intent.putExtra(IntentNames.SECRET_CODE, secretCode);
+                startActivity(intent);
+            } else
+                Toast.makeText(LoginActivity.this, "Username or password is not correct", Toast.LENGTH_SHORT).show();
+        }
+        else
+            Toast.makeText(this, "Secret code is invalid. Please try again or leave the field empty!", Toast.LENGTH_SHORT).show();
     }
 
     public void onPressingRegister(View view) {
         Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
         LoginActivity.this.startActivity(registerIntent);
+    }
+
+    public boolean isSecretCodeCorrect() {
+        dbRepresenter.getDataFromServer(this);
+        dbRepresenter.getDataFromServer(this);
+        if (!secretCode.equals("")){
+            if(!dbRepresenter.checkSecretCodeValidity(secretCode))
+               isSecretCodeValid = false;
+            else
+                isSecretCodeValid = true;
+        }
+        else
+            isSecretCodeValid = true;
+        return isSecretCodeValid;
     }
 
     @Override

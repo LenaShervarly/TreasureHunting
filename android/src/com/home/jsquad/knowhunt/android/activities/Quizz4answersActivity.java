@@ -46,16 +46,10 @@ public class Quizz4answersActivity extends AppCompatActivity {
 
         dbRepresenter = new RemoteDatabaseRespresenter(this);
         dbRepresenter.getDataFromServer(this);
-        allContent = dbRepresenter.getAllQuestionsAndAnswers();
+        //allContent = dbRepresenter.getAllQuestionsAndAnswers();
 
-        if (!secretCode.equals("")){
-            if(dbRepresenter.checkSecretCodeValidity(secretCode))
-                allContent = dbRepresenter.getQAForSecretCode(secretCode);
-            else {
-                Toast.makeText(this, "Secret code is invalid. Please try again!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
-            }
+        if (!secretCode.equals("")) {
+            allContent = dbRepresenter.getQAForSecretCode(secretCode);
         }
         else if(secretCode.equals("")|| secretCode.isEmpty())
             allContent = dbRepresenter.getAllQuestionsAndAnswers();

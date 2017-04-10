@@ -29,14 +29,15 @@ td, th {
     padding: 8px;
 }
 
-</style>	
+</style>
+	
 </head>
 <body >
        <!-- NAV SECTION -->
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -65,21 +66,44 @@ td, th {
     <div class="container" id="home" >
         <div class="row text-center">
             <div class="col-md-12">
-              <span class="head-main">Order</span>
+			<span class="head-main">Order</span>
 			
 			<h2 class="head-sub-main">In here you can either pick a default game or customize your own!</h2>
 			<h3 class="head-last">Please pick an option:</h3>
 			
-			<div class="radiochoice">
-			<input type="radio"  name="choice" value="pre-made" > 
-			<label>Use default Know-Hunt Game</label> <br>
-			<input type="radio" name="choice" value="customized">
-			<label>Create a new Know-Hunt Game</label> <br>
-            </div>
+			 
+			<label><a href ="#premade"> Use default Know-Hunt Game </a></label> <br>
+			<label> Or </label> <br>
+			<label><a href ="#order"> Create a new Know-Hunt Game </a></label> <br>
+            <label> </label> <br>
+			</div>
+			
+					
+			<br>
+			<a name = "premade"><div class="premade"></a>
+			<img class=jsquadlogo src="./assets/img/paris.jpg">
+			<h3>Paris Know Hunt</h3>
+			</div>
+			
+	
+			
+			<a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">Download now!</a>
+			<br>
+			<label> </label>
+			
+			
+			<div class="kth">
+			<img class=jsquadlogo src="./assets/img/kth.jpg">
+			<h3>KTH Know Hunt<h3>
+			
+					
+			<a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">Download now!</a>
+			<br>
+			</div>
 			
 			<form action="http://localhost:8080/WebServiceForKnowHunt/faces/create.xhtml">  
-			<div class="customized">
-			<h4 class = "sub-title">If you want to customize your own game: </h4><br> 
+			<a name = "order"> <h4 class = "sub-title"><div class="customized"></a>
+		    If you want to customize your own game: </h4><br> 
 			1) Select a number of nodes you'd like to have in your game:
 			<br> <i> Enter the number of nodes: </i> 
 			<select>
@@ -106,34 +130,11 @@ td, th {
 			  <option value="Photo">Taking photos</option> 
 			  <option value="Game">Interactive mini game</option> 
 			 </select>  <br><br>
-			<input type="submit" value="Create own game" /><br>
+			<input class="btn btn-danger btn-lg head-btn-one" type="submit" value="Create own game" /><br>
 				
 			</div>
 			<br>
 			</form>
-			 
-			
-			<br>
-			<div class="premade">
-			<img class=jsquadlogo src="./assets/img/paris.jpg">
-			<h3>Paris Know Hunt</h3>
-			</div>
-			
-	
-			
-			<a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">Download now!</a>
-			<br>
-			<label> </label>
-			
-			
-			<div class="kth">
-			<img class=jsquadlogo src="./assets/img/kth.jpg">
-			<h3>KTH Know Hunt<h3>
-			
-					
-			<a href="#about-sec" class="btn btn-danger btn-lg head-btn-one">Download now!</a>
-			<br>
-			</div>
 			</div>
 			
         </div>
