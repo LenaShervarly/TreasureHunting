@@ -51,6 +51,12 @@ MapActivity is calling MapHelper to initialize the map and add the route and the
 
 ![Image of Quizz4](https://cloud.githubusercontent.com/assets/25244078/24811652/29412270-1bc7-11e7-98fa-804f28d444e6.png)
 
-*As an example of what else can we do, there is a fiveth node with 2 yes|no questions, that are hardcoded at the moment. According to our plans, they are going to be connected to the remote database too.
+*As an example of what else can we do, there is a fifth node with 2 yes|no questions, that are hardcoded at the moment. According to our plans, they are going to be connected to the remote database too.
 
-Appart from the application itself, the website prototype had been developed (can be found in the folder website) and a webservice, connecting the app with MySQL database (can be found in the folder "service")
+Appart from the application itself, the website prototype had been developed (can be found in the folder "KnowHunt website prototype")
+
+![Image of Quizz4](https://cloud.githubusercontent.com/assets/25244078/24867640/1ec7be5a-1e0e-11e7-9afb-7dd38000627e.png)
+
+Website prototype was developped using HTTP and JavaScript.
+
+As well a webservice, connecting the app with MySQL database and sending Json object to android app was developped (can be found in the folder "WebServiceForKnowHunt"). The service is deployed on Payara Server and so uses the libraries of GlassFish Server, MySql-Connector- 5.1.41 and Json-simple-1.1 to serve as an intermediate between the Database and the application. The key files in the service are: KnowHuntServlet (package "com.jsquad.knowhunt"), Qa ans QaEJB (package "DatabaseHelper"), as well as "show.xhtml" and "create.xhtml", which build for the user the connection between a website and a database.
