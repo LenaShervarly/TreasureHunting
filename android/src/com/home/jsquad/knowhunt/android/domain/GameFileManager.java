@@ -1,6 +1,7 @@
 package com.home.jsquad.knowhunt.android.domain;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
@@ -63,8 +64,12 @@ public class GameFileManager {
     @NonNull
     public ArrayList<String> getTracksAtPoint(Route route, AudioPoint closestPoint) {
         ArrayList<String> fullNames = new ArrayList<>();
-        for(String fileName : route.getAudiosForPoint(closestPoint))
-            fullNames.add("android.resource://com.home.croaton.followme/raw/" + fileName);
+        for(String fileName : route.getAudiosForPoint(closestPoint)) {
+            //fullNames.add("android.resource://com.home.jsquad.knowhunt/raw/" + fileName);
+            Uri path = Uri.parse("android.resource://com.home.jsquad.knowhunt/" + context.getResources().getIdentifier(fileName, "raw", context.getPackageName()));
+            fullNames.add(path.toString());
+        }
+
 
         return fullNames;
     }

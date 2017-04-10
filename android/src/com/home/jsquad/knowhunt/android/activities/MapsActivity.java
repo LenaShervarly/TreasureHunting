@@ -293,7 +293,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
             stopTimer();
             ArrayList<String> finalTrackNames = new ArrayList<>();
                 finalTrackNames.add("android.resource://com.home.croaton.followme/raw/queen_we_are_the_champions_full");
-            mAudioPlaybackController.startPlaying(this, finalTrackNames);
+            //mAudioPlaybackController.startPlaying(this, finalTrackNames);
         }
         databaseHelper.updateScores(currentPlayer, totalUserScores);
     }

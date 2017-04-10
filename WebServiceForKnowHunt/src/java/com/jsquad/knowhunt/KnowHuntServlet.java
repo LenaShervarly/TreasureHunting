@@ -37,9 +37,6 @@ public class KnowHuntServlet extends HttpServlet {
     @PersistenceUnit
     @EJB QaEJB qaEjb;
     private EntityManagerFactory emf;
-    private ArrayList<Qa> questionsAndAnswers = new ArrayList<>();
-    private JSONObject jsobObjFinal;
-    private JSONArray jSONArrayOfQaRaws = new JSONArray();
     
    
     /**
@@ -57,12 +54,12 @@ public class KnowHuntServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
            
             response.setContentType("application/json");                    
-            jsobObjFinal = new JSONObject();
+            JSONObject jsobObjFinal = new JSONObject();
+            JSONArray jSONArrayOfQaRaws = new JSONArray();
             List<Qa> allQaValues = (List<Qa>)qaEjb.getList();
             
-            for(int i = 0; i < allQaValues.size(); i++) {
-                Qa qa = allQaValues.get(i);
-                
+           for(int i = 0; i < qaEjb.getList().size(); i++) {
+                Qa qa = (Qa)qaEjb.getList().get(i);
                 JSONObject oneRawJSonObject = new JSONObject();
                 oneRawJSonObject.put("secretCode", qa.getSecretCode());
                 oneRawJSonObject.put("question", qa.getQuestion());
@@ -70,8 +67,7 @@ public class KnowHuntServlet extends HttpServlet {
                 oneRawJSonObject.put("optionalAnswer1", qa.getOptionalAnswer1());
                 oneRawJSonObject.put("optionalAnswer2", qa.getOptionalAnswer2());
                 oneRawJSonObject.put("optionalAnswer3", qa.getOptionalAnswer3());
-                
-                questionsAndAnswers.add(qa);
+ 
                 jSONArrayOfQaRaws.add(i, oneRawJSonObject);
             }
             jsobObjFinal.put("qaList", jSONArrayOfQaRaws);

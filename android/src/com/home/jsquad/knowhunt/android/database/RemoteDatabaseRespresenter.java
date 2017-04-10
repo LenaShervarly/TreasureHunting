@@ -35,10 +35,10 @@ public class RemoteDatabaseRespresenter {
     }
 
     private static void insertSampleData(){
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Mamma Mia", "I Am Just a Girl", "Dancing Queen", "Happy New Year", 0, "android.resource://com.home.jsquad.knowhunt/raw/abba_mamma_mia");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Halleluja", "Mamma Mia", "Let it be", "My love", 0, "android.resource://com.home.jsquad.knowhunt/raw/halleluja");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Let it be", "We are the Champions", "Halleluja", "Paris", 0, "android.resource://com.home.jsquad.knowhunt/raw/let_it_be");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "We are the Champions", "We are the Winners", "Wind of Changes", "Stay", 0, "android.resource://com.home.jsquad.knowhunt/raw/we_are_the_champions");
+        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Mamma Mia", "I Am Just a Girl", "Dancing Queen", "Happy New Year", 0, "abba_mamma_mia");
+        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Halleluja", "Mamma Mia", "Let it be", "My love", 0, "halleluja");
+        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Let it be", "We are the Champions", "Halleluja", "Paris", 0, "let_it_be");
+        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "We are the Champions", "We are the Winners", "Wind of Changes", "Stay", 0, "we_are_the_champions");
     }
 
     public static Cursor getAllQuestionsAndAnswers() {
@@ -74,7 +74,7 @@ public class RemoteDatabaseRespresenter {
     public void getDataFromServer(Context context){
 
             queue = Volley.newRequestQueue(context);
-            url = "http://109.124.157.227:8080/WebServiceForKnowHunt/KnowHuntServlet";
+            url = "http://10.0.2.2:8080/WebServiceForKnowHunt/KnowHuntServlet";
 
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url, null,

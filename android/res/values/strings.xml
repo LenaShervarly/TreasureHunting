@@ -42,8 +42,8 @@
     <string name="buy">Buy</string>
     <string name="done">DONE :)</string>
     <string name="question_and_answers">Question And Answers</string>
-    <string name="can_you_see_a_huge_brown_building_on_you_left">Can you see a huge brown building on you left?</string>
-    <string name="is_there_a_coffee_shop_on_your_right_corner">Is there a coffee shop on your right corner?</string>
+    <string name="can_you_see_a_huge_brown_building_on_you_left">Are there any letters printed on the doors of KTH libraries?</string>
+    <string name="is_there_a_coffee_shop_on_your_right_corner">Was this library the first building, that was built for KTH?</string>
     <string name="guess_melody_task_description">The name of the song is:</string>
     <string name="I_Am_Just_a_Girl">I Am Just a Girl</string>
     <string name="Dancing_Queen">Dancing Queen</string>

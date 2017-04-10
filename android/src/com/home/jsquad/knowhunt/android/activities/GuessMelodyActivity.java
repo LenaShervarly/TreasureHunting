@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.home.jsquad.knowhunt.android.audio.AudioPlayerUI;
 import com.home.jsquad.knowhunt.android.audio.AudioPlaybackController;
 import com.home.jsquad.knowhunt.android.database.RemoteDatabaseRespresenter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -55,6 +57,7 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
         mAudioPlaybackController.startPlaying(this, audioToPlay);
     }
     private void setContent(){
+
         TextView question = (TextView) findViewById(R.id.textView);
         Button answer1 = (Button)findViewById(R.id.guessMelody_option1);
         Button answer2 = (Button)findViewById(R.id.guessMelody_option2);
@@ -85,7 +88,11 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
 
                 correctAnswer = allContent.getString(2);
 
-                audioToPlay.add(allContent.getString(7));
+
+                Uri path = Uri.parse("android.resource://com.home.jsquad.knowhunt/" + getResources().getIdentifier(allContent.getString(7),
+                        "raw", getPackageName()));
+
+                audioToPlay.add(path.toString());
                 dbRepresenter.updatePassedMusic(allContent.getString(0));
                 allContent.close();
                 return;

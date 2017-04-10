@@ -10,7 +10,7 @@
 
 
             <ui:define name="content">
-                <h:form style="color: #333">
+                <center><h:form style="color: #333">
                     <h:panelGrid columns="6" style="box-shadow: beige" frame="border">
                         <tr>
                         <th>Questions and Answers</th> 
@@ -25,8 +25,9 @@
                         <h:column> #{q.optionalAnswer3}</h:column>
                     </h:dataTable>
                 </h:panelGrid>
-                <h:commandButton action="create" actionListener ="#{qaEJB.create}" value="Create one more question" style="color: #333"/>
-                </h:form>
+                        <br>
+                            <h:commandButton action="create" actionListener ="#{qaEJB.create}" value="Create one more question" style="color: #333"/></br>
+                </h:form></center>
             </ui:define>
 
         </ui:composition>
