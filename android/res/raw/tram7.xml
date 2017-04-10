@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <route>
 	<geoPoints>
-		<geoPoint number="1" position="59.346186, 18.072819"/>
+		<geoPoint number="1" position="59.346624, 18.073117"/>
 		<geoPoint number="2" position="59.346843, 18.073257"/>
 		<geoPoint number="3" position="59.347369, 18.073730"/>
 		<geoPoint number="4" position="59.347874, 18.073123"/>
-		<geoPoint number="5" position="59.347653, 18.071957"/>
-		<geoPoint number="6" position="59.347018, 18.070993"/>
-		<geoPoint number="7" position="59.346099, 18.071851"/>
+		<geoPoint number="5" position="59.347262, 18.071497"/>
+		<geoPoint number="6" position="59.346329, 18.072087"/>
+
 
 	</geoPoints>
 	
 	<audioPoints>
-		<audioPoint number="0" position="59.346186, 18.072819" radius="20">
+		<audioPoint number="0" position="59.346624, 18.073117" radius="20">
 			<audio id="space"/>
 		</audioPoint>
 		<audioPoint number="1" position="59.347369, 18.073730" radius="20">
@@ -21,13 +21,11 @@
 		<audioPoint number="2" position="59.347874, 18.073123" radius="20">
 			<audio id="space"/>
 		</audioPoint>
-		<audioPoint number="3" position="59.347653, 18.071957" radius="20">
+
+		<audioPoint number="3" position="59.347262, 18.071497" radius="20">
 			<audio id="space"/>
 		</audioPoint>
-		<audioPoint number="4" position="59.347018, 18.070993" radius="20">
-			<audio id="space"/>
-		</audioPoint>
-		<audioPoint number="5" position="59.346099, 18.071851" radius="20">
+		<audioPoint number="4" position="59.346329, 18.072087" radius="20">
 			<audio id="space"/>
 		</audioPoint>
 	</audioPoints>

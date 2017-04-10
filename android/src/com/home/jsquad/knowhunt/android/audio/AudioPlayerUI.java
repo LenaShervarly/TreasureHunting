@@ -37,10 +37,10 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
 
         pause = (FloatingActionButton) mapsActivity.findViewById(R.id.button_pause);
         activity = mapsActivity;
-        seekBar = (SeekBar) mapsActivity.findViewById(R.id.seekBar);
+        //seekBar = (SeekBar) mapsActivity.findViewById(R.id.seekBar);
         color = ContextCompat.getColor(_context, R.color.blue_light);
 
-        setAudioPlayerSeekBar();
+        //setAudioPlayerSeekBar();
 
         stateListener = new IObserver<PlayerState>() {
             @Override
@@ -77,7 +77,7 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
         positionListener = new IObserver<Integer>() {
             @Override
             public void notify(Integer progress) {
-                seekBar.setProgress(progress);
+                //seekBar.setProgress(progress);
             }
         };
         AudioService.Position.subscribe(positionListener);
@@ -91,10 +91,18 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
         this.guessMelodyActivity = guessMelodyActivity;
         pause = (FloatingActionButton) guessMelodyActivity.findViewById(R.id.button_pause);
         activity = guessMelodyActivity;
-        seekBar = (SeekBar) guessMelodyActivity.findViewById(R.id.seekBar);
+        //seekBar = (SeekBar) guessMelodyActivity.findViewById(R.id.seekBar);
         color = ContextCompat.getColor(guessMelodyActivity, R.color.blue_light);
 
-        setAudioPlayerSeekBar();
+        //setAudioPlayerSeekBar();
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startingIntent = new Intent(activity, AudioService.class);
+                startingIntent.putExtra(AudioService.Command, AudioServiceCommand.ToggleState);
+                activity.startService(startingIntent);
+            }
+        });
 
         stateListener = new IObserver<PlayerState>() {
             @Override
@@ -131,7 +139,7 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
         positionListener = new IObserver<Integer>() {
             @Override
             public void notify(Integer progress) {
-                seekBar.setProgress(progress);
+                //seekBar.setProgress(progress);
             }
         };
         AudioService.Position.subscribe(positionListener);
@@ -149,14 +157,7 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
 
         seekBar.setOnSeekBarChangeListener(this);
 
-        pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startingIntent = new Intent(activity, AudioService.class);
-                startingIntent.putExtra(AudioService.Command, AudioServiceCommand.ToggleState);
-                activity.startService(startingIntent);
-            }
-        });
+
     }
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -170,7 +171,7 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
     public void onStopTrackingTouch(SeekBar seekBar) {
         Intent startingIntent = new Intent(_context, AudioService.class);
         startingIntent.putExtra(AudioService.Command, AudioServiceCommand.Rewind);
-        startingIntent.putExtra(AudioService.Progress, seekBar.getProgress());
+        //startingIntent.putExtra(AudioService.Progress, seekBar.getProgress());
 
         _context.startService(startingIntent);
     }
@@ -181,8 +182,8 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
             ? _context.getString(R.string.audio_choose_tack)
             : excursion.getTrackNames().getTrackName("en", trackName);
 
-        TextView textView = (TextView)_context.findViewById(R.id.textViewSongName);
-        textView.setText(caption);
+        //TextView textView = (TextView)_context.findViewById(R.id.textViewSongName);
+        //textView.setText(caption);
 
         return caption;
     }
@@ -191,8 +192,8 @@ public class AudioPlayerUI implements SeekBar.OnSeekBarChangeListener {
     {
         String caption = "Guess a melody";
 
-        TextView textView = (TextView)guessMelodyActivity.findViewById(R.id.textViewSongName);
-        textView.setText(caption);
+        //TextView textView = (TextView)guessMelodyActivity.findViewById(R.id.textViewSongName);
+        //textView.setText(caption);
 
         return caption;
     }

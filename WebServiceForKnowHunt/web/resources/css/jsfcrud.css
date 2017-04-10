@@ -83,3 +83,14 @@ tr.jsfcrud_even_row {
     left: 50%;
     top: 50%;
 }
+
+commandButton{
+    background-color: #F4850B;
+    border-radius: 15px;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 14%;
+}

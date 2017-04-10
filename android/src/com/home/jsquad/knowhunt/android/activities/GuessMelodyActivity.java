@@ -44,8 +44,8 @@ public class GuessMelodyActivity extends AppCompatActivity implements Iactivity{
         mWakeLock.acquire();
 
         mAudioPlayerUi = new AudioPlayerUI(this);
-        TextView textView = (TextView)this.findViewById(R.id.textViewSongName);
-        textView.setText("Guess a melody");
+        //TextView textView = (TextView)this.findViewById(R.id.textViewSongName);
+        //textView.setText("Guess a melody");
 
         audioToPlay = new ArrayList<>();
 
