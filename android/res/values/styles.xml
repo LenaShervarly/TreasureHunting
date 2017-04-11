@@ -58,9 +58,9 @@
         <item name="android:background">@drawable/question_button_style</item>
         <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">72dp</item>
-        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_margin">7dp</item>
         <item name="android:textColor">#f6feff</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:color">@color/orange_main</item>
     </style>

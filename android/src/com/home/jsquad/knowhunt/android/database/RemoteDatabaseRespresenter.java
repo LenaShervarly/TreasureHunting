@@ -35,10 +35,10 @@ public class RemoteDatabaseRespresenter {
     }
 
     private static void insertSampleData(){
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Mamma Mia", "I Am Just a Girl", "Dancing Queen", "Happy New Year", 0, "abba_mamma_mia");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Halleluja", "Mamma Mia", "Let it be", "My love", 0, "halleluja");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "Let it be", "We are the Champions", "Halleluja", "Paris", 0, "let_it_be");
-        questAndAnswDatabaseHelper.insertDataMusic("The name of the song is:", "We are the Champions", "We are the Winners", "Wind of Changes", "Stay", 0, "we_are_the_champions");
+        questAndAnswDatabaseHelper.insertDataMusic("Guess the song", "Mamma Mia", "I Am Just a Girl", "Dancing Queen", "Happy New Year", 0, "abba_mamma_mia");
+        questAndAnswDatabaseHelper.insertDataMusic("Guess the song", "Dancing Queen", "Mamma Mia", "Let it be", "My love", 0, "dancing_queen");
+        questAndAnswDatabaseHelper.insertDataMusic("Guess the song", "Happy New Year", "We are the Champions", "Halleluja", "Paris", 0, "happy_new_year");
+        questAndAnswDatabaseHelper.insertDataMusic("Guess the song", "Money - Money", "Halleluja", "Wind of Changes", "Stay", 0, "money_money");
     }
 
     public static Cursor getAllQuestionsAndAnswers() {

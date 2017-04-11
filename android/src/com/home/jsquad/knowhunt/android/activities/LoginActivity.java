@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         register = (TextView) findViewById(R.id.teRegister);
 
         dbRepresenter = new RemoteDatabaseRespresenter(this);
-
+        dbRepresenter.getDataFromServer(this);
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M)
             passwordLayaot.setPasswordVisibilityToggleEnabled(true);
 
@@ -91,16 +91,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean isSecretCodeCorrect() {
         dbRepresenter.getDataFromServer(this);
-        dbRepresenter.getDataFromServer(this);
-        if (!secretCode.equals("")){
-            if(!dbRepresenter.checkSecretCodeValidity(secretCode))
-               isSecretCodeValid = false;
-            else
-                isSecretCodeValid = true;
-        }
-        else
-            isSecretCodeValid = true;
-        return isSecretCodeValid;
+        if (!secretCode.equals(""))
+            return dbRepresenter.checkSecretCodeValidity(secretCode);
+        return true;
     }
 
     @Override

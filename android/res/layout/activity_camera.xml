@@ -26,16 +26,31 @@
         android:weightSum="1"
         android:background="@color/black">
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.13"
+            android:text="It seems, that your friends had already been here:)"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextLabel"
+            android:textColor="#f6feff"
+            android:textSize="24sp"
+            android:textStyle="italic" />
+
         <Button
             android:id="@+id/button"
             style="@style/ovalButton_style"
-            android:layout_width="262dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
             android:layout_toEndOf="@+id/img"
             android:layout_toRightOf="@+id/img"
+            android:fontFamily="sans-serif"
             android:onClick="click"
-            android:text="Your friends had already been here:) Take the challenge of making a better picture!"
-            android:layout_weight="0.13" />
+            android:text="Accept challenge of making a better picture"
+            android:textColor="#f6feff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/img"
@@ -52,8 +67,11 @@
             android:layout_height="36dp"
             android:layout_toEndOf="@+id/img"
             android:layout_toRightOf="@+id/img"
+            android:fontFamily="sans-serif"
             android:onClick="onDoneButtonClicked"
-            android:text="Done" />
+            android:text="Done! :)"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </RelativeLayout>

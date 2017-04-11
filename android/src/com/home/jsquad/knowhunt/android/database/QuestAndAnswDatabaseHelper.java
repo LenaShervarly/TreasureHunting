@@ -130,6 +130,7 @@ public class QuestAndAnswDatabaseHelper extends SQLiteOpenHelper {
            sqLiteStatement.bindString(1, secretCode); */
 
         Cursor result = db.rawQuery("SELECT * FROM " + TABLE_QA + " WHERE " + COL_SC + " = '" + secretCode + "'", null);
+        result = db.rawQuery("SELECT * FROM " + TABLE_QA + " WHERE " + COL_SC + " = '" + secretCode + "'", null);
 
         int countOfEntries = result.getCount();
         if(countOfEntries > 0)

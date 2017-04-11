@@ -63,7 +63,7 @@
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#f6feff"
-        android:textSize="28sp"
+        android:textSize="30sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/guessMelody_option2"
         app:layout_constraintHorizontal_bias="0.504"

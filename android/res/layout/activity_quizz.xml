@@ -4,100 +4,111 @@
     android:id="@+id/activity_quizz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="50dp"
+    android:paddingBottom="30dp"
     android:paddingLeft="20dp"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="50dp"
+    android:paddingTop="30dp"
     tools:context="com.home.jsquad.knowhunt.android.activities.QuizzActivity"
     android:background="@color/black"
     android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:gravity="center">
-
-    <TextView
-        style="@style/description_style"
-        android:id="@+id/welcome"
-        android:text="@string/question_and_answers"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        style="@style/description_style"
-        android:id="@+id/Question1"
-        android:text="@string/can_you_see_a_huge_brown_building_on_you_left"
-        android:layout_below="@id/welcome"
-        android:textSize="18sp"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/group1"
-        android:layout_below="@id/Question1">
-
-        <RadioButton
+        <TextView
+            android:id="@+id/welcome"
             style="@style/description_style"
-            android:id="@+id/button1"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/yes"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/question_and_answers"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <RadioButton
+        <TextView
+            android:id="@+id/Question1"
             style="@style/description_style"
-            android:id="@+id/button2"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/no"
-            android:textSize="16sp"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
-    </RadioGroup>
+            android:layout_below="@id/welcome"
+            android:text="@string/can_you_see_a_huge_brown_building_on_you_left"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <TextView
-        style="@style/description_style"
-        android:id="@+id/Question2"
-        android:text="@string/is_there_a_coffee_shop_on_your_right_corner"
-        android:layout_below="@id/group1"
-        android:textSize="18sp"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/group2"
-        android:layout_below="@id/Question2">
+        <RadioGroup
+            android:id="@+id/group1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Question1">
 
-        <RadioButton
+            <RadioButton
+                android:id="@+id/button1"
+                style="@style/description_style"
+                android:layout_width="109dp"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/yes"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="24sp" />
+
+            <RadioButton
+                android:id="@+id/button2"
+                style="@style/description_style"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/no"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="24sp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/Question2"
             style="@style/description_style"
-            android:id="@+id/button3"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/yes"
-            android:textSize="16sp"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:layout_below="@id/group1"
+            android:text="@string/is_there_a_coffee_shop_on_your_right_corner"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <RadioButton
-            style="@style/description_style"
-            android:id="@+id/button4"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/no"
-            android:textSize="16sp"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
-    </RadioGroup>
+        <RadioGroup
+            android:id="@+id/group2"
+            android:layout_width="132dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Question2">
 
-    <Button
-        style="@style/ovalButton_style"
-        android:text="@string/done"
-        android:layout_below="@+id/group2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="onDoneButtonClicked"/>
+            <RadioButton
+                android:id="@+id/button3"
+                style="@style/description_style"
+                android:layout_width="match_parent"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/yes"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="24sp" />
+
+            <RadioButton
+                android:id="@+id/button4"
+                style="@style/description_style"
+                android:layout_width="match_parent"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/no"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="24sp" />
+        </RadioGroup>
+
+        <Button
+            style="@style/ovalButton_style"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/group2"
+            android:fontFamily="sans-serif"
+            android:onClick="onDoneButtonClicked"
+            android:text="@string/done"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
     </LinearLayout>
 </RelativeLayout>
