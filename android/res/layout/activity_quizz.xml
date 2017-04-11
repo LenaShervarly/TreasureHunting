@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_quizz"
     android:layout_width="match_parent"
@@ -23,25 +24,35 @@
 
         <TextView
             android:id="@+id/welcome"
-            style="@style/description_style"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:text="@string/question_and_answers"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
             android:textStyle="bold" />
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/Question1"
-            style="@style/description_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/welcome"
             android:text="@string/can_you_see_a_huge_brown_building_on_you_left"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey_500"
             android:textSize="24sp"
             android:textStyle="bold" />
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
         <RadioGroup
             android:id="@+id/group1"
             android:layout_width="wrap_content"
@@ -50,56 +61,81 @@
 
             <RadioButton
                 android:id="@+id/button1"
-                style="@style/description_style"
-                android:layout_width="109dp"
+
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/yes"
+                android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                tools:buttonTint="@color/cardview_light_background"/>
 
             <RadioButton
                 android:id="@+id/button2"
-                style="@style/description_style"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textAlignment="center"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/no"
+                android:textColor="@android:color/white"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:buttonTint="@color/cardview_light_background"/>
         </RadioGroup>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/Question2"
-            style="@style/description_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/group1"
             android:text="@string/is_there_a_coffee_shop_on_your_right_corner"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="24sp"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            android:textColor="@color/grey_500"
+            android:textAlignment="center"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
         <RadioGroup
             android:id="@+id/group2"
-            android:layout_width="132dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Question2">
+            android:layout_below="@id/Question1">
 
             <RadioButton
                 android:id="@+id/button3"
-                style="@style/description_style"
-                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/yes"
+                android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                tools:buttonTint="@color/cardview_light_background"/>
 
             <RadioButton
                 android:id="@+id/button4"
-                style="@style/description_style"
-                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textAlignment="center"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/no"
+                android:textColor="@android:color/white"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:buttonTint="@color/cardview_light_background"/>
         </RadioGroup>
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
         <Button
             style="@style/ovalButton_style"
             android:layout_alignParentLeft="true"

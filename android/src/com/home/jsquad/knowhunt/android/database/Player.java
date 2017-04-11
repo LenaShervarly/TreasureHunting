@@ -1,6 +1,8 @@
 package com.home.jsquad.knowhunt.android.database;
 
-public class Player {
+import android.support.annotation.NonNull;
+
+public class Player implements Comparable<Player>{
 
     private int ID;
     private String name;
@@ -77,6 +79,8 @@ public class Player {
     }
 
 
-
-
+    @Override
+    public int compareTo(@NonNull Player another) {
+        return getScores() > another.getScores() ? 1 : -1;
+    }
 }

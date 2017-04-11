@@ -25,7 +25,7 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="185dp"
+            android:layout_height="190dp"
             grid:srcCompat="@drawable/giphy" />
 
         <Space
