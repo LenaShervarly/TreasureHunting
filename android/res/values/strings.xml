@@ -55,4 +55,5 @@
     <string name="restart">Restart a game</string>
     <string name="all_results">See all results</string>
     <string name="scores_got">You\'ve got:</string>
+    <string name="congrats">congratulations</string>
 </resources>

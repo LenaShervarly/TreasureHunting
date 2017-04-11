@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         register = (TextView) findViewById(R.id.teRegister);
 
         dbRepresenter = new RemoteDatabaseRespresenter(this);
-        dbRepresenter.getDataFromServer(this);
+        //dbRepresenter.getDataFromServer(this);
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M)
             passwordLayaot.setPasswordVisibilityToggleEnabled(true);
 
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         String username = userName.getText().toString();
         String pass = password.getText().toString();
         secretCode = secretCodeField.getText().toString();
-        if(isSecretCodeCorrect()) {
+       // if(isSecretCodeCorrect()) {
             if (playerExists(username, pass)) {
                 Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
                 intent.putExtra(IntentNames.SELECTED_GAME, game);
@@ -79,10 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             } else
                 Toast.makeText(LoginActivity.this, "Username or password is not correct", Toast.LENGTH_SHORT).show();
-        }
+        /*}
         else
             Toast.makeText(this, "Secret code is invalid. Please try again or leave the field empty!", Toast.LENGTH_SHORT).show();
-    }
+    */}
 
     public void onPressingRegister(View view) {
         Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);

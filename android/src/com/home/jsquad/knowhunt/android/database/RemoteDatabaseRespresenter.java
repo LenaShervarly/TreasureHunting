@@ -41,6 +41,10 @@ public class RemoteDatabaseRespresenter {
         questAndAnswDatabaseHelper.insertDataMusic("Guess the song", "Money - Money", "Halleluja", "Wind of Changes", "Stay", 0, "money_money");
     }
 
+    private static void insertQAsample(){
+        questAndAnswDatabaseHelper.insertDataQA("How old is KTH?", "190 years old", "50 years old", "90 years old", "125 years old", 0, null);
+        questAndAnswDatabaseHelper.insertDataQA("Who is the president of KTH?", "Sigbritt Karlsson", "Mattias Wiggberg", "Philipp Haller", "Johan Stålnacke", 0, null);
+    }
     public static Cursor getAllQuestionsAndAnswers() {
         return questAndAnswDatabaseHelper.getAllQAData();
     }

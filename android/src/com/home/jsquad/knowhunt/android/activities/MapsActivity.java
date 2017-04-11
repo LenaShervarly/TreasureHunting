@@ -65,6 +65,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
     private ActivityFactory factory;
     private int activityAudioPointNumber;
     static final int STORE_SCORES = 0;
+    static final int FIREWORKS = 1;
     private CharSequence timeSpentForSolving;
     private int totalUserScores;
     private Chronometer chronometer;
@@ -288,12 +289,19 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
                 totalUserScores += score.getIntExtra("scores", 0);
             }
         }
+        if (requestCode == FIREWORKS) {
+            if (resultCode == RESULT_OK) {
+                showResults();
+                mAudioPlaybackController.stopAnyPlayback(this);
+            }
+        }
         if(isLastActivity) {
-            showResults();
+            showFireworks();
+            //showResults();
             stopTimer();
             ArrayList<String> finalTrackNames = new ArrayList<>();
                 finalTrackNames.add("android.resource://com.home.croaton.followme/raw/queen_we_are_the_champions_full");
-            //mAudioPlaybackController.startPlaying(this, finalTrackNames);
+            mAudioPlaybackController.startPlaying(this, finalTrackNames);
         }
         databaseHelper.updateScores(currentPlayer, totalUserScores);
     }
@@ -307,6 +315,13 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         timeSpentForSolving = chronometer.getContentDescription();
         chronometer.setText(timeSpentForSolving);
         chronometer.stop();
+    }
+
+    private void showFireworks(){
+        isLastActivity = false;
+        Intent fireworks = new Intent(MapsActivity.this, FireworksSplash.class);
+        startActivityForResult(fireworks, FIREWORKS);
+
     }
 
     private void showResults(){
@@ -337,7 +352,7 @@ public class MapsActivity extends FragmentActivity implements  Iactivity{
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent restartGame = new Intent(MapsActivity.this, StartTheGameActivity.class);
+                Intent restartGame = new Intent(MapsActivity.this, LoginActivity.class);
                 startActivity(restartGame);
             }
         });

@@ -42,8 +42,6 @@ android {
     }
 }
 
-
-
 // called every time gradle gets executed, takes the native dependencies of
 // the natives configuration, and extracts them to the proper libs/ folders
 // so they get packed with the APK.
@@ -153,7 +151,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-location:8.4.0'
     compile 'org.osmdroid:osmdroid-android:5.1@aar'
     compile 'com.github.MKergall.osmbonuspack:OSMBonusPack:v5.7'
-    compile "com.android.support:support-core-utils:23.4.0"
+    compile 'com.android.support:support-core-utils:23.4.0'
     compile 'org.simpleframework:simple-xml:2.7.1'
     compile 'com.amazonaws:aws-android-sdk-s3:2.2.14'
     compile 'com.android.support:multidex:1.0.1'
@@ -165,6 +163,7 @@ dependencies {
     compile 'commons-io:commons-io:2.4'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.6'
     testCompile 'junit:junit:4.12'
     testCompile 'org.powermock:powermock-api-mockito:1.6.1'
     testCompile 'org.powermock:powermock-module-junit4-rule-agent:1.6.1'
